@@ -1,0 +1,31 @@
+input, textarea, select {
+	border: 1px solid #f4bb79;
+	margin: 0;
+	color: #7a7d81;
+	background-color: white;
+	font-family: Verdana, Arial;
+}
+
+
+input, select { padding: 2px; }
+
+textarea { padding: 5px; font-size: 12px;}
+
+input, select {
+	font-size: 0.9em;
+	height: 20px;
+}
+
+input.button { 
+	border: 0;
+	height: 25px;
+	padding-top: 0px;
+	font-size: 14px;
+	/*background-color: #9c480a #bc6e2f;*/
+	color: #ffffff;
+}
+
+#search_form input { width: 120px; }
+#search_form input#find_button { width: 54px;  margin: 0; padding: 0; border: 0; float: right;}
+
+.action-note { font-size: 1.4em; margin-top: 20px; }

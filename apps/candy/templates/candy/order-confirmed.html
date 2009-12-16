@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load pages %}
+{% load dates %}
+{% load candy %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () { $('#phone').keyfilter(/[\d]/); });
+	</script>
+{% endblock %}
+
+{% block column_right %}
+	{% categories_tree 0 %}
+	{% orders_preview 5 request.user.id %}
+{% endblock %}
+
+{% block content %}
+	<h1>Спасибо за ваш заказ!</h1>
+	
+	<p style="font-size: 1.4em; line-height: 27px;">Вы совершили заказ (#{{ order.id }})
+	на общую сумму <strong>{{ order.sum }} руб.</strong>. Теперь необходимо 
+	определить условия оплаты заказа. Наши менеджеры свяжутся с вами по телефону
+	<strong>+7 {{ order.phone }}</strong> и по email <strong>{{ order.email }}</strong></p>
+{% endblock %}

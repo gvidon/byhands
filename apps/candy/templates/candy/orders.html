@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+{% load dates %}
+
+{% block css %}
+	<style type="text/css">
+		.orders { font-size: 1.4em; margin-left: 30px; }
+			.orders li { margin-bottom: 30px; }
+				.orders li span.comment, .orders li span.status { font-size: 0.5em; }
+				.orders li .cancel { display: block; font-size: 0.7em; }
+	</style>
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
+	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () {
+			$('.quantity input').keyfilter(/[\d]/);
+			
+			Candy.bindCartEvents(
+				$('#cart'),
+				$('.add-to-cart'),
+				$('.remove-from-cart'),
+				$('.clear-cart'),
+				{ }
+			);
+			
+			Candy.bindOrderEvents($('#confirm-order'), $('#cart'));
+		});
+	</script>
+{% endblock %}
+
+{% block column_right %}
+	{% include 'candy/cart-preview.html' %}
+	
+	<div class="tpl-categories corners">
+		<div class="t-r"></div><div class="b-r"></div>
+
+		<div class="wrap">
+			<h2>Разделы магазина</h2>
+			{% include 'candy/_categories-tree.html' %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<h1>Ваши заказы</h1>
+	
+	{% if orders %}
+		{% include 'candy/_orders.html' %}
+	{% else %}
+		<p style="font-size: 1.4em"><strong>Вы еще не совершали заказов</strong><br/><br/>
+		А ведь у нас можно <a href="{% url candy %}">купить интересное что-то</a></p>
+	{% endif %}
+{% endblock %}

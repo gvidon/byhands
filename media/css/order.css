@@ -1,0 +1,6 @@
+table#order_list {
+	width: 100%;
+	font-size: 14px;
+}
+
+table#order_list tr.total td {  padding-top: 20px;}

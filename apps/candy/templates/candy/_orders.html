@@ -1,0 +1,22 @@
+{% load dates %}
+
+<ul class="orders">{% for order in orders %}
+	<li>
+		<a href="{% url candy-view-order id=order.id %}">#{{ order.id }} на сумму {{ order.sum }}</a><br/>
+		<span class="comment">
+			от {{ order.created_at|date:"d F Y"|ru_months }}&nbsp;
+		</span>
+		
+		
+		{% if order.is_cancelled %}
+			<span class="status cancelled">отменен</span>
+		{% else %}
+			{% if order.is_paid %}<span class="status paid">оплачен</span>{% endif %}
+			{% if order.is_delivered %}<span class="status delivered">доставлен</span>{% endif %}
+		{% endif %}
+		
+		{% if not order.is_cancelled and not order.is_delivered %}
+			<div class="cancel"><a href="">отменить</a></div>
+		{% endif %}
+	</li>
+{% endfor %}</ul>

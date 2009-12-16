@@ -1,0 +1,21 @@
+{% for product in products %}
+	<div id="i{{ product.id }}" class="product_desc">
+		<div class="desc">
+			<a class="title" href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" class="title">
+				{{ product.title|truncatewords:7|capfirst }}
+			</a><br/><br/>
+			
+			&nbsp;<strong>Цена:</strong> {{ product.price }} p.<br/><br/>
+			
+			<img src="{{ media_url }}/images/ajax-loader.gif" class="ajax-loader" title="ajax loader" />
+			
+			<a id="b{{ product.id }}" class="add-to-cart" href="{% url candy-add-item id=product.id %}">
+				<img src="{{ media_url }}/images/to_cart.gif" title="{{ product.title }}" width="28" height="28" />
+			</a>
+		</div>
+		
+		<div class="photo"><a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}">
+			<img src="{{ product.thumb_url }}" title="{{ product.title }}" />
+		</a></div>
+	</div>
+{% endfor %}

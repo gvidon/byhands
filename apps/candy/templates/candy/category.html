@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load dates %}
+{% load pages %}
+{% load candy %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () {
+			Candy.bindCartEvents(
+				$('#cart'),
+				$('.add-to-cart'),
+				$('.remove-from-cart'),
+				$('.clear-cart'),
+				{ }
+			);
+		});
+	</script>
+{% endblock %}
+
+{% block column_right %}
+	{% include 'candy/cart-preview.html' %}
+	
+	{% categories_tree category.id %}
+	{% orders_preview 5 request.user.id %}
+{% endblock %}
+
+{% block content %}
+	<h1>{{ category.title }}</h1>
+	
+	<ul class="tpl-products">{% with object_list as products %}
+		{% include 'candy/_products.html' %}
+	{% endwith %}</ul>
+	
+	{% if page_obj.has_other_pages %}
+		<div class="pages">{% pages paginator page_obj request.path %}</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,185 @@
+/* --------------------
+ --- общие стили --- 
+----------------------*/
+html, body { 
+	width: 100%; height: 100%;
+	margin: 0; padding: 0;
+
+	font-family: Verdana; font-size: 12px; color: #7a7d81;
+}
+
+
+div#main { 
+	width: 100%;
+
+	background: url(../images/yellow_head.gif);
+	background-repeat: repeat-x;
+}
+
+div#central { width: 1150px; }
+
+ul { list-style-type: none; padding: 0; margin: 0; }
+
+
+img { border: 0; }
+
+h2 { 
+	font-size: 26px; 
+	font-weight: normal;
+	color: /*#9c480a*/#5d9093;
+	font-family: Times New Roman;
+	line-height: 15px; 
+	padding: 0; 
+	margin: 0 0 40px 0;
+}
+
+a { font-size: 12px; color: #6aa3d3; }
+
+a:hover, a.active { text-decoration: none; }
+
+a.title { font-size: 14px; }
+
+.ajax-loader { display: none; }
+
+
+
+/* -----------------
+ ---  шапка --- 
+---------------------*/
+
+div#head { width: 1150px; height: 119px; text-align: left; }
+
+div#logo {
+	float: left;
+	width: 461px; height: 117px;
+	border: 0; margin: 0; padding:0;
+}
+
+div#logo img {
+	border: 0; margin-top: 0; padding:0;
+	width: 461px; height: 117px;
+}
+
+
+div#auth{
+	float:right;
+	width: 474px; height: 15px;
+	text-align: right;
+	margin: 10px 0 0 0; padding: 0;
+}
+
+div#auth ul { margin: 0; padding: 0; }
+
+div#auth ul li {	
+	padding: 0 2px 0 4px; margin: 0;
+	display: inline;
+	border-left: 1px solid #ec8711;
+}
+
+div#auth ul li a { color: #ec8711; }
+div#auth ul li.first { border: none; padding-left: 0; }
+
+div#find {
+	float: left;
+	width: 290px; height: 48px;
+	background:url(../images/find_back.gif) no-repeat;
+
+	padding-left: 45px;
+}
+
+#search_form { margin-top: 12px; width: 180px; }
+
+div#cart {
+	float: left;
+	width: 810px;
+	text-align: right;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+div#cart img { position: relative; right: -30px; }
+div#cart span { position: relative; right: -40px; }
+
+div#main_content { width: 1150px; }
+
+
+
+
+
+/* ---------------------
+--- левая сторона --- 
+------------------------*/
+
+div#left_side {
+	width: 200px;
+	float: left;
+	text-align: left;
+	padding: 15px 20px 60px 50px;
+	margin: 0;
+
+}
+
+
+
+div#personal_order {  
+	margin-top: 100px; margin-left: -10px;
+}
+div#personal_order a { font-size: 14px; color: #ec8711/*f33609*/; }
+
+
+div#personal_order img {float: left; margin-right: 10px;} 
+
+
+
+
+
+
+
+
+/* ------------------------
+ --- основной контент --- */
+
+div#central_part {
+	width: 790px;
+	float: left;
+	padding: 20px 50px 0 0; margin-left: 35px;
+	text-align: left;
+}
+
+
+
+
+/*--------------
+ --- pager ---*/
+
+ul.pager { margin: 0 0 30px 0; padding: 0; }
+
+ul.pager li { display: inline; line-height: 7px; margin: 0 0 0 2px; pading: 0; }
+
+ul.pager li img { vertical-align: middle; }
+
+ul.pager li a { padding: 0 2px 0 2px; /* font-size: 20px; color: #7dacd6; */}
+
+ul.pager li a:hover, ul.pager li a.active { background: #f7ba45; color: #ffffff;}
+
+
+
+
+
+
+
+/* -------------
+ --- footer --- */
+
+div#footer { width: 1050px;	padding: 100px 0 0 0; margin: 0; }
+
+div#footer ul { width: 500px;} 
+
+ul#footer_links li { display: inline; color: #6892b7; }	
+
+ul#footer_links li a { color: #4985ba; }
+ul#footer_links li.xxl a { font-size: 20px; padding-left: 15px; line-height: 30px; }
+ul#footer_links li.xl a { font-size: 18px; padding-left: 5px; line-height: 26px;}
+ul#footer_links li.l a { font-size: 16px; padding-left: 10px; line-height:24px; }
+ul#footer_links li.m a { font-size: 14px; padding-left: 20px; line-height: 21px;}
+ul#footer_links li.s a { font-size: 12px; padding-left: 25px; line-height: 18px;}

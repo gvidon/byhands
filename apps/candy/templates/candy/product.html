@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load dates %}
+{% load candy %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.fancybox.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () {
+			Candy.bindCartEvents(
+				$('#cart span'),
+				$('.add-to-cart'),
+				$('.remove-from-cart'),
+				$('.clear-cart'),
+				{ 'simple': 1 }
+			);
+			
+			$('a.group').fancybox({
+				'enableEscapeButton': true,
+				'hideOnContentClick': false,
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block column_right %}
+	{% include 'candy/cart-preview.html' %}</ul>
+	
+	{% categories_tree 0 %}
+	{% orders_preview 5 request.user.id %}
+{% endblock %}
+
+{% block content %}
+	<ul id="section_nav">
+		<li><a href="javascript://">Игрушки</a></li>
+		<li> &gt; </li>
+		<li>Игрушки из шерсти</li>
+	</ul>
+	
+	<div style="clear: both;"></div>
+	
+	<div id="i{{ product.id }}" class="product_desc">
+		<div class="gallery">
+			<div id="main_photo"><a href="{{ product.photos.all.0.photo.url }}" class="group" rel="group">
+				<img src="{{ product.thumb_url }}" />
+			</a></div>
+			
+			<div class="thumbs">{% for photo in product.photos.all %}{% if not forloop.first %}
+				<div><a class="group" href="{{ photo.photo.url }}"><img src="{{ photo.photo.url }}_thumb" /></a></div>
+			{% endif %}{% endfor %}</div>
+		</div>
+		
+		<div class="desc">
+			<a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" class="title">
+				{{ product.title|lower|capfirst }}
+			</a><br/><br/>
+			
+			{% if product.madeof %}<strong>Материал:</strong> {{ product.madeof }}<br/><br/>{% endif %}
+			{% if product.size %}<strong>Размер:</strong> {{ product.size }}<br/><br/>{% endif %}
+			<!--&nbsp;<strong>Цвет:</strong> зеленый, фиолетовый<br/><br/>-->
+			{{ product.description|safe }}<br/><br/>
+			<strong>Цена:</strong> {{ product.price }} p.<br/><br/>
+			
+			<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+			
+			<a id="b{{ product.id }}" href="{% url candy-add-item id=product.id %}" class="add-to-cart">
+				<img src="{{ media_url }}/images/to_cart.gif" />
+			</a>
+		</div>
+	</div>
+{% endblock %}

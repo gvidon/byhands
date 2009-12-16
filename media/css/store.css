@@ -1,0 +1,110 @@
+/* ------------------------
+ --- подробное описание товара ---
+--------------------------*/
+
+.product_desc { width: 790px;  text-align: left; margin: 0 0 50px 0; padding: 0;}
+
+.gallery { width: 154px; float: left; }
+
+div#main_photo { 
+	width: 152px; height: 152px;
+	padding: 1px; margin: 0;
+	border: 1px solid #d4ccc4;
+
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.desc { width: 600px; float: right; padding-left: 5px;}
+
+.thumbs { width: 150px; margin-top: 10px;}
+
+.thumbs div { 
+	height: 42px; width: 42px;
+	float: left;
+	margin-left: 4px; padding: 1px;
+	border: 1px solid #d4ccc4;
+	text-align: center;
+}
+
+.thumbs div.first { margin-left: 0px; }
+	.thumbs div img { width: 42px; height: 42px; }
+
+div.product_desc a.title { font-size: 14px;  }
+
+
+
+
+
+/*--------------------------
+ --- список товаров --- 
+---------------------------*/
+
+div.product_list { width: 790px; float: left; padding: 0 0 0 0; margin: 0;}
+
+div.product_list div.product_desc { width: 390px; float: left; }
+
+div.product_desc div.photo {
+	width: 152px; height: 152px;
+	padding: 1px; margin: 0;
+	border: 1px solid #d4ccc4;
+	text-align: center;
+	display: table-cell;
+	vertical-align:middle;
+}
+
+div.product_list div.product_desc div.desc { width: 210px;  padding-left: 5px;}
+
+
+
+/*----------------------------
+    --- список заказов   ----
+----------------------------*/
+
+table.order_list {
+	width: 100%;
+	padding: 0 5px 0 5px;
+	font-size: 12px;
+}
+
+table.order_list td { padding: 10px 0 10px 0; vertical-align: middle; text-align: center;}
+
+table.order_list tr.odd { background-color: #fefddf; }
+
+table.order_list td.title { text-align: left; padding-left: 5px; }
+
+table.order_list td.delete a { color: #ec8711; }
+
+div.order_bottom { width: 100%; text-align: right; margin-top: 30px; }
+
+div.order_bottom div#total { position: relative; right: 100px;  }
+
+div.order_bottom div#buttons { position: relative; right: 100px; }
+
+
+
+
+div#buttons { margin-top: 30px; }
+
+div#buttons .button { margin-right: 3px; }
+/*
+a#continue_shopping {
+	position: absolute;
+	right: 150px;
+	height: 30px; width: 183px;
+	background: url(../img/continue_shopping.gif) no-repeat;
+}
+
+a#continue_shopping:hover {	background:transparent url(../img/continue_shopping_on.gif) no-repeat; }
+
+a#place_order {
+	position: absolute;
+	right: -80px;
+	height: 30px; width: 204px;
+	background: url(../img/place_order.gif) no-repeat;
+}
+
+a#place_order:hover {	background:transparent url(../img/place_order_on.gif) no-repeat; }
+*/
+

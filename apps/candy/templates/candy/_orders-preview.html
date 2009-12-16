@@ -1,0 +1,14 @@
+{% load dates %}
+
+{% if orders %}
+	<div class="tpl-orders-preview corners">
+		<div class="t-r"></div><div class="b-r"></div>
+
+		<div class="wrap">
+			<h2>Ваши заказы</h2>
+			{% include 'candy/_orders.html' %}
+			
+			<h2><a href="{% url candy-orders %}">все заказы →</a></h2>
+		</div>
+	</div>
+{% endif %}

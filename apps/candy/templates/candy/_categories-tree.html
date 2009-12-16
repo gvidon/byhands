@@ -1,0 +1,15 @@
+<div class="tpl-categories corners">
+	<div class="t-r"></div><div class="b-r"></div>
+	
+	<div class="wrap">
+		<h2>Разделы магазина</h2>
+		
+		{% for category in categories %}<ul>
+			{% ifequal category.id current %}
+				<li><h3><strong>{{ category.title }}</strong></h3></li>
+			{% else %}
+				<li><h3><a href="{% url candy-category slug=category.slug %}">{{ category.title }}</a></h3></li>
+			{% endifequal %}
+		</ul>{% endfor %}<br/>
+	</div>
+</div>

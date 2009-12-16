@@ -1,0 +1,19 @@
+{% if request.session.cart %}{% for id, item in request.session.cart.iteritems %}
+	<li id="i{{ item.id }}">
+		<a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}">{{ item.title|capfirst }}</a>
+		{% ifnotequal item.quantity 1 %}<strong>{{ item.quantity }}</strong>{% endifnotequal %}<br/>
+		
+		<a href="{% url candy-remove-item id=item.id %}" class="comment remove-from-cart">удалить</a>
+		<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+	</li>
+	
+	{% if forloop.last %}
+		<li class="links">
+			<a href="{% url candy-cart %}">просмотр</a>
+			{% ifnotequal forloop.counter 1  %}
+				<a class="clear-cart" href="{% url candy-clear-cart %}">очистить</a>
+			{% endifnotequal %}
+			<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+		</li>
+	{% endif %}
+{% endfor %}{% else %}<li>Корзина пуста</li>{% endif %}

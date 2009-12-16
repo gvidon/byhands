@@ -1,0 +1,49 @@
+<h2 style="margin-top: 40px;">Настройки доставки</h2>
+<p>Определите параметры доставки продукта. После подтверждения заказа с вами
+свяжутся по предложенному контактному телефону.</p>
+
+<form action="" method="post">
+	<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+		<label for="name"><span class="required">*</span>На чье имя доставляем?</label>
+		{{ form.name }}
+		<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
+	</div>
+		
+	<div class="address-inputset">
+		<label for="city"><span class="required">*</span>Куда доставляем?</label>
+		
+		<div {% if form.errors.city %}class="erroneus"{% endif %}>
+			{{ form.city }}<br/>
+			<span class="comment">город</span>
+		</div>
+		
+		<div {% if form.errors.address %}class="erroneus"{% endif %} style="float: none">
+			{{ form.address }}
+			
+			{% if form.errors.address %}
+				<span class="error">{{ form.errors.address.as_text|safe|cut:"*" }}</span>
+			{% else %}
+				<span class="comment">адрес</span>
+			{% endif %}
+		</div>
+	</div>
+	
+	<div {% if form.errors.email %}class="erroneus"{% endif %}>
+		<label for="email"><span class="required">*</span>E-mail</label>
+		{{ form.email }}
+		<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+	</div>
+		
+	<div {% if form.errors.phone %}class="erroneus"{% endif %}>
+		<label for="phone"><span class="required">*</span>Контактный телефон</label>
+		{{ form.phone }}
+			
+		{% if form.errors.phone %}
+			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
+		{% else %}
+			<span class="comment">только цифры, например 9181234567</span>
+		{% endif %}
+	</div>
+	
+	<input type="submit" value="подтверждаю заказ" style="margin-top: 40px;" />
+</form>

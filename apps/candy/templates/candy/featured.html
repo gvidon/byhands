@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load dates %}
+{% load candy %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () {
+			Candy.bindCartEvents(
+				$('#cart span'),
+				$('.add-to-cart'),
+				$('.remove-from-cart'),
+				$('.clear-cart'),
+				{ 'simple': 1 }
+			);
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	<h2>На это стоит обратить внимание</h2>
+	
+	<div id="cart"></div>
+	
+	<div class="product_list">{% with featured_items as products %}
+		{% include 'candy/_products.html' %}
+	{% endwith %}</div>
+{% endblock %}

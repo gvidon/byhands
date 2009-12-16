@@ -1,0 +1,87 @@
+/* ------------------------- 
+ --- верхняя навигация ---   
+----------------------------*/
+
+div#top_nav { 
+	width: 490px; height: 54px;
+	float: right;
+	text-align: right;
+	margin: 35px 30px 0 0; padding: 0;
+	background-image: url(../images/scotch.png);
+}
+
+div#top_nav {
+	float: right;
+	margin: 35px 0 0 0; padding: 0;
+}
+div#top_nav ul{ 
+    width: 460px;	
+	margin: 0 30px 0 0;
+	padding: 10px 0 0 0;}
+
+div#top_nav ul li {
+	style: none;
+	display: inline;
+	
+	margin: 0; padding: 0 0 0 7px;
+}
+
+div#top_nav ul li a {
+	padding: 0 2px 2px 2px;
+		
+	font-size: 26px;
+	font-weight: normal;
+	/*color: #6da1cd;*/
+}
+
+div#top_nav ul li a.active, div#top_nav ul li a:hover {	background: #f7ba45; color: #ffffff; }
+
+
+
+
+
+
+/* --------------------------
+--- навигация слева ----
+----------------------------*/
+
+ul#left_nav { margin: 0; padding: 0;}
+ul#left_nav li { padding: 0; margin: 15px 0 0 0; }
+ul#left_nav li.first { margin-top: 0; padding: 0; }
+ul#left_nav li a { font-size: 18px;}
+/*ul#left_nav li a:hover, ul#left_nav li a.active { color: #f68409; }*/
+
+
+
+ul#left_nav ul.left_submenu { margin: 0; padding: 0; }
+ul#left_nav ul.left_submenu li{ padding: 0 0 0 20px; margin: 15px 0 0 0; height: 12px;}
+ul#left_nav ul.left_submenu li a { font-size: 14px; /*color: #f5a917;*/ }
+ul#left_nav ul.left_submenu li a:hover, ul#left_nav ul.left_submenu li a.active {/* color: #f68409;*/}
+
+
+
+
+
+
+/* ----------------------------
+ --- навигация по разделам ---
+------------------------------*/
+
+ul#section_nav { margin: 0 0 30px 0; padding: 0; }
+
+ul#section_nav li {
+	display: inline;
+	margin: 0 0 0 5px;
+	pading: 0;
+	
+	color: #ec8711;
+	font-size: 12px;
+}
+
+ul#section_nav li a { color: #ec8711; }
+
+
+
+
+
+

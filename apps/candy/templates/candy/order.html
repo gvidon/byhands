@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load dates %}
+{% load candy %}
+
+{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ media_url }}/css/pages/profile.css" />
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () { $('#phone').keyfilter(/[\d]/); });
+	</script>
+{% endblock %}
+
+{% block column_right %}
+	{% categories_tree 0 %}
+	{% orders_preview 5 request.user.id %}
+{% endblock %}
+
+{% block content %}
+	<h1>{% if form %}
+		Оформление заказа
+	{% else %}
+		Просмотр заказа #{{ order.id }} от {{ order.created_at|date:"d F Y"|ru_months }}
+	{% endif %}</h1>
+	
+	{% if order.is_cancelled %}
+		<h2>Статус: <strong>отменен</strong></h2><br/>
+	{% else %}
+		{% if order.is_delivered and order.is_paid %}
+			<h2>Статус: <span class="status delivered">доставлен</span> и <span class="status paid">оплачен</span></h2><br/>
+		{% else %}
+			{% if order.is_delivered %}
+				<h2>Статус: <span class="status delivered">доставлен</span></h2><br/>
+			{% else %}
+				{% if order.is_paid %}
+					<h2>Статус: <span class="status paid">оплачен</span></h2><br/>
+				{% else %}
+					<h2>Статус: <strong>не доставлен</strong> и <strong>не оплачен</strong></h2><br/>
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+	<h2>Содержание заказа</h2>
+	<ul class="tpl-order-cart">
+		{% for item in items %}
+			<li>
+				<a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}">
+					{{ item.title|capfirst }}
+				</a><br/>
+				
+				<p><strong>{{ item.quantity }}</strong> штук по цене {{ item.price }} руб.
+				 на общую сумму <strong>{{ item.sum }} руб.</strong></p>
+			</li>
+		{% endfor %}
+		
+		<li><h3>Общая стоимость: <strong>{% firstof order.sum total %} руб.</strong>
+		{% if form %}<a href="{% url candy-cart %}">изменить корзину</a></h3></li>{% endif %}
+	</ul>
+	
+	{% if form %}
+		{% include 'candy/_order-form.html' %}
+	{% else %}
+		{% include 'candy/_order-params.html' %}
+	{% endif %}
+	
+	{% if order.is_confirmed %}<h2 style="margin-top: 40px;"><a href="">отменить заказ</a></h2>{% endif %}
+{% endblock %}
