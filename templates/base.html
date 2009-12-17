@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<title>ByHands.ru</title>
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<link rel="stylesheet" href="{{ media_url }}/css/store.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/common.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/navigation.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/forms.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/fancybox.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		{% block css %}{% endblock %}
+		
+		<!--[if lte IE 6]>  
+			<style type="text/css">  
+				#logo {  
+        				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/logo_1.png', sizingMethod='scale');  
+				}  
+				#logo img { display:none; }; 
+
+				#top_nav {  
+        				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/scotch.png', sizingMethod='scale');
+				}
+
+			</style>
+		<![endif]-->
+		
+		<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="{{ media_url }}/js/lib/livequery.js"></script>
+		{% block js %}{% endblock %}
+	</head>
+
+	<body>
+		<div id="main" align="center">
+			<div id="head">
+				
+				<div id="logo"><a href="javascript://"><img src="{{ media_url }}/images/logo_1.png" title="ByHands.ru" /></a></div>
+				
+				<div id="auth">
+					<ul>
+						<li class="first"><a href="javascript://">войти</a></li>
+						<li><a href="javascript://">зарегистрироваться</a></li>
+					</ul>
+				</div>
+
+				<div id="top_nav">
+					<ul>
+						<li><a href="javascript://">магазин</a></li>
+						<li><a href="javascript://">авторы</a></li>
+						<li><a href="javascript://">уроки</a></li>
+						<li><a href="javascript://">статьи</a></li>
+					</ul>
+				</div>
+				
+				<div style="width: 1150px; float: right;">
+					<div id="find">
+						<form id="search_form">
+							<input type="text" name="keyword" /> <input height="25" type="image" src="{{ media_url }}/images/find_button.gif" id="find_button"/>
+						</form>
+					</div>
+					<div id="cart">
+						 <a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a><br/>
+						 <span>{% if cart.price %}{{ cart.price }} р.{% else %}В корзине пусто{% endif %}</span>
+					</div>
+				</div>
+
+			</div>
+			
+
+			<div style="clear: both;"></div>
+			
+			<div id="main_content">
+				
+
+
+				<!-- left side -->
+				<div id="left_side">
+					
+					<ul id="left_nav">
+						<li class="first"><a href="javascript://">бижутерия</a></li>
+						<li><a href="javascript://">интерьер</a></li>
+						<li><a href="javascript://">одежда</a></li>
+						<li>
+							<a href="javascript://">игрушки</a>
+										
+							<ul class="left_submenu">
+								<li><a href="javascript://">мягкие игрушки</a></li>
+								<li><a href="javascript://">куклы</a></li>
+							</ul>			
+						</li> 
+					</ul>
+
+					<div id="personal_order">
+						<img src="{{ media_url }}/images/personal_order.gif" style="float:left;"/>
+						<a href="javascript://">персональный<br/>заказ</a>
+					</div>
+	
+				</div>
+				<!-- end of left side -->
+				
+				<!-- central part -->
+				<div id="central_part">
+					{% block content %}{% endblock %}
+				</div>
+				<!-- end of central part -->
+				
+			</div>
+			<!-- end of main content -->			
+
+			<div style="clear: both;"></div>
+
+			<div id="footer">
+
+					<ul id="footer_links">
+						<li class="xl"><a href="javascript://">Как заказать</a>
+						<li class="s"><a href="javascript://">Индивидуальный заказ</a>
+						<li class="l"><a href="javascript://">Доставка</a>
+						<li class="m"><a href="javascript://">Оплата</a>
+						<li class="s"><a href="javascript://">Сотрудничество</a>
+						<li class="xl"><a href="javascript://">Правила</a>
+						<li class="xxl"><a href="javascript://">Контакты</a>
+					</ul>
+									
+ 
+			</div>
+
+
+		</div>
+
+				
+
+        </body>
+
+</html>
