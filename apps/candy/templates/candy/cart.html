@@ -8,8 +8,9 @@
 	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
 	
 	<script type="text/javascript">	
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.quantity input').keyfilter(/[\d]/);
+			$('#continue').click(function() { window.location='{% url candy %}'; })
 			
 			Candy.bindCartEvents(
 				$('#cart tbody'),
@@ -20,7 +21,6 @@
 			);
 			
 			Candy.bindOrderEvents($('#make-order'), $('#cart tbody'));
-			
 		});
 	</script>
 {% endblock %}
@@ -48,7 +48,7 @@
 						<td class="quantity" width="11%"><input type="text" name="quantity" value="{{ item.quantity }}" size="2"/> шт.</td>
 						<td width="17%">Цена: <strong>{{ item.price }} р.</strong></td>
 						
-						<td class="comments" width="31%"><textarea cols="30" rows="4" style="resize: none;">{{ item.comment }}</textarea></td>
+						<td class="comments" width="31%"><textarea cols="30" rows="4" style="resize: none;">{{ item.comments }}</textarea></td>
 						
 						<td width="12%" class="delete">
 							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />

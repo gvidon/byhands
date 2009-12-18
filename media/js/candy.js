@@ -10,7 +10,7 @@ Candy = {
 	//EVENTS SPECIFIC TO ORDER MANAGEMENT
 	'bindOrderEvents': function(confirmButton, cartPreview) {
 		confirmButton.click(function() {
-			Candy.updateCart(cartPreview.parent(), cartPreview, '/shop/order'); return false;
+			Candy.updateCart(cartPreview.parent().parent(), cartPreview, '/shop/order'); return false;
 		});
 	},
 	
@@ -28,7 +28,7 @@ Candy = {
 				
 			itemId = addButton.attr('id').replace(/^b/i, 'i');
 			
-			alert('"'+$('#'+itemId+' .desc .title').html().trim()+'" добавлен в корзину');
+			alert('"'+$.trim($('#'+itemId+' .desc .title').html())+'" добавлен в корзину');
 			
 			cartPreview.parent().fadeOut();
 			cartPreview.parent().fadeIn('slow');

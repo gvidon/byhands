@@ -36,8 +36,8 @@ def add_item(request, id):
 	
 	if request.POST.get('simple'):
 		return HttpResponse(str(reduce(
-			lambda sum, (id,p): sum + (p.quantity * p.price)
-		, request.session['cart'].iteritems(), 0))+' p.')
+			lambda sum, (id,p): sum + (p.quantity * p.price),
+		request.session['cart'].iteritems(), 0))+' p.')
 	
 	else:
 		return render_to_response('candy/_cart-preview.html', context_instance=RequestContext(request))
@@ -84,10 +84,6 @@ def clear_cart(request):
 		pass
 	
 	return HttpResponse('{ success: 1 }')
-
-#ПРОЦЕДУРА ПОДТВЕРЖДЕНИЯ ДАННЫХ ЗАКАЗА
-def confirm(request):
-	return HttpResponse('1')
 
 #СТРАНИЦА ТОПОВЫХ ТОВАРОВ
 def featured(request):
