@@ -45,10 +45,10 @@
 
 				<div id="top_nav">
 					<ul>
-						<li><a href="javascript://">магазин</a></li>
-						<li><a href="javascript://">авторы</a></li>
-						<li><a href="javascript://">уроки</a></li>
-						<li><a href="javascript://">статьи</a></li>
+						<li><a href="/shop/" class="{% ifequal request.path "/shop/" %}active{% endifequal %}"" title="Магазин">магазин</a></li>
+						<li><a href="/authors/" title="Авторы">авторы</a></li>
+						<li><a href="/lessons/" title="Уроки">уроки</a></li>
+						<li><a href="/articles/" title="Статьи">статьи</a></li>
 					</ul>
 				</div>
 				
@@ -59,9 +59,13 @@
 						</form>
 					</div>
 					<div id="cart">
-						<span>{% if cart.price %}{{ cart.price }} р.{% else %}В корзине пусто{% endif %}</span>
-						 <a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
-						 
+						{% if cart.price %}
+							<span>{{ cart.price }} руб</span>
+							<a href="{% url candy-cart %}"> <img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
+						{% else %}
+							<span>&nbsp;</span>
+							<a href="{% url candy-cart %}"> <img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
+						{% endif %}
 
 					</div>
 				</div>
