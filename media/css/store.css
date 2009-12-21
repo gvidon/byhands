@@ -65,12 +65,14 @@ div.product_list div.product_desc div.desc { width: 210px;  padding-left: 5px;}
 table.order_list {
 	width: 100%;
 	padding: 0 5px 0 5px;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 table.order_list td { padding: 10px 0 10px 0; vertical-align: middle; text-align: center;}
 
-table.order_list tr.odd { background-color: #fefddf; }
+table.order_list tr.odd { /*background-color: #f8f8f7;*/  }
+
+table.order_list tr.odd td{ /*background-color: #f8f8f7;*/ border-bottom: 1px solid #d4d3d1; border-top: 1px solid #d4d3d1;  }
 
 table.order_list td.title { text-align: left; padding-left: 5px; }
 
@@ -78,9 +80,9 @@ table.order_list td.delete a { color: #ec8711; }
 
 div.order_bottom { width: 100%; text-align: right; margin-top: 30px; }
 
-div.order_bottom div#total { position: relative; right: 100px;  }
+div.order_bottom div#total { position: relative; right: 25px;  }
 
-div.order_bottom div#buttons { position: relative; right: 100px; }
+div.order_bottom div#buttons { position: relative; right: 15px;}
 
 
 

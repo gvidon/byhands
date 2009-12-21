@@ -6,14 +6,11 @@ div#top_nav {
 	width: 490px; height: 54px;
 	float: right;
 	text-align: right;
-	margin: 35px 30px 0 0; padding: 0;
+	margin: 35px 50px 0 0; padding: 0;
 	background-image: url(../images/scotch.png);
 }
 
-div#top_nav {
-	float: right;
-	margin: 35px 0 0 0; padding: 0;
-}
+
 div#top_nav ul{ 
     width: 460px;	
 	margin: 0 30px 0 0;

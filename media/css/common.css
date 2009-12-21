@@ -5,16 +5,13 @@ html, body {
 	width: 100%; height: 100%;
 	margin: 0; padding: 0;
 
-	font-family: Verdana; font-size: 12px; color: #7a7d81;
+	font-family: Verdana; font-size: 11pt; color: #3e3838/*7a7d81*/;
+	
 }
 
+body {	background: transparent url(../images/yellow_head.gif)  repeat-x; }
 
-div#main { 
-	width: 100%;
-
-	background: url(../images/yellow_head.gif);
-	background-repeat: repeat-x;
-}
+div#main { 	width: 100%; }
 
 div#central { width: 1150px; }
 
@@ -26,14 +23,14 @@ img { border: 0; }
 h2 { 
 	font-size: 26px; 
 	font-weight: normal;
-	color: /*#9c480a*/#5d9093;
+	color: /*#9c480a*/#378c8b;
 	font-family: Times New Roman;
 	line-height: 15px; 
 	padding: 0; 
 	margin: 0 0 40px 0;
 }
 
-a { font-size: 12px; color: #6aa3d3; }
+a { font-size: 12px; color: #327fc0; }
 
 a:hover, a.active { text-decoration: none; }
 
@@ -63,9 +60,9 @@ div#logo img {
 
 div#auth{
 	float:right;
-	width: 474px; height: 15px;
+	width: 424px; height: 15px;
 	text-align: right;
-	margin: 10px 0 0 0; padding: 0;
+	margin: 10px 50 0 0; padding: 0;
 }
 
 div#auth ul { margin: 0; padding: 0; }
@@ -92,13 +89,13 @@ div#find {
 div#cart {
 	float: left;
 	width: 810px;
-	text-align: right;
-	margin: 0 0 0 0;
-	padding: 0;
+	text-align: right; vertival-align: middle;
+	margin: 0; padding: 0;
+	line-height: 16px;
 }
 
-div#cart img { position: relative; right: -30px; }
-div#cart span { position: relative; right: -40px; }
+
+div#cart span { margin-bottom: 10px; }
 
 div#main_content { width: 1150px; }
 

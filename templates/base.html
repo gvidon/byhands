@@ -59,8 +59,10 @@
 						</form>
 					</div>
 					<div id="cart">
-						 <a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a><br/>
-						 <span>{% if cart.price %}{{ cart.price }} р.{% else %}В корзине пусто{% endif %}</span>
+						<span>{% if cart.price %}{{ cart.price }} р.{% else %}В корзине пусто{% endif %}</span>
+						 <a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
+						 
+
 					</div>
 				</div>
 

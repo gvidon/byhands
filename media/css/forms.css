@@ -1,8 +1,8 @@
 input, textarea, select {
-	border: 1px solid #f4bb79;
+	border: 1px solid #fee383;
 	margin: 0;
-	color: #7a7d81;
-	background-color: white;
+	color: #3e3838;
+	background-color: #ffffff;
 	font-family: Verdana, Arial;
 }
 
@@ -18,7 +18,7 @@ input, select {
 
 input.button { 
 	border: 0;
-	height: 25px;
+	height: 36px;
 	padding-top: 0px;
 	font-size: 14px;
 	/*background-color: #9c480a #bc6e2f;*/
