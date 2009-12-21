@@ -1,9 +1,11 @@
 /* --------------------
  --- общие стили --- 
 ----------------------*/
+* { margin: 0; padding: 0; }
+
 html, body { 
 	width: 100%; height: 100%;
-	margin: 0; padding: 0;
+	margin: 0; padding: 0; 
 
 	font-family: Verdana; font-size: 11pt; color: #3e3838/*7a7d81*/;
 	
@@ -87,15 +89,16 @@ div#find {
 #search_form { margin-top: 12px; width: 180px; }
 
 div#cart {
-	float: left;
-	width: 810px;
-	text-align: right; vertival-align: middle;
-	margin: 0; padding: 0;
-	line-height: 16px;
+	width: 810px; height: 42px;
+
+	display: table-cell;
+	text-align: right; vertical-align: middle;
 }
 
 
-div#cart span { margin-bottom: 10px; }
+div#cart span {  position: relative; top: 5px;  }
+
+div#cart img { vertical-align: middle;}
 
 div#main_content { width: 1150px; }
 
