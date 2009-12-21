@@ -28,10 +28,16 @@ Candy = {
 				
 			itemId = addButton.attr('id').replace(/^b/i, 'i');
 			
-			alert('"'+$.trim($('#'+itemId+' .desc .title').html())+'" добавлен в корзину');
-			
-			cartPreview.parent().fadeOut();
-			cartPreview.parent().fadeIn('slow');
+			Boxy.ask(
+				'<p><strong>'+$.trim($('#'+itemId+' .desc .title').html())+'</strong> добавлен в\
+				корзину. Теперь можно <a href="/shop/cart">оформить заказ</a>.</p>',
+				['продолжить'],
+				
+				function() {
+					cartPreview.parent().fadeOut();
+					cartPreview.parent().fadeIn('slow');		
+				}, {modal: true}
+			);
 		});
 		
 		return true;

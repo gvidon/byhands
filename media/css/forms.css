@@ -1,5 +1,5 @@
 input, textarea, select {
-	border: 1px solid #fee383;
+	border: 1px solid #e7990e;
 	margin: 0;
 	color: #3e3838;
 	background-color: #ffffff;
@@ -16,7 +16,10 @@ input, select {
 	height: 20px;
 }
 
-input.button { 
+.boxy-content input[type="button"] { padding-bottom: 5px; height: 27px; background-color: #f4eec0; }
+.boxy-content .question p a { font-size: 14pt; }
+
+input.button {
 	border: 0;
 	height: 36px;
 	padding-top: 0px;
