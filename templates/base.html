@@ -64,10 +64,10 @@
 						<div id="cart">
 							{% if cart.price %}
 								<span>{{ cart.price }} руб</span>
-								<a href="{% url candy-cart %}"> <img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
+								<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
 							{% else %}
 								<span>&nbsp;</span>
-								<a href="{% url candy-cart %}"> <img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
+								<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
 							{% endif %}
 
 						</div>

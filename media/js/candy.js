@@ -47,7 +47,7 @@ Candy = {
 	'addToCart': function(cartPreview, addButton, params) {
 		addButton.hide().siblings('.ajax-loader').show();
 		
-		cartPreview.load(addButton.attr('href'), params, function(responseText, textStatus) {
+		$.post(addButton.attr('href'), params, function(responseText, textStatus) {
 			addButton.show().siblings('.ajax-loader').hide();
 			
 			if(textStatus == 'error') {
@@ -63,8 +63,16 @@ Candy = {
 				['продолжить'],
 				
 				function() {
-					cartPreview.parent().fadeOut();
-					cartPreview.parent().fadeIn('slow');		
+					cartPreview.parent().fadeOut('fast', function() {
+						// заменить серенькую корзину на цветную
+						cartPreview.siblings('a').children('img').attr(
+							'src', cartPreview.siblings('a').children('img').attr('src').replace('_empty', '')
+						);
+						
+						cartPreview.html(responseText);
+						cartPreview.parent().fadeIn('slow');
+					});
+					
 				}, {modal: true}
 			);
 		});

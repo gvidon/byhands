@@ -16,7 +16,7 @@ MANAGERS           = ADMINS
 DATABASE_ENGINE    = 'mysql'
 DATABASE_NAME      = 'byhands'
 DATABASE_USER      = 'root'
-DATABASE_PASSWORD  = '3A4050'
+DATABASE_PASSWORD  = '123097'
 DATABASE_HOST      = 'localhost'
 DATABASE_PORT      = ''
 
@@ -24,10 +24,10 @@ USE_I18N           = False
 TIME_ZONE          = 'Europe/Moscow'
 LANGUAGE_CODE      = 'ru-ru'
 
-PROJECT_ROOT       = '/Users/imali/Dropbox/projects/ByHands/code/byhands'
+PROJECT_ROOT       = '/home/nide/code/byhands'
 MEDIA_ROOT         = PROJECT_ROOT+'/media/'
 UPLOAD_ROOT        = PROJECT_ROOT+'/media/upload/'
-MEDIA_URL          = 'http://127.0.0.1/~imali/'
+MEDIA_URL          = 'http://media.byhands:8081'
 
 ADMIN_MEDIA_PREFIX = '/admin/media/'
 
