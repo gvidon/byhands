@@ -12,11 +12,35 @@ Candy = {
 	
 	//EVENTS SPECIFIC TO ORDER MANAGEMENT
 	'bindOrderEvents': function(confirmButton, cartPreview) {
-		confirmButton.click(function() { Candy.updateCart(
-			$(this).siblings('.ajax-loader'),
-			cartPreview.parent().parent(),
-			cartPreview, '/shop/order'
-		); return false; });
+		confirmButton.click(function() {
+			Candy.updateCart(
+				$(this).siblings('.ajax-loader'),
+				cartPreview.parent().parent(),
+				cartPreview,
+				
+				function() { new Boxy(
+					'<p style="width: 300px; font-size: 0.81em;">Вы уже совершали у нас заказы? Введите email и\
+					пароль, который мы вам отправляли. Если нет - просто <a href="'+orderURL+'">продолжите</a></p>\
+					\
+					<form action="" style="width: 220px; margin-left: 35px; margin-bottom: 20px;">\
+						<div>\
+							<label for="username">Email</label><br/>\
+							<input id="name" name="username" type="text" style="width: 220px;" />\
+						</div>\
+						\
+						<div style="margin-top: 10px;">\
+							<label for="password">Пароль</label><br/>\
+							<input id="password" name="password" type="password" style="width: 220px;" />\
+						</div>\
+						\
+						<div align="right" style="margin-top: 10px;">\
+							<input type="submit" value="войти" style="">\
+						</div>\
+					</form>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
+			);
+			
+			return false;
+		});
 	},
 	
 	//AJAX: ADD ITEM TO CART AND RELOAD CART PREVIEW
@@ -96,7 +120,7 @@ Candy = {
 	},
 	
 	//UPDATE CART WITH NEW ITEMS QUANTITY AND COMMENTS
-	'updateCart': function(ajaxLoader, form, cart, redirectURL) {
+	'updateCart': function(ajaxLoader, form, cart, callback) {
 		
 		var postData = {};
 		
@@ -126,11 +150,12 @@ Candy = {
 				return false;
 			}
 			
-			if(redirectURL) window.location = redirectURL;
-			
 			$('#total').html(['<strong>ИТОГО</strong>:', data.price+' руб.'].join(' '));
 			
 			ajaxLoader.hide();
+			
+			if(typeof callback == 'function')
+				callback();
 			
 			return true;
 		}, 'json');

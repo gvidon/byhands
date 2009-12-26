@@ -3,11 +3,19 @@
 {% load candy %}
 {% load dates %}
 
+{% block css %}
+	<link rel="stylesheet" href="{{ media_url }}/css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+{% endblock %}
+
 {% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.boxy.js"></script>
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
 	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
 	
-	<script type="text/javascript">	
+	<script type="text/javascript">
+		authURL  = '/accounts/login';
+		orderURL = '{% url candy-create-order %}';
+		
 		$(document).ready(function() {
 			$('.quantity input').keyfilter(/[\d]/);
 			$('#continue').click(function() { window.location='{% url candy %}'; })
