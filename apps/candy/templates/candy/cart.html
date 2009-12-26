@@ -48,13 +48,13 @@
 			<table id="cart" class="order_list" cellspacing="0">
 				<tbody>
 					{% for id, item in request.session.cart.iteritems %}<tr id="i{{ id }}" {% cycle 'class="odd"' '' %}>
-						<td width="27%" class="title">
+						<td width="30%" class="title">
 							{{ forloop.counter }}.&nbsp;
 							<a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}" class="title">
 								"{{ item.title|capfirst }}"
 							</a>
 						</td>
-					
+						
 						<td class="quantity" width="17%">
 							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
 							<input type="text" name="quantity" value="{{ item.quantity }}" size="2"/> шт.
@@ -67,9 +67,9 @@
 							<textarea cols="30" rows="4" style="resize: none;">{{ item.comments }}</textarea>
 						</td>
 						
-						<td width="12%" class="delete">
+						<td width="7%" class="delete">
 							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
-							<a class="remove remove-from-cart" href="{% url candy-remove-item id=id %}">Удалить</a>
+							<a class="remove remove-from-cart" href="{% url candy-remove-item id=id %}"><img src="{{ media_url }}/images/cart_delete.gif" title="Корзина" /></a>
 						</td>
 					</tr>{% endfor %}
 					
