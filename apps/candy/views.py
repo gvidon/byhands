@@ -92,13 +92,17 @@ def featured(request):
 	}, context_instance=RequestContext(request))
 
 #ОБЗОР УСЛОВИЙ ЗАКАЗА И СОХРАНЕНИЕ
-@login_required
 def order(request, id=None):
 	try:
 		# просмотр ранее завершенного заказа
-		order = Order.objects.get(pk=id, user=request.user)
+		order = Order.objects.get(pk=id, user=request.user.is_authenticated() and request.user or None)
 		
 	except Order.DoesNotExist:
+		
+		# если корзина пуста заказа не будет
+		if not request.session.get('cart'):
+			raise Http404
+		
 		# использовать в форме заказа данные из последнего заказа
 		try:
 			last_order = Order.objects.filter(user=request.user).order_by('-id')[0]
@@ -106,18 +110,19 @@ def order(request, id=None):
 		except IndexError:
 			last_order = None
 		
-		form = OrderForm(auto_id='%s', initial={
-			'name'   : request.user.first_name+' '+request.user.last_name,
-			'email'  : request.user.email,
-			'phone'  : request.user.get_profile().phone,
+		try:
+			form = OrderForm(auto_id='%s', initial={
+				'name'   : request.user.first_name+' '+request.user.last_name,
+				'email'  : request.user.email,
+				'phone'  : request.user.get_profile().phone,
 			
-			'city'   : last_order and last_order.city,
-			'address': last_order and last_order.address,
-			'phone'  : last_order and last_order.phone
-		})
+				'city'   : last_order and last_order.city,
+				'address': last_order and last_order.address,
+				'phone'  : last_order and last_order.phone
+			})
 		
-		if not request.session.get('cart'):
-			raise Http404
+		except AttributeError:
+			form = OrderForm()
 		
 		if request.POST:
 			form = OrderForm(request.POST, auto_id='%s')

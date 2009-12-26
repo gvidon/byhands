@@ -4,14 +4,19 @@ Candy = {
 		addButton.click(function() { Candy.addToCart(cartPreview, $(this), params); return false; });
 		removeButton.livequery('click', function() { Candy.removeFromCart($(this), params); return false; });
 		clearButton.livequery('click', function() { Candy.clearCart($(this), cartPreview); return false; });
-		cartPreview.parent().parent().submit(function() {Candy.updateCart($(this), cartPreview); return false; });
+		
+		$('.quantity input, .comments textarea').change(function() { Candy.updateCart(
+			$(this).siblings('.ajax-loader'), cartPreview.parent().parent(), cartPreview
+		); return false; });
 	},
 	
 	//EVENTS SPECIFIC TO ORDER MANAGEMENT
 	'bindOrderEvents': function(confirmButton, cartPreview) {
-		confirmButton.click(function() {
-			Candy.updateCart(cartPreview.parent().parent(), cartPreview, '/shop/order'); return false;
-		});
+		confirmButton.click(function() { Candy.updateCart(
+			$(this).siblings('.ajax-loader'),
+			cartPreview.parent().parent(),
+			cartPreview, '/shop/order'
+		); return false; });
 	},
 	
 	//AJAX: ADD ITEM TO CART AND RELOAD CART PREVIEW
@@ -91,11 +96,11 @@ Candy = {
 	},
 	
 	//UPDATE CART WITH NEW ITEMS QUANTITY AND COMMENTS
-	'updateCart': function(form, cart, redirectURL) {
+	'updateCart': function(ajaxLoader, form, cart, redirectURL) {
 		
 		var postData = {};
 		
-		$('input[type=submit]', form).hide().siblings('.ajax-loader').show();
+		ajaxLoader.show();
 		
 		// собрать инфу о коментах и количесиве айтемов корзины
 		$.each(cart.children('tr'), function() {
@@ -125,14 +130,8 @@ Candy = {
 			
 			$('#total').html(['<strong>ИТОГО</strong>:', data.price+' руб.'].join(' '));
 			
-			$('input[type=submit]', form).show().siblings('.ajax-loader').hide();
+			ajaxLoader.hide();
 			
-			// скрыть "Данные обновлены" через несколько секунд
-			$('input[type=submit]', form).siblings('.action-note').fadeOut(function() {
-				$(this).fadeIn('slow');
-				setTimeout('Candy.hideActionNote();', 4000);
-			});
-		
 			return true;
 		}, 'json');
 		

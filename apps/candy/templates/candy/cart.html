@@ -25,6 +25,8 @@
 	</script>
 {% endblock %}
 
+{% block cart-info %}{% endblock %}
+
 {% block column_right %}
 	{% categories_tree 0 %}
 	{% orders_preview 5 request.user.id %}
@@ -44,11 +46,18 @@
 								"{{ item.title|capfirst }}"
 							</a>
 						</td>
-					
-						<td class="quantity" width="11%"><input type="text" name="quantity" value="{{ item.quantity }}" size="2"/> шт.</td>
-						<td width="19%">Цена: {{ item.price }} руб</td>
 						
-						<td class="comments" width="31%"><textarea cols="30" rows="4" style="resize: none;">{{ item.comments }}</textarea></td>
+						<td class="quantity" width="17%">
+							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+							<input type="text" name="quantity" value="{{ item.quantity }}" size="2"/> шт.
+						</td>
+						
+						<td width="17%">Цена: {{ item.price }} руб</td>
+						
+						<td class="comments" width="44%">
+							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" style="float: left;" />
+							<textarea cols="30" rows="4" style="resize: none;">{{ item.comments }}</textarea>
+						</td>
 						
 						<td width="7%" class="delete">
 							<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
@@ -57,31 +66,16 @@
 					</tr>{% endfor %}
 					
 				</tbody>
-				
-				<!--<tfoot>
-					<tr>
-						<td colspan="2" style="padding-top: 50px; text-align: right;"><input id="continue" type="image" src="{{ media_url }}/images/continue_shopping.gif" class="button" value="< Заказать еще" /></td>
-						<td style="padding-top: 50px;"><strong>ИТОГО</strong>: {{ total|floatformat:"1" }} руб.</td>
-						<td colspan="2" style="padding-top: 50px;text-align: left;"><input id="make-order" type="image" src="{{ media_url }}/images/place_order.gif" class="button" value=" Оформить заказ >" /></td>
-					</tr>
-				</tfoot>-->
 			</table><br/>
 			
-			<div style="width: 100%; text-align: right;">
-				<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
-				<!--<input type="submit" name="save" value="сохранить" style="align: right;" />-->
-			</div>
-			
-			<div class="action-note" style="display: none;">корзина обновлена</div>
-			
 			<div class="order_bottom">
-				
 				<div id="total""><strong>ИТОГО</strong>: {{ total|floatformat:"1" }} руб</div>
 				
 				<div id="buttons">
 					<input id="continue" type="image" src="{{ media_url }}/images/continue_shopping.gif" class="button" value="< Заказать еще "/>
 					
 					<input id="make-order" type="image" src="{{ media_url }}/images/place_order.gif" class="button" value=" Оформить заказ >" />
+					<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" style="padding-bottom: 14px;margin: 0px;" />
 				</div>
 			</div>
 		</form>
