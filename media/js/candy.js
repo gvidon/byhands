@@ -34,7 +34,7 @@ Candy = {
 						</div>\
 						\
 						<div align="right" style="margin-top: 10px;">\
-							<input type="submit" value="войти" style="">\
+							<input type="submit" class="button" value="войти" style="">\
 						</div>\
 					</form>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
 			);
