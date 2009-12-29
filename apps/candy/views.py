@@ -114,7 +114,7 @@ def order(request, id=None):
 			form = OrderForm(auto_id='%s', initial={
 				'name'   : request.user.first_name+' '+request.user.last_name,
 				'email'  : request.user.email,
-				'phone'  : request.user.get_profile().phone,
+				'phone'  : request.user.is_authenticated() and request.user.get_profile().phone or None,
 			
 				'city'   : last_order and last_order.city,
 				'address': last_order and last_order.address,
