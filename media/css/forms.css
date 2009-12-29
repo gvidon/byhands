@@ -22,13 +22,25 @@ input, select {
 
 .boxy-content .question p a { font-size: 14pt; }
 
-input.button {
-	border: 0;
+a.button {
+	background: transparent url('../images/bg_button_end.gif') no-repeat scroll top right;
+	display: block;
+    float: right;
+    height: 36px;
+    
+    margin-right: 9px;
+    padding-right: 9px; /* sliding doors padding */
+   
+    	font-size: 14px;
+	color: #3e3838;	
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url('../images/bg_button.gif') no-repeat;
+    display: block;
 	height: 36px;
-	padding-top: 0px;
-	font-size: 14px;
-	/*background-color: #9c480a #bc6e2f;*/
-	color: #ffffff;
+    padding: 6px 0 5px 9px;
 }
 
 #search_form input { width: 120px; }
