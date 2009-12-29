@@ -18,7 +18,7 @@
 		
 		$(document).ready(function() {
 			$('.quantity input').keyfilter(/[\d]/);
-			$('#continue').click(function() { window.location='{% url candy %}'; })
+			$('#continue').click(function() { window.location='{% url candy %}'; return false; })
 			
 			Candy.bindCartEvents(
 				$('#cart tbody'),
@@ -92,7 +92,7 @@
 			</div>
 		</form>
 	{% else %}
-		<p style="font-size: 1.4em"><strong>Корзина пуста</strong><br/><br/>
-		А ведь у нас можно <a href="{% url candy %}">купить что-то интересное</a></p>
+		<h2>Корзина <strong>пуста</strong></h2>
+		<a href="{% url candy %}" style="font-size: 1.5em">Купите что-то интересное</a>
 	{% endif %}
 {% endblock %}

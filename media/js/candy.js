@@ -106,6 +106,7 @@ Candy = {
 	'removeFromCart': function(removeButton, params) {
 		removeButton.hide().siblings('.ajax-loader').show();
 		
+		//запрос на удаление
 		$.getJSON(removeButton.attr('href'), function(data, textStatus) {
 			removeButton.show().siblings('.ajax-loader').hide();
 			
@@ -114,11 +115,18 @@ Candy = {
 				return false;
 			}
 			
+			//обновить ИТОГО
+			$('#total').html('<strong>ИТОГО</strong>: '+data.price+' руб');
+			
+			if( ! parseFloat(data.price))
+				$('#make-order').hide();
+						
+			//медленно скрыть айтем
 			removeButton.parent().parent().fadeOut('slow', function() {
 				$(this).nextAll().each(function() { $(this).toggleClass('odd'); })
 				
 				if($(this).parent().children('tr').size() == 1)
-					$(this).parent().append('<li>Корзина пуста</li>');
+					$(this).parent().append('Корзина пуста');
 				
 				$(this).remove();
 			});
@@ -158,7 +166,7 @@ Candy = {
 				return false;
 			}
 			
-			$('#total').html(['<strong>ИТОГО</strong>:', data.price+' руб.'].join(' '));
+			$('#total').html('<strong>ИТОГО</strong>: '+data.price+' руб.');
 			
 			ajaxLoader.hide();
 			
