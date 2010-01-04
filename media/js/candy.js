@@ -33,8 +33,10 @@ Candy = {
 							<input id="password" name="password" type="password" style="width: 220px;" />\
 						</div>\
 						\
-						<div align="right" style="margin-top: 10px;">\
-							<input type="submit" class="button" value="войти" style="">\
+						<div align="right" style="margin: 15px -15px 20px 0;">\
+							<span class="button">\
+								<input type="submit" value="Войти">\
+							</span>\
 						</div>\
 					</form>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
 			);

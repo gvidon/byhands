@@ -1,49 +1,74 @@
-<h2 style="margin-top: 40px;">Настройки доставки</h2>
-<p>Определите параметры доставки продукта. После подтверждения заказа с вами
-свяжутся по предложенному контактному телефону.</p>
+<h2 style="margin-top: 40px;">Осталось внимательно заполнить форму:</h2>
+<!--<p>Определите параметры доставки продукта. После подтверждения заказа с вами
+свяжутся по предложенному контактному телефону.</p>-->
 
-<form action="" method="post">
-	<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
-		<label for="name"><span class="required">*</span>На чье имя доставляем?</label>
-		{{ form.name }}
-		<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
-	</div>
+<div id="order-form" style="width: 460px;">
+	<form action="" method="post">
 		
-	<div class="address-inputset">
-		<label for="city"><span class="required">*</span>Куда доставляем?</label>
-		
-		<div {% if form.errors.city %}class="erroneus"{% endif %}>
-			{{ form.city }}<br/>
-			<span class="comment">город</span>
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+			<label for="name"><span class="required">*</span> Вас зовут:</label>
+			<!--<input type="text" name="name" value="" /><br/>
+			<label for="name"><span class="required">*</span>На чье имя доставляем?</label>-->
+			{{ form.name }}
+			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
 		</div>
 		
-		<div {% if form.errors.address %}class="erroneus"{% endif %} style="float: none">
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+			<!--<label for="email"><span class="required">*</span>E-mail</label>-->
+			<label for="email"><span class="required">*</span> E-mail:</label>
+			{{ form.email }}
+			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+		</div>
+
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+			<label for="index"><span class="required">*</span> Индекс:</label>
+			<input type="text" name="index" value="" style="float: left; width: 60px"/>
+			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
+
+	
+
+			<!--<label for="city"><span class="required">*</span>Куда доставляем?</label>-->
+			<label for="city" style="width: 70px;"><span class="required">*</span> Город:</label>
+			{{ form.city }}
+			<!--<div {% if form.errors.city %}class="erroneus"{% endif %}>
+			
+				{{ form.city }}<br/>
+				<span class="comment">город</span>
+			</div>-->
+			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div style="clear: both;"></div>
+			
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+			<label for="address"><span class="required">*</span> Адрес:</label>
 			{{ form.address }}
-			
-			{% if form.errors.address %}
-				<span class="error">{{ form.errors.address.as_text|safe|cut:"*" }}</span>
-			{% else %}
+			<span class="error">{{ form.address.email.as_text|safe|cut:"*" }}</span>
+			<!--{% if form.errors.address %}-->
+
+			<!--{% else %}
 				<span class="comment">адрес</span>
-			{% endif %}
+			{% endif %}-->
 		</div>
-	</div>
 	
-	<div {% if form.errors.email %}class="erroneus"{% endif %}>
-		<label for="email"><span class="required">*</span>E-mail</label>
-		{{ form.email }}
-		<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
-	</div>
-		
-	<div {% if form.errors.phone %}class="erroneus"{% endif %}>
-		<label for="phone"><span class="required">*</span>Контактный телефон</label>
-		{{ form.phone }}
+	
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+			<!--<label for="phone"><span class="required">*</span>Контактный телефон</label>-->
+			<label for="pone"><span class="required">*</span> Номер телефона:<br/><span class="comment">(только цифры)</span> </label>
+			{{ form.phone }}
 			
-		{% if form.errors.phone %}
-			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
-		{% else %}
-			<span class="comment">только цифры, например 9181234567</span>
-		{% endif %}
-	</div>
-	
-	<input type="submit" value="подтверждаю заказ" style="margin-top: 40px;" />
+			<!--{% if form.errors.phone %}-->
+				<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
+			<!--{% else %}
+				<span class="comment">только цифры, например 9181234567</span>
+			{% endif %}-->
+		</div>
+		
+		<div id="buttons">
+			<span class="button">
+				<input type="submit" type="submit" value="Подтверждаю заказ" style="width: 140px;"/>
+			</span>
+		</div>
+		
 </form>
+</div>

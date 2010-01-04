@@ -80,10 +80,17 @@
 				<div id="total""><strong>ИТОГО</strong>: {{ total|floatformat:"1" }} руб</div>
 				
 				<div id="buttons">
-					<!--<input id="continue" type="image" src="{{ media_url }}/images/continue_shopping.gif" class="button" value="< Заказать еще "/>-->
+				
+					<span class="button">
+						<input id="make-order" type="submit" value="Оформить заказ"/>
+					</span>
 					
-					<a class="button" id="make-order" href="#"><span>оформить заказ </span></a>
-					<a class="button" id="continue" href="#"><span>заказать ещё</span></a>
+					<span class="button">
+						<input id="continue" type="submit" value="Заказать еще "/>
+					</span>
+
+					<!--<a class="button" id="make-order" href="#"><span>оформить заказ </span></a>
+					<a class="button" id="continue" href="#"><span>заказать ещё</span></a>-->
 
 					
 					<!--<input id="make-order" type="image" src="{{ media_url }}/images/place_order.gif" class="button" value=" Оформить заказ >" />-->
