@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from datetime          import datetime
+from datetime         import datetime
 
-from django.conf       import settings
-from django            import template
+from django.conf      import settings
+from django           import template
 
 from apps.candy.models import Category, Order
 

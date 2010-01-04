@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% load pages %}
-{% load dates %}
 {% load candy %}
 
 {% block js %}
@@ -24,4 +22,9 @@
 	на общую сумму <strong>{{ order.sum }} руб.</strong>. Теперь необходимо 
 	определить условия оплаты заказа. Наши менеджеры свяжутся с вами по телефону
 	<strong>+7 {{ order.phone }}</strong> и по email <strong>{{ order.email }}</strong></p>
+	
+	{% if not request.is_authenticated %}<p style="font-size: 1.4em; line-height: 20px;">
+		Чтобы отслеживать состояние вашего заказа активируйте вашу учетную запись на
+		<a href="http://byhands.ru">ByHands</a>. Инструкции мы отправили вам на email.
+	</p>{% endif %}
 {% endblock %}

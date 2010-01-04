@@ -1,37 +1,38 @@
-import os
+import os, sys
 
-SITE_ID            = 1
-SECRET_KEY         = 'hot1!ntbc$on@ypotwo5r#e9=^)jqbmc$5s-ud8$!wk^l@p&y3'
+SITE_ID             = 1
+SECRET_KEY          = 'hot1!ntbc$on@ypotwo5r#e9=^)jqbmc$5s-ud8$!wk^l@p&y3'
+AUTH_PROFILE_MODULE = 'accounts.Profile'
 
-DEBUG              = True
-TEMPLATE_DEBUG     = DEBUG
+DEBUG               = True
+TEMPLATE_DEBUG      = DEBUG
 
 ADMINS = (
 	('Elena Kantemirova', 'elena.kantemirova@gmail.com'),
 	('Gvidon Malyarov'  , 'nenegoro@gmail.com'),
 )
 
-MANAGERS           = ADMINS
+MANAGERS            = ADMINS
 
-DATABASE_ENGINE    = 'mysql'
-DATABASE_NAME      = 'byhands'
-DATABASE_USER      = 'root'
-DATABASE_PASSWORD  = '123097'
-DATABASE_HOST      = 'localhost'
-DATABASE_PORT      = ''
+DATABASE_ENGINE     = 'mysql'
+DATABASE_NAME       = 'byhands'
+DATABASE_USER       = 'root'
+DATABASE_PASSWORD   = '123097'
+DATABASE_HOST       = 'localhost'
+DATABASE_PORT       = ''
 
-USE_I18N           = False
-TIME_ZONE          = 'Europe/Moscow'
-LANGUAGE_CODE      = 'ru-ru'
+USE_I18N            = False
+TIME_ZONE           = 'Europe/Moscow'
+LANGUAGE_CODE       = 'ru-ru'
 
-PROJECT_ROOT       = '/home/nide/code/byhands'
-MEDIA_ROOT         = PROJECT_ROOT+'/media/'
-UPLOAD_ROOT        = PROJECT_ROOT+'/media/upload/'
-MEDIA_URL          = 'http://media.byhands:8081/'
+PROJECT_ROOT        = '/home/nide/code/byhands'
+MEDIA_ROOT          = PROJECT_ROOT+'/media/'
+UPLOAD_ROOT         = PROJECT_ROOT+'/media/upload/'
+MEDIA_URL           = 'http://media.byhands:8081/'
 
-ADMIN_MEDIA_PREFIX = '/admin/media/'
+ADMIN_MEDIA_PREFIX  = '/admin/media/'
 
-ROOT_URLCONF       = 'byhands.urls'
+ROOT_URLCONF        = 'byhands.urls'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.auth',
@@ -56,6 +57,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
     os.path.join(PROJECT_ROOT, 'apps/candy/templates'),
     os.path.join(PROJECT_ROOT, 'apps/contactus/templates'),
+    os.path.join(PROJECT_ROOT, 'apps/accounts/templates'),
 )
 
 INSTALLED_APPS = (
@@ -65,9 +67,10 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.sites',
 	
-	'byhands.apps.contactus',
-	'byhands.apps.candy',
-	'byhands.apps.candy.models',
-	'byhands.apps.site',
+	'apps.contactus',
+	'apps.candy',
+	'apps.candy.models',
+	'apps.utils',
+	'apps.accounts',
 )
 

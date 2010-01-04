@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.db          import models
-from byhands.apps.utils import images
+from django.db  import models
+from apps.utils import images
 
 #ФОТОГРАФИИ ПРОДУКТА
 class ProductPhoto(models.Model):

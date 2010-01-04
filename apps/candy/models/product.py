@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.db                    import models
 from django.contrib.auth.models   import User
+from django.db                    import models
 
 #ПРОДУКТ С ЦЕНОЙ ОПИСАНИЕМ И ГАБАРИТАМИ
 class Product(models.Model):

@@ -2,6 +2,7 @@
 from datetime                       import datetime
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models     import User
 from django.core.urlresolvers       import reverse
 from django.template.context        import RequestContext
 from django.core.exceptions         import ValidationError
@@ -16,6 +17,7 @@ from django.http                    import HttpResponse, Http404
 
 from models                         import Category, Order, OrderItem, Product
 from forms                          import OrderForm
+from apps.accounts.utils            import register_inactive
 
 #ДОБАВЛЕНИЕ АЙТЕМА В КОРЗИНУ ПО ИДУ ПРОДУКТА
 def add_item(request, id):
@@ -124,26 +126,43 @@ def order(request, id=None):
 			})
 		
 		except AttributeError:
-			form = OrderForm()
+			form = OrderForm(auto_id='%s')
 		
 		if request.POST:
 			form = OrderForm(request.POST, auto_id='%s')
 			
+			try:
+				user = User.objects.get(email=request.POST['email'])
+				
+				# если клиент не авторизован и использует мыльник действительного
+				# аккаунта из базы - поругаться и предложить авторизоваться
+				if not request.user.is_authenticated():
+					auth_error = True
+				
+			except User.DoesNotExist:
+				if form.is_valid():
+					user = register_inactive(
+						form.cleaned_data['email'][0:form.cleaned_data['email'].index('@')],
+						form.cleaned_data['email']
+					)
+			
 			# сохранение заказа
-			if form.is_valid():
-				order = Order.objects.create(
-					user         = request.user,
-					name         = form.cleaned_data['name'],
+			if form.is_valid() and not locals().get('auth_error'):
+				
+				for values in (form.cleaned_data):
+					order = Order.objects.create(
+						user         = user,
+						name         = values['name'],
+						
+						city         = values['city'],
+						address      = values['address'],
+						
+						email        = values['email'],
+						phone        = values['phone'],
 					
-					city         = form.cleaned_data['city'],
-					address      = form.cleaned_data['address'],
-					
-					email        = form.cleaned_data['email'],
-					phone        = form.cleaned_data['phone'],
-					
-					sum          = cart_total(request.session['cart']),
-					is_confirmed = 1
-				)
+						sum          = cart_total(request.session['cart']),
+						is_confirmed = 1,
+					)
 				
 				for id, item in request.session['cart'].iteritems():
 					OrderItem.objects.create(
@@ -167,10 +186,11 @@ def order(request, id=None):
 				return render_to_response('candy/order-confirmed.html', {'order': order}, context_instance=RequestContext(request))
 				
 	return render_to_response('candy/order.html', {
-		'order': locals().get('order'),
-		'form' : locals().get('form'),
-		'items': locals().has_key('order') and order.items.all() or [item for id, item in request.session['cart'].iteritems()],
-		'total': cart_total(request.session.get('cart') or {}),
+		'order'     : locals().get('order'),
+		'form'      : locals().get('form'),
+		'auth_error': locals().get('auth_error'),
+		'items'     : locals().has_key('order') and order.items.all() or [item for id, item in request.session['cart'].iteritems()],
+		'total'     : cart_total(request.session.get('cart') or {}),
 	}, context_instance=RequestContext(request))
 
 #СПИСОК УЖЕ СОВЕРШЕННЫХ ЗАКАЗОВ
