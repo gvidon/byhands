@@ -1,13 +1,19 @@
+/*---- required field -----*/
+span.required { color: #fc5013; }
+
+span.error { padding: 0 0 5px 150px; color:#fc5013; }
+
 input, textarea, select {
 	border: 1px solid #e7990e;
 	margin: 0;
 	color: #3e3838;
 	background-color: #ffffff;
 	font-family: Verdana, Arial;
+	padding: 2px; margin: 5px 0 0 0;
 }
 
 
-input, select { padding: 2px; }
+label { float: left; text-align: right;  margin: 0 10px 0 0; padding: 5px 0 0 0;}
 
 textarea { padding: 5px; font-size: 12px;}
 
@@ -17,12 +23,12 @@ input, select {
 }
 
 .boxy-content input[type="button"], .boxy-content input[type="submit"] {
-	padding-bottom: 5px; height: 27px; background-color: #f4eec0;
+	 width: 60px; background-color: #f4eec0;
 }
 
 .boxy-content .question p a { font-size: 14pt; }
 
-a.button {
+span.button {
 	background: transparent url('../images/bg_button_end.gif') no-repeat scroll top right;
 	display: block;
     float: right;
@@ -36,14 +42,20 @@ a.button {
     text-decoration: none;
 }
 
-a.button span {
+span.button input {
     background: transparent url('../images/bg_button.gif') no-repeat;
     display: block;
 	height: 36px;
-    padding: 6px 0 5px 9px;
+    padding: 0 2px 5px 9px; margin: 0;
+    border: 0;
 }
 
 #search_form input { width: 120px; }
 #search_form input#find_button { width: 54px;  margin: 0; padding: 0; border: 0; float: right;}
 
 .action-note { font-size: 1.4em; margin-top: 20px; }
+
+#order-form label { width: 140px; }
+#order-form input { width: 300px;  }
+
+.comment { font-size: 7pt; line-height: 7pt; }
