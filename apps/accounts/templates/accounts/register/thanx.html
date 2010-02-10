@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+	
+{% block content %}
+	<h1>Регистрация завершена</h1>
+	
+	<p style="margin-left: 40px; width: 60%; height: 280px;">
+		Для активации вашей учетной записи перейдите по ссылке из письма, которое мы отправили
+		вам на ящик {{ email }}.
+	</p>
+{% endblock %}
+

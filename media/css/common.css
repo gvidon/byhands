@@ -58,7 +58,6 @@ div#logo img {
 	width: 461px; height: 117px;
 }
 
-
 div#auth{
 	float:right;
 	width: 424px; height: 15px;
@@ -66,6 +65,9 @@ div#auth{
 	margin: 10px 50px 0 0; padding: 0;
 }
 
+div#auth p { color: gray; }
+
+div#auth ul { margin: 0; padding: 0; }
 div#auth ul { margin: 0; padding: 0; }
 
 div#auth ul li {	
@@ -159,7 +161,7 @@ ul.pager li img { vertical-align: middle; }
 
 ul.pager li a { padding: 0 2px 0 2px; /* font-size: 20px; color: #7dacd6; */}
 
-ul.pager li a:hover, ul.pager li a.active { background: #f7ba45; color: #ffffff;}
+ul.pager li a:hover, ul.pager li.active { background: #f7ba45; color: #ffffff; padding: 4px 3px 4px 3px; }
 
 
 

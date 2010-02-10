@@ -18,6 +18,11 @@
 			<label for="email"><span class="required">*</span> E-mail:</label>
 			{{ form.email }}
 			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+			
+			{% if auth_error %}<span class="error">
+				Вы уже регистрировались у нас. Пожалуйста авторизуйтесь, чтобы
+				воспользоваться этим email.
+			</span>{% endif %}
 		</div>
 
 		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
@@ -66,7 +71,7 @@
 		
 		<div id="buttons">
 			<span class="button">
-				<input type="submit" type="submit" value="Подтверждаю заказ" style="width: 140px;"/>
+				<input type="submit" type="submit" value="Подтверждаю заказ" style="width: 154px;"/>
 			</span>
 		</div>
 		

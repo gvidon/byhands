@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="{{ media_url }}/css/navigation.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}/css/forms.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}/css/fancybox.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		{% block css %}{% endblock %}
 		
 		<!--[if lte IE 6]>  
@@ -28,6 +29,18 @@
 		
 		<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.min.js"></script>
 		<script type="text/javascript" src="{{ media_url }}/js/lib/livequery.js"></script>
+		<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.boxy.js"></script>
+		<script type="text/javascript" src="{{ media_url }}/js/account.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#login').click(function() {
+					Account.loginForm('{% url login %}?next='+window.location.pathname, '{% url recover %}');
+					return false;
+				});
+			});
+		</script>
+		
 		{% block js %}{% endblock %}
 	</head>
 
@@ -38,10 +51,20 @@
 				<div id="logo"><a href="javascript://"><img src="{{ media_url }}/images/logo_1.png" title="ByHands.ru" /></a></div>
 				
 				<div id="auth">
-					<ul>
-						<li class="first"><a href="javascript://">войти</a></li>
-						<li><a href="javascript://">зарегистрироваться</a></li>
-					</ul>
+					{% if request.user.is_authenticated %}
+						<p>Здравствуйте, <strong>{{ request.user.username }}</strong>!</p>
+						
+						<ul style="margin-top: 4px;">
+							<li class="first"><a href="{% url profile %}">Профиль</a></li>
+							<li><a href="{% url candy-orders %}"><strong>Заказы</strong></a></li>
+							<li><a href="{% url logout %}">Выйти</a></li>
+						</ul>
+					{% else %}
+						<ul>
+							<li class="first"><a id="login" href="#">войти</a></li>
+							<li><a href="#" style="font-size: 1.4em;">регистрация</a></li>
+						</ul>
+					{% endif %}
 				</div>
 
 				<div id="top_nav">
@@ -60,45 +83,26 @@
 						</form>-->
 					</div>
 					
-					{% block cart-info %}
-						<div id="cart">
-							{% if cart.price %}
-								<span>{{ cart.price }} руб</span>
-								<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
-							{% else %}
-								<span>&nbsp;</span>
-								<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
-							{% endif %}
-
-						</div>
-					{% endblock %}
+					{% block cart-info %}<div id="cart">
+						{% if cart.price %}
+							<span>{{ cart.price }} руб</span>
+							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
+						{% else %}
+							<span>&nbsp;</span>
+							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
+						{% endif %}
+					</div>{% endblock %}
 				</div>
 
 			</div>
 			
-
 			<div style="clear: both;"></div>
 			
 			<div id="main_content">
-				
-
-
 				<!-- left side -->
 				<div id="left_side">
 					
-					<ul id="left_nav">
-						<li class="first"><a href="javascript://">бижутерия</a></li>
-						<li><a href="javascript://">интерьер</a></li>
-						<li><a href="javascript://">одежда</a></li>
-						<li>
-							<a href="javascript://">игрушки</a>
-										
-							<ul class="left_submenu">
-								<li><a href="javascript://">мягкие игрушки</a></li>
-								<li><a href="javascript://">куклы</a></li>
-							</ul>			
-						</li> 
-					</ul>
+					<ul id="left_nav">{% block left_navigation %}{% endblock %}</ul>
 
 					<div id="personal_order">
 						<img src="{{ media_url }}/images/personal_order.gif" style="float:left;"/>
@@ -120,25 +124,16 @@
 			<div style="clear: both;"></div>
 
 			<div id="footer">
-
-					<ul id="footer_links">
-						<li class="xl"><a href="javascript://">Как заказать</a>
-						<li class="s"><a href="javascript://">Индивидуальный заказ</a>
-						<li class="l"><a href="javascript://">Доставка</a>
-						<li class="m"><a href="javascript://">Оплата</a>
-						<li class="s"><a href="javascript://">Сотрудничество</a>
-						<li class="xl"><a href="javascript://">Правила</a>
-						<li class="xxl"><a href="javascript://">Контакты</a>
-					</ul>
-									
- 
+				<ul id="footer_links">
+					<li class="xl"><a href="javascript://">Как заказать</a>
+					<li class="s"><a href="javascript://">Индивидуальный заказ</a>
+					<li class="l"><a href="javascript://">Доставка</a>
+					<li class="m"><a href="javascript://">Оплата</a>
+					<li class="s"><a href="javascript://">Сотрудничество</a>
+					<li class="xl"><a href="javascript://">Правила</a>
+					<li class="xxl"><a href="javascript://">Контакты</a>
+				</ul>
 			</div>
-
-
 		</div>
-
-				
-
-        </body>
-
+	</body>
 </html>

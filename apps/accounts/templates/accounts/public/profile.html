@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load bulletins %}
+{% load blocks %}
+{% load dates %}
+
+{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ media_url }}/css/pages/profile.css" />
+		<link rel="stylesheet" type="text/css" href="{{ media_url }}/css/pages/public.css" />
+{% endblock %}
+
+{% block column_right %}
+	<div class="tpl-board corners">
+		<div class="t-r"></div><div class="b-r"></div>
+
+		<div class="wrap">
+			<h2>Объявления пользователей</h2>
+			{% last_bulletins 5 %}
+	
+			<a class="section-link" href="/bulletins">Все объявления →</a>
+		</div>
+	</div>
+{% endblock %}
+	
+{% block content %}
+	<div class="profile">
+		<h1>Анкета мамочек</h1>
+		
+		<div class="username">
+			<img src="{{ media_url }}/{{ user.get_profile.avatar }}" />
+			<h1>{{ user.username }}</h1>
+		</div>
+		
+		{% if user.first_name or user.last_name %}
+			<div>
+				<h3>Полное имя</h3>
+				{{ user.first_name|capfirst }}
+				{{ user.get_profile.sur_name|capfirst }}
+				{{ user.last_name|capfirst }}
+			</div>
+		{% endif %}
+		
+		{% if user.get_profile.birthdate %}
+			<div>
+				<h3>Дата рождения</h3>
+				{{ user.get_profile.birthdate|date:"d F Y"|ru_months }}
+			</div>
+		{% endif %}
+		
+		{% if user.get_profile.icq %}
+			<div>
+				<h3>Номер ICQ</h3>
+				{{ user.get_profile.icq }}
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
+

@@ -3,10 +3,6 @@
 {% load dates %}
 {% load candy %}
 
-{% block css %}
-	<link rel="stylesheet" href="{{ media_url }}/css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-{% endblock %}
-
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.fancybox.js"></script>
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.boxy.js"></script>
@@ -31,19 +27,10 @@
 	</script>
 {% endblock %}
 
-{% block column_right %}
-	{% include 'candy/cart-preview.html' %}</ul>
-	
-	{% categories_tree 0 %}
-	{% orders_preview 5 request.user.id %}
-{% endblock %}
+{% block left_navigation %}{% categories_tree category %}{% endblock %}
 
 {% block content %}
-	<ul id="section_nav">
-		<li><a href="javascript://">Игрушки</a></li>
-		<li> &gt; </li>
-		<li>Игрушки из шерсти</li>
-	</ul>
+	<ul id="section_nav">{% category_parents category %}</ul>
 	
 	<div style="clear: both;"></div>
 	

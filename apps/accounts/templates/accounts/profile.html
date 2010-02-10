@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load candy %}
+
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#phone').keyfilter(/[\d]/);
+			
+			{% if request.POST %}
+				$('#birthday').val('{{ request.POST.day }}');
+				$('#birthmonth').val('{{ request.POST.month }}');
+				$('#birthyear').val('{{ request.POST.year }}');
+			{% else %}
+				$('#birthday').val({{ profile.birthdate.day }});
+				$('#birthmonth').val({{ profile.birthdate.month }});
+				$('#birthyear').val({{ profile.birthdate.year }});
+			{% endif %}
+			
+			// connect date params in one field before send
+			$('#profile').submit(function(){
+				
+				if($('#birthyear').val() && $('#birthmonth').val() && $('#birthday').val())
+					$('#full-date').val([
+						$('#birthyear').val(),
+						$('#birthmonth').val(),
+						$('#birthday').val()
+					].join('-'));
+				
+				return true;
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	<form id="profile" enctype="multipart/form-data" method="post" action="">
+		{{ form.id }}
+		<input  id="full-date" name="birthdate" type="hidden" />
+		
+		<h1>Изменение учетной записи пользователя</h1>
+		{% if form.is_valid %}
+			<h2 style="margin: 20px; color: #7b1748;">
+				Мы <strong>сохранили</strong> все, что вы указали о себе
+			</h2>
+		{% endif %}
+		
+		<p><span class="required">*</span> - обязательно нужно заполнить</p>
+		
+		<div {% if form.errors.username %}class="erroneus"{% endif %}>
+			<label for="username"><span class="required">*</span>Каким будет ваш псевдоним на сайте?</label>
+			{{ form.username }}
+			<span class="error">{{ form.errors.username.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div {% if form.errors.email %}class="erroneus"{% endif %}>
+			<label for="email"><span class="required">*</span>Ваш email</label>
+			{{ form.email }}
+			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div class="name-inputset">
+			<label for="name">Ваше имя</label>
+			
+			<div {% if form.errors.first_name %}class="erroneus"{% endif %}>
+				{{ form.first_name }}
+				<span class="comment">имя</span>
+			</div>
+			
+			<div {% if form.errors.sur_name %}class="erroneus"{% endif %}>
+				{{ form.sur_name }}
+				<span class="comment">отчество</span>
+			</div>
+			
+			<div {% if form.errors.last_name %}class="erroneus"{% endif %} style="float: none">
+				{{ form.last_name }}
+				<span class="comment">фамилия</span>
+			</div>
+		</div>
+		
+		<div class="date-inputset" {% if form.errors.birthdate %}class="erroneus"{% endif %}>
+			<label for="birthdate">Дата вашего рождения</label>
+			
+			<div {% if form.errors.birthdate %}class="erroneus"{% endif %}>
+				<input id="birthday" type="text" name="day" maxlength="2" />
+				<span class="comment">день</span>
+			</div>
+			
+			<div {% if form.errors.birthdate %}class="erroneus"{% endif %}>
+				<select id="birthmonth" name="month" style="float: left; margin-bottom: 5px;">
+					<option value=""></option>
+					<option value="1">Января</option>
+					<option value="2">Февраля</option>
+					<option value="3">Марта</option>
+					<option value="4">Апреля</option>
+					<option value="5">Мая</option>
+					<option value="6">Июня</option>
+					<option value="7">Июля</option>
+					<option value="8">Августа</option>
+					<option value="9">Сентября</option>
+					<option value="10">Октября</option>
+					<option value="11">Ноября</option>
+					<option value="12">Декабря</option>
+				</select><br/>
+				<span class="comment">месяц</span>
+			</div>
+			
+			<div {% if form.errors.birthdate %}class="erroneus"{% endif %} style="float: none">
+				<input id="birthyear" type="text" name="year" maxlength="4" />
+				<span class="comment">год, например 1985</span>
+			</div>
+		</div>
+		
+		<div class="icq {% if form.errors.icq %}erroneus{% endif %}">
+			<label for="icq">Ваш ICQ нам пригодится</label>
+			{{ form.icq }}
+			<span class="error">{{ form.errors.icq.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div class="phone {% if form.errors.phone %}erroneus{% endif %}">
+			<label for="phone">Можно и телефон оставить</label>
+			<span class="code">8</span>{{ form.phone }}
+			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<input type="submit" value="Сохранить" />
+	</form>
+{% endblock %}
+

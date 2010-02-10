@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>активация учетной записи</title>
+		
+		<style type="text/css">
+			body { font: normal .875em/1.42em Tahoma, Verdana, sans-serif; color: #9a9a9a; margin-left: 10%; margin-top: 5%; }
+			h1 { font: normal 2em Tahoma, Verdana, sans-serif; color: #377f9d; }
+			
+			.thanx { width: 70%; margin-top: 40px; }
+				
+			form input[type='text'] {
+				width: 440px;
+				height: 25px;
+				color: #47472A;
+				margin-top: 10px;
+				
+				border: solid #1d5a16 1px;
+				background-color: #ecffec;
+				font-size: 20px;
+			}
+			
+			form input.erroneus {
+				border: solid red 2px;
+				background-color: #ffbaba;
+			}
+			
+			form .error {
+				color: #7d2d2d;
+				padding-bottom: 0px;
+				margin-bottom: 20px;
+				font-size: 0.9em;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>Активация</h1>
+		
+		<div class="thanx">
+			Для активации учетной записи необходимо ввести код активации,
+			отправленный вам на e-mail и сотовый телефон:
+			
+			<form action="" method="post">
+				<input {% if error %}class="erroneus"{% endif %} type="text" name="code" />
+				<input type="submit" value="Активировать" /><br/>
+				<span class="error">{{ error }}</span>
+			</form>
+		</div>
+	</body>
+</html>
+

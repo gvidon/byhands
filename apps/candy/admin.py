@@ -6,7 +6,7 @@ class PhotoInline(admin.TabularInline):
 	fk_name = 'product'
 
 class CategoryAdmin(admin.ModelAdmin):
-	exclude = ('parent',)
+	pass
 	
 class OrderAdmin(admin.ModelAdmin):
 	pass

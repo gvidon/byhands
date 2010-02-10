@@ -7,8 +7,10 @@ from byhands.apps.contactus.views import form
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^/?$'  , form, name='contactus'),
-	url(r'^shop/', include('byhands.apps.candy.urls')),
+	url(r'^/?$'    , form, name='contactus'),
+	url(r'^search/', include('search.urls')),
+	url(r'^shop/'  , include('candy.urls')),
+	url(r'^'       , include('accounts.urls')),
 )
 
 urlpatterns += patterns('',

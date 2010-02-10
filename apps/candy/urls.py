@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.conf                      import settings
-from django.conf.urls.defaults        import *
 from django.views.generic.list_detail import object_detail
+from django.conf.urls.defaults        import *
+from django.conf                      import settings
 
 from models                           import Category, Product
 from views                            import *

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+
+{% block title %}ByHands.ru - Восстановление пароля{% endblock %}
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+
+{% block content %}
+	<h2>Забыли пароль?</h2>
+	
+	{% if not request.POST or error %}
+		<form action="" method="post">
+			<p style="font-size: 1.2em; margin-bottom: 27px;">Сообщите email, под которым вы регистрировались
+			и мы восстановим ваш пароль.</p>
+			
+			<div {% if error %}class="erroneus"{% endif %}>
+				<label for="email">Ваш <strong>email</strong></label>
+				<input id="email" name="email" type="text" value="{{ request.POST.email }}" style="width: 275px;" />
+				<span class="button"><input type="submit" value="Восстановаить" /></span><br/>
+				<span class="error">{{ error }}</span>
+			</div>
+		
+		</form>
+	{% else %}
+		<p style="font-size: 1.2em;">Письмо с инструкциями ушло вам на почту.</p>
+	{% endif %}
+{% endblock %}
+

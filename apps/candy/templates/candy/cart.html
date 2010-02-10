@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="{{ media_url }}/js/candy.js"></script>
 	
 	<script type="text/javascript">
-		authURL  = '/accounts/login';
+		authURL  = '{% url login %}';
 		orderURL = '{% url candy-create-order %}';
 		
 		$(document).ready(function() {
@@ -28,17 +28,13 @@
 				{ }
 			);
 			
-			Candy.bindOrderEvents($('#make-order'), $('#cart tbody'));
+			Candy.bindOrderEvents($('#make-order'), $('#cart tbody'), {% if request.user.is_authenticated %}true{% else %}false{% endif %});
 		});
 	</script>
 {% endblock %}
 
+{% block left_navigation %}{% categories_tree %}{% endblock %}
 {% block cart-info %}{% endblock %}
-
-{% block column_right %}
-	{% categories_tree 0 %}
-	{% orders_preview 5 request.user.id %}
-{% endblock %}
 
 {% block content %}
 	{% if request.session.cart %}

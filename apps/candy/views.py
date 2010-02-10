@@ -69,6 +69,10 @@ def category(request, slug, page=None):
 	for slug in slug.split('/'):
 		category = get_object_or_404(Category, slug=slug, parent=locals().get('category'))
 	
+	# если категория пуста и есть дочерние - взять первую дочернюю
+	if not category.products.all() and Category.objects.filter(parent=category).count():
+		category = Category.objects.filter(parent=category)[0]
+	
 	return list_detail.object_list(request,
 		queryset      = category.products.all(),
 		paginate_by   = settings.ITEMS_PER_PAGE,
@@ -107,7 +111,9 @@ def order(request, id=None):
 		
 		# использовать в форме заказа данные из последнего заказа
 		try:
-			last_order = Order.objects.filter(user=request.user).order_by('-id')[0]
+			last_order = Order.objects.filter(
+				user = request.user.is_authenticated() and request.user or None
+			).order_by('-id')[0]
 		
 		except IndexError:
 			last_order = None
@@ -149,7 +155,7 @@ def order(request, id=None):
 			# сохранение заказа
 			if form.is_valid() and not locals().get('auth_error'):
 				
-				for values in (form.cleaned_data):
+				for values in [form.cleaned_data]:
 					order = Order.objects.create(
 						user         = user,
 						name         = values['name'],
@@ -177,11 +183,11 @@ def order(request, id=None):
 				
 				del(request.session['cart'])
 				
-				mail_managers(u'Новый заказ номер '+str(order.id), unicode(
-					'Поступил новый заказ на сумму '+str(order.sum)+' руб. Контактные данные: '+
-					order.name+' ('+str(order.phone)+', '+order.email+'). Доставка по адрессу '+order.city+', '+
+				mail_managers(u'Новый заказ номер '+str(order.id),
+					u'Поступил новый заказ на сумму '+str(order.sum)+u' руб. Контактные данные: '+
+					order.name+' ('+str(order.phone)+', '+order.email+u'). Доставка по адрессу '+order.city+', '+
 					order.address
-				))
+				)
 				
 				return render_to_response('candy/order-confirmed.html', {'order': order}, context_instance=RequestContext(request))
 				
@@ -208,16 +214,17 @@ def orders(request):
 
 #СТРАНИЦА ПРОДУКТА
 def product(request, category, product):
-	print settings.MEDIA_URL
-	
 	try:
 		history = bool(request.META['HTTP_REFERER'].find('/shop') + 1) and request.META['HTTP_REFERER']
 	except KeyError:
 		pass
 	
+	product = get_object_or_404(Product, category__slug=category, slug=product)
+	
 	return render_to_response('candy/product.html', {
-		'product': get_object_or_404(Product, category__slug=category, slug=product),
-		'history': locals().get('history'),
+		'category': product.category.get(slug=category),
+		'product' : product,
+		'history' : locals().get('history'),
 	}, context_instance=RequestContext(request))
 
 #УДАЛИТЬ АЙТЕМ ИЗ КОРЗИНЫ

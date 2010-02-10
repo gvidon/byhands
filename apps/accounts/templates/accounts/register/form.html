@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load candy %}
+
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+	
+{% block content %}
+	<form action="" method="post">
+		<h1>Регистрация нового пользователя</h1>
+		
+		<p><span class="required">*</span> - обязательно нужно заполнить</p>
+		
+		<div {% if form.errors.username %}class="erroneus"{% endif %}>
+			<label for="username"><span class="required">*</span>Каким будет ваш псевдоним на сайте?</label>
+			{{ form.username }}
+			<span class="error">{{ form.errors.username.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div {% if form.errors.email %}class="erroneus"{% endif %}>
+			<label for="email"><span class="required">*</span>Ваш email</label>
+			{{ form.email }}
+			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div class="name-inputset">
+			<label for="name">Ваше имя</label>
+			
+			<div {% if form.errors.first_name %}class="erroneus"{% endif %}>
+				{{ form.first_name }}
+				<span class="comment">имя</span>
+			</div>
+			
+			<div {% if form.errors.sur_name %}class="erroneus"{% endif %}>
+				{{ form.sur_name }}
+				<span class="comment">отчество</span>
+			</div>
+			
+			<div {% if form.errors.last_name %}class="erroneus"{% endif %} style="float: none">
+				{{ form.last_name }}
+				<span class="comment">фамилия</span>
+			</div>
+		</div>
+		
+		<input type="submit" value="Регистрация" />
+	</form>
+{% endblock %}
+

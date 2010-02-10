@@ -9,6 +9,19 @@ class Category(models.Model):
 	title       = models.CharField(u'Название', max_length=64)
 	description = models.CharField(u'Краткое описание', max_length=128)
 	
+	#ПУТЬ К КАТЕГОРИИ С УЧЕТОМ РОДИТЕЛЬСКИХ КАТЕГОРИЙ
+	def path(self):
+		try:
+			parents = [self]
+			
+			for parent in parents:
+				parents.append(parent.parent)
+			
+		except (AttributeError, Category.DoesNotExist):
+			parents.reverse()
+			return ('/').join([category.slug for category in parents if category])
+		
+	
 	#СТРОКОВОЕ ПРЕДСТАВЛЕНИЕ
 	def __unicode__(self):
 		return self.title

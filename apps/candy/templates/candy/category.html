@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-{% load dates %}
 {% load pages %}
 {% load candy %}
 
@@ -10,31 +9,32 @@
 	<script type="text/javascript">	
 		$(document).ready(function () {
 			Candy.bindCartEvents(
-				$('#cart'),
+				$('#cart span'),
 				$('.add-to-cart'),
 				$('.remove-from-cart'),
 				$('.clear-cart'),
-				{ }
+				{ 'simple': 1 }
 			);
 		});
 	</script>
 {% endblock %}
 
-{% block column_right %}
-	{% include 'candy/cart-preview.html' %}
-	
-	{% categories_tree category.id %}
-	{% orders_preview 5 request.user.id %}
-{% endblock %}
+{% block left_navigation %}{% categories_tree category %}{% endblock %}
 
 {% block content %}
-	<h1>{{ category.title }}</h1>
-	
-	<ul class="tpl-products">{% with object_list as products %}
-		{% include 'candy/_products.html' %}
-	{% endwith %}</ul>
-	
-	{% if page_obj.has_other_pages %}
-		<div class="pages">{% pages paginator page_obj request.path %}</div>
+	{% if object_list %}
+		<ul id="section_nav">{% category_parents category %}</ul>
+		
+		<div style="clear: both;"></div>
+		
+		<div class="product_list">{% with object_list as products %}
+			{% include 'candy/_products.html' %}
+		{% endwith %}</div>
+		
+		{% if page_obj.has_other_pages %}
+			<div class="pages">{% pages paginator page_obj request.path %}</div>
+		{% endif %}
+	{% else %}
+		<h2 style="margin-top: 10%">К сожалению категория пока пуста</h2>
 	{% endif %}
 {% endblock %}

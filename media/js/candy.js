@@ -11,25 +11,29 @@ Candy = {
 	},
 	
 	//EVENTS SPECIFIC TO ORDER MANAGEMENT
-	'bindOrderEvents': function(confirmButton, cartPreview) {
+	'bindOrderEvents': function(confirmButton, cartPreview, isAuthorised) {
 		confirmButton.click(function() {
+			if(isAuthorised)
+				window.location=orderURL;
+			
+			// предложить авторизацию для ускорения ввода данных о заказчике
 			Candy.updateCart(
 				$(this).siblings('.ajax-loader'),
 				cartPreview.parent().parent(),
 				cartPreview,
-				
+			
 				function() { new Boxy(
-					'<p style="width: 300px; font-size: 0.81em;">Вы уже совершали у нас заказы? Введите email и\
+					'<p style="width: 300px; font-size: 0.91em;">Вы уже совершали у нас заказы? Введите email и\
 					пароль, который мы вам отправляли. Если нет - просто <a href="'+orderURL+'">продолжите</a></p>\
 					\
-					<form action="" style="width: 220px; margin-left: 35px; margin-bottom: 20px;">\
+					<form action="'+authURL+'?next='+orderURL+'" method="post" style="width: 220px; margin-left: 35px; margin-bottom: 40px;">\
 						<div>\
-							<label for="username">Email</label><br/>\
+							<label for="username"><strong>Email</strong></label><br/>\
 							<input id="name" name="username" type="text" style="width: 220px;" />\
 						</div>\
 						\
 						<div style="margin-top: 10px;">\
-							<label for="password">Пароль</label><br/>\
+							<label for="password"><strong>Пароль</strong></label><br/>\
 							<input id="password" name="password" type="password" style="width: 220px;" />\
 						</div>\
 						\
@@ -40,7 +44,7 @@ Candy = {
 						</div>\
 					</form>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
 			);
-			
+		
 			return false;
 		});
 	},
@@ -62,13 +66,13 @@ Candy = {
 			Boxy.ask(
 				'<p><strong>'+$.trim($('#'+itemId+' .desc .title').html())+'</strong> добавлен в\
 				корзину. Теперь можно <a href="/shop/cart">оформить заказ</a>.</p>',
-				['продолжить'],
+				['закрыть'],
 				
 				function() {
 					cartPreview.parent().fadeOut('fast', function() {
 						// заменить серенькую корзину на цветную
-						cartPreview.siblings('a').children('img').attr(
-							'src', cartPreview.siblings('a').children('img').attr('src').replace('_empty', '')
+						cartPreview.siblings('a').children('img').attr('src',
+							cartPreview.siblings('a').children('img').attr('src').replace('_empty', '')
 						);
 						
 						cartPreview.html(responseText);
