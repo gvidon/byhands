@@ -1,0 +1,4 @@
+{% for category in parents %}{% if category %}
+	<li><a href="{% url candy-category slug=category.path %}">{{ category.title }}</a></li>
+	{% if not forloop.last %}<li> &gt; </li>{% endif %}
+{% endif %}{% endfor %}
