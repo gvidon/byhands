@@ -1,0 +1,26 @@
+<ul class="pager">
+	{% if prev_layer.end %}
+		{% ifnotequal prev_layer.start 1 %}
+			<li><a href="1">1</a></li>
+		{% endifnotequal %}
+	
+		<li><a href="{{ url }}/page/{{ prev_layer.end }}">{{ prev_layer.start }} - {{ prev_layer.end }}</a></li>
+	{% endif %}
+
+	{% for i in page_range %}
+		{% ifequal page_obj.number i %}
+			<li class="active">{{ i }}</li>
+		{% else %}
+			<li><a href="{{ url }}/page/{{ i }}">{{ i }}</a></li>
+		{% endifequal %}
+	{% endfor %}
+
+	{% if next_layer.start %}
+		<li><a href="{{ url }}/page/{{ next_layer.start }}">
+			{{ next_layer.start }}{% ifnotequal next_layer.start next_layer.end %} - {{ next_layer.end }}{% endifnotequal %}</a></li>
+	
+		{% ifnotequal next_layer.start next_layer.end %}
+			<li><a href="{{ url }}/page/{{ num_page }}">последняя</a></li>
+		{% endifnotequal %}
+	{% endif %}
+</ul>
