@@ -27,29 +27,25 @@
 
 		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
 			<label for="index"><span class="required">*</span> Индекс:</label>
-			<input type="text" name="index" value="" style="float: left; width: 60px"/>
-			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
-
-	
-
-			<!--<label for="city"><span class="required">*</span>Куда доставляем?</label>-->
-			<label for="city" style="width: 70px;"><span class="required">*</span> Город:</label>
-			{{ form.city }}
-			<!--<div {% if form.errors.city %}class="erroneus"{% endif %}>
-			
-				{{ form.city }}<br/>
-				<span class="comment">город</span>
-			</div>-->
+			<input type="text" name="index" value="" style="width: 60px;"/>
 			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
 		</div>
+
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin: 15px 0 15px 0;">
+			
+			<label for="city"><span class="required">*</span> Город:</label>
+			{{ form.city }}
+			
+			<br/><span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
+		</div>
 		
-		<div style="clear: both;"></div>
 			
 		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
 			<label for="address"><span class="required">*</span> Адрес:</label>
 			{{ form.address }}
 			<span class="error">{{ form.address.email.as_text|safe|cut:"*" }}</span>
 			<!--{% if form.errors.address %}-->
+			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
 
 			<!--{% else %}
 				<span class="comment">адрес</span>

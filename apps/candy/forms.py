@@ -22,7 +22,7 @@ class OrderForm(forms.Form):
 			(u'Ростов-на-Дону', u'Ростов-на-Дону'),
 			(u'Краснодар'     , u'Краснодар'),
 			(u'Москва'        , u'Москва'),
-	]), error_messages={'required': MESSAGES['required']}, max_length=16)
+	], attrs={'class': 'special'}), error_messages={'required': MESSAGES['required']}, max_length=16)
 
 	email = forms.EmailField(widget=forms.TextInput(attrs={
 		'maxlength': 128
