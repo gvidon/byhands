@@ -40,23 +40,24 @@
 		{{ form.id }}
 		<input  id="full-date" name="birthdate" type="hidden" />
 		
-		<h1>Изменение учетной записи пользователя</h1>
+		<h2>Изменение учетной записи пользователя</h2>
 		{% if form.is_valid %}
 			<h2 style="margin: 20px; color: #7b1748;">
 				Мы <strong>сохранили</strong> все, что вы указали о себе
 			</h2>
 		{% endif %}
 		
-		<p><span class="required">*</span> - обязательно нужно заполнить</p>
+		<p><span class="required">*</span> - обязательно заполнить</p>
+		<br/><br/>
 		
 		<div {% if form.errors.username %}class="erroneus"{% endif %}>
-			<label for="username"><span class="required">*</span>Каким будет ваш псевдоним на сайте?</label>
+			<label for="username"><span class="required">*</span>Ваше имя на сайте</label>
 			{{ form.username }}
 			<span class="error">{{ form.errors.username.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 		<div {% if form.errors.email %}class="erroneus"{% endif %}>
-			<label for="email"><span class="required">*</span>Ваш email</label>
+			<label for="email"><span class="required">*</span>Ваш e-mail</label>
 			{{ form.email }}
 			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
 		</div>
@@ -66,21 +67,16 @@
 			
 			<div {% if form.errors.first_name %}class="erroneus"{% endif %}>
 				{{ form.first_name }}
-				<span class="comment">имя</span>
 			</div>
 			
-			<div {% if form.errors.sur_name %}class="erroneus"{% endif %}>
-				{{ form.sur_name }}
-				<span class="comment">отчество</span>
-			</div>
-			
+					<label for="last_name">Ваша фамилия</label>
 			<div {% if form.errors.last_name %}class="erroneus"{% endif %} style="float: none">
+
 				{{ form.last_name }}
-				<span class="comment">фамилия</span>
 			</div>
 		</div>
 		
-		<div class="date-inputset" {% if form.errors.birthdate %}class="erroneus"{% endif %}>
+		<!--<div class="date-inputset" {% if form.errors.birthdate %}class="erroneus"{% endif %}>
 			<label for="birthdate">Дата вашего рождения</label>
 			
 			<div {% if form.errors.birthdate %}class="erroneus"{% endif %}>
@@ -111,21 +107,26 @@
 				<input id="birthyear" type="text" name="year" maxlength="4" />
 				<span class="comment">год, например 1985</span>
 			</div>
-		</div>
+		</div>-->
 		
 		<div class="icq {% if form.errors.icq %}erroneus{% endif %}">
-			<label for="icq">Ваш ICQ нам пригодится</label>
+			<label for="icq">Ваш ICQ</label>
 			{{ form.icq }}
 			<span class="error">{{ form.errors.icq.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 		<div class="phone {% if form.errors.phone %}erroneus{% endif %}">
-			<label for="phone">Можно и телефон оставить</label>
-			<span class="code">8</span>{{ form.phone }}
+			<label for="phone">Номер телефона</label>
+			{{ form.phone }}
 			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
 		</div>
 		
-		<input type="submit" value="Сохранить" />
-	</form>
+		<div id="buttons">
+				<span class="button" style="position: relative; left: 0;">
+					<input type="submit" type="submit" value="Сохранить" style="width: 100px;"/>
+				</span>
+		</div>
+		
+		</form>
 {% endblock %}
 

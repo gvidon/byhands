@@ -10,20 +10,17 @@
 	</script>
 {% endblock %}
 
-{% block column_right %}
-	{% categories_tree 0 %}
-	{% orders_preview 5 request.user.id %}
-{% endblock %}
+{% block left_navigation %}{% categories_tree %}{% endblock %}
 
 {% block content %}
-	<h1>Спасибо за ваш заказ!</h1>
+	<h2>Спасибо за ваш заказ!</h2>
 	
-	<p style="font-size: 1.4em; line-height: 27px;">Вы совершили заказ (#{{ order.id }})
+	<p>Вы оформили заказ (#{{ order.id }})
 	на общую сумму <strong>{{ order.sum }} руб.</strong>. Теперь необходимо 
-	определить условия оплаты заказа. Наши менеджеры свяжутся с вами по телефону
-	<strong>+7 {{ order.phone }}</strong> и по email <strong>{{ order.email }}</strong></p>
+	определить условия оплаты и получения заказа. Мы свяжемся с вами по телефону
+	<strong>+7 {{ order.phone }}</strong> или по email <strong>{{ order.email }}</strong></p>
 	
-	{% if not request.is_authenticated %}<p style="font-size: 1.4em; line-height: 20px;">
+	{% if not request.is_authenticated %}<p>
 		Чтобы отслеживать состояние вашего заказа активируйте вашу учетную запись на
 		<a href="http://byhands.ru">ByHands</a>. Инструкции мы отправили вам на email.
 	</p>{% endif %}

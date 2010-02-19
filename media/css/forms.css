@@ -54,12 +54,20 @@ span.button input {
 
 .action-note { font-size: 1.4em; margin-top: 20px; }
 
-#order-form label { width: 140px; }
-#order-form input { width: 300px;  }
+#order-form, #profile { width: 460px; }
+#order-form label, #profile label { width: 140px; }
+#order-form input, #profile input { width: 300px;  }
 
 
 
 .comment { font-size: 7pt; line-height: 7pt; }
 
 #order-form div {width: 500px;} 
+
+
+
+
+/* ФОРМА ПРОФАЙЛА */
+#profile { width: 460px; }
+
 

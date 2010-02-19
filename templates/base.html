@@ -85,11 +85,14 @@
 					
 					{% block cart-info %}<div id="cart">
 						{% if cart.price %}
-							<span>{{ cart.price }} руб</span>
-							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart.gif" title="Корзина" /></a>
+						<span>{{ cart.price }} руб</span>
+							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_with_price.gif" title="Корзина" style="margin-right: -95px;" /></a>
+							
+							
+							
 						{% else %}
 							<span>&nbsp;</span>
-							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" /></a>
+							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" style="margin-right: 50px;"/></a>
 						{% endif %}
 					</div>{% endblock %}
 				</div>
