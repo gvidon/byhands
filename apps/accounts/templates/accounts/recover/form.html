@@ -10,13 +10,13 @@
 	
 	{% if not request.POST or error %}
 		<form action="" method="post">
-			<p style="font-size: 1.2em; margin-bottom: 27px;">Сообщите email, под которым вы регистрировались
+			<p">Сообщите e-mail, под которым вы регистрировались
 			и мы восстановим ваш пароль.</p>
 			
-			<div {% if error %}class="erroneus"{% endif %}>
-				<label for="email">Ваш <strong>email</strong></label>
-				<input id="email" name="email" type="text" value="{{ request.POST.email }}" style="width: 275px;" />
-				<span class="button"><input type="submit" value="Восстановаить" /></span><br/>
+			<div {% if error %}class="erroneus"{% endif %} style="width: 505px; margin-top: 30px;">
+				<label for="email" style="margin-top: 3px;">Ваш <strong>e-mail</strong>:</label>
+				<input id="email" name="email" type="text" value="{{ request.POST.email }}" style="width: 250px; margin: 2px;" />
+				<span class="button"><input type="submit" value="Восстановить" /></span><br/>
 				<span class="error">{{ error }}</span>
 			</div>
 		

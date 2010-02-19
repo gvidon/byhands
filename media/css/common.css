@@ -13,6 +13,8 @@ html, body {
 
 body {	background: transparent url(../images/yellow_head.gif)  repeat-x; }
 
+p { line-height: 20px; margin-top: 10px; }
+
 div#main { 	width: 100%; }
 
 div#central { width: 1150px; }
@@ -97,9 +99,14 @@ div#cart {
 }
 
 
-div#cart span {  position: relative; top: 5px; font-size: 10pt; margin-right: 5px;}
+div#cart span {  position: relative; top: 5px;
+				 right: -185px;
+				 font-size: 11pt; color: #524f4a;}
 
-div#cart img { vertical-align: middle;}
+
+div#cart img { vertical-align: middle; }
+
+
 
 div#main_content { width: 1150px; }
 

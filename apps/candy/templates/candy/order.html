@@ -18,7 +18,7 @@
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 
 {% block content %}
-	<h2>Заказ #{{ order.id }}</h2>
+	<h2>Вы заказали:</h2>
 	
 	<ul id="short-order-list" class="tpl-order-cart">{% for item in items %}
 		<li><a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}">

@@ -5,16 +5,16 @@
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 
 {% block content %}
-	<form action="" style="width: 270px; margin-left: 20%;" method="post">
+	<form action="" style="width: 280px; margin-left: 20%;" method="post">
 		 
 		<div>
-			<label for="username" style="float: left;"><h3>Email или логин</h3></label>
-			<input id="name" name="username" type="text" style="width: 270px;" />
-			{% if form.errors %}<span class="error">Неверные реквизиты</span>{% endif %}
+			<label for="username" style="">E-mail или логин</label>
+			<input id="name" name="username" type="text" style="width: 270px;" /><br/>
+			{% if form.errors %}<span class="error" style="padding: 0px;">Неверные реквизиты</span>{% endif %}
 		</div>
 		
 		<div style="margin-top: 10px;">
-			<label for="password"><h3>Пароль</h3></label>
+			<label for="password">Пароль </label>
 			<input id="password" name="password" type="password" style="width: 270px;" />
 		</div>
 		

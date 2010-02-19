@@ -2,7 +2,7 @@
 <!--<p>Определите параметры доставки продукта. После подтверждения заказа с вами
 свяжутся по предложенному контактному телефону.</p>-->
 
-<div id="order-form" style="width: 460px;">
+<div id="order-form" >
 	<form action="" method="post">
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
@@ -31,7 +31,7 @@
 			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
 		</div>
 
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin: 15px 0 15px 0;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin: 0;">
 			
 			<label for="city"><span class="required">*</span> Город:</label>
 			{{ form.city }}
@@ -43,26 +43,21 @@
 		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
 			<label for="address"><span class="required">*</span> Адрес:</label>
 			{{ form.address }}
-			<span class="error">{{ form.address.email.as_text|safe|cut:"*" }}</span>
-			<!--{% if form.errors.address %}-->
-			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
-
-			<!--{% else %}
-				<span class="comment">адрес</span>
-			{% endif %}-->
+			
+			{% if form.errors.address %}
+				<span class="error">{{ form.errors.address.as_text|safe|cut:"*" }}</span>
+			{% endif %}
 		</div>
 	
 	
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin-top: 5px;">
 			<!--<label for="phone"><span class="required">*</span>Контактный телефон</label>-->
 			<label for="pone"><span class="required">*</span> Номер телефона:<br/><span class="comment">(только цифры)</span> </label>
 			{{ form.phone }}
 			
-			<!--{% if form.errors.phone %}-->
+			{% if form.errors.phone %}
 				<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
-			<!--{% else %}
-				<span class="comment">только цифры, например 9181234567</span>
-			{% endif %}-->
+			{% endif %}
 		</div>
 		
 		<div id="buttons">
