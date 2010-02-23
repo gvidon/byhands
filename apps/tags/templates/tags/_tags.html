@@ -1,0 +1,7 @@
+<div class="tags">
+	<strong>Тэги:</strong>
+	
+	{% for tag in tags %}
+		<a href="{% url by-tag type="articles" tag=tag.title %}">{{ tag.title }}</a>
+	{% endfor %}
+</div>
