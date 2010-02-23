@@ -1,5 +1,5 @@
 /*---- required field -----*/
-span.required { color: #fc5013; }
+span.required { color: #fc5013;}
 
 span.error { padding: 0 0 5px 150px; color:#fc5013; display: block;}
 
