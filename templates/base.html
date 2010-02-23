@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="{{ media_url }}/css/forms.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}/css/fancybox.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}/css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="{{ media_url }}/css/articles.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		{% block css %}{% endblock %}
 		
 		<!--[if lte IE 6]>  
@@ -61,8 +62,8 @@
 						</ul>
 					{% else %}
 						<ul>
-							<li class="first"><a id="login" href="#">войти</a></li>
-							<li><a href="#" style="font-size: 1.4em;">регистрация</a></li>
+							<li class="first"><a id="login" href="#" style="font-size: 1.4em;">войти</a></li>
+							<li><a href="{% url recover %}">вспомнить пароль</a></li>
 						</ul>
 					{% endif %}
 				</div>
@@ -71,8 +72,8 @@
 					<ul>
 						<li><a href="/shop/" class="{% ifequal request.path "/shop/" %}active{% endifequal %}"" title="Магазин">магазин</a></li>
 						<li><a href="/authors/" title="Авторы">авторы</a></li>
-						<li><a href="/lessons/" title="Уроки">уроки</a></li>
-						<li><a href="/articles/" title="Статьи">статьи</a></li>
+						<li><a href="{% url blogposts slug='lessons' %}" title="Уроки">уроки</a></li>
+						<li><a href="{% url blogposts slug='articles' %}" title="Статьи">статьи</a></li>
 					</ul>
 				</div>
 				
@@ -128,13 +129,13 @@
 
 			<div id="footer">
 				<ul id="footer_links">
-					<li class="xl"><a href="javascript://">Как заказать</a>
-					<li class="s"><a href="javascript://">Индивидуальный заказ</a>
-					<li class="l"><a href="javascript://">Доставка</a>
-					<li class="m"><a href="javascript://">Оплата</a>
-					<li class="s"><a href="javascript://">Сотрудничество</a>
-					<li class="xl"><a href="javascript://">Правила</a>
-					<li class="xxl"><a href="javascript://">Контакты</a>
+					<li class="xl"><a href="{% url how-to-order %}">Как заказать</a>
+					<li class="s"><a href="{% url individual-order %}">Индивидуальный заказ</a>
+					<li class="l"><a href="{% url shipping %}">Доставка</a>
+					<li class="m"><a href="{% url payment %}">Оплата</a>
+					<li class="s"><a href="{% url partner %}">Сотрудничество</a>
+					<li class="xl"><a href="{% url rules %}">Правила</a>
+					<li class="xxl"><a href="{% url contacts %}">Контакты</a>
 				</ul>
 			</div>
 		</div>
