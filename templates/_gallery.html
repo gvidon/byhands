@@ -1,0 +1,9 @@
+<div class="gallery">
+	<div id="main_photo"><a href="{{ object.photos.all.0.photo.url }}" class="group" rel="group">
+		<img src="{{ object.thumb_url }}" />
+	</a></div>
+	
+	<div class="thumbs">{% for photo in object.photos.all %}{% if not forloop.first %}
+		<div><a class="group" href="{{ photo.photo.url }}"><img src="{{ photo.photo.url }}_thumb" /></a></div>
+	{% endif %}{% endfor %}</div>
+</div>
