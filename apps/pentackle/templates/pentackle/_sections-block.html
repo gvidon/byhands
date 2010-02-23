@@ -1,0 +1,11 @@
+{% load blocks %}
+
+<h2>Тематика</h2>
+
+<ul>
+	<li><a href="{% url pr-news-list %}">Новости</a></li>
+	<li><a href="{% url pr-school-list %}">Новости школы "Мамочка"</a></li>
+	{% categories "articles" "/pressroom/articles" %}<br/>
+	
+	<li><a class="section-link" href="{% url pr-articles-list %}">Все статьи →</a></li>
+</ul>

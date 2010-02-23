@@ -1,0 +1,13 @@
+{% load dates %}
+
+<h2>Архив за {% now "Y" %} год</h2>
+<ul>
+	{% if url %}
+		{% this_year_months url %}
+	{% else %}	
+		{% this_year_months "/pressroom/articles/" %}
+	{% endif %}
+	<br/>
+	
+	<li><a class="section-link jqModal" href="{% firstof url "/pressroom/articles/" %}/archive">Весь архив →</a></li>
+</ul>

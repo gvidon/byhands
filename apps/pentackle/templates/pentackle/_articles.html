@@ -1,0 +1,18 @@
+{% load dates %}
+
+{% for article in object_list %}
+	<li>
+		{% if article.thumb_url %}<div class="thumb">
+			<img src="{{ article.thumb_url }}" />
+		</div>{% endif %}
+		
+		<h3><a href="{% url article slug=article.slug %}">{{ article.title }}</a></h3>
+		
+		<div class="comment">
+			{{ article.pub_date|date:"d F Y"|ru_months }}
+			{% if article.author %}, {{ article.author }} {% endif %}
+		</div>
+		
+		<p>{{ article.summary|safe }} <a href="/pressroom/{{ article.slug }}">Читать далее&#8594;</a></p>
+	</li>
+{% endfor %}

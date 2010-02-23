@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+{% load pages %}
+{% load dates %}
+
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+
+{% block content %}
+	{% if tag %}
+		<h2 style="margin-bottom: 20px;">Уроки и статьи по тэгу <strong>{{ tag }}</strong></h2>
+	{% else %}
+		<h2 style="margin-bottom: 20px;">{{ section.title }}</h2>
+	{% endif %}
+	
+	{% if month %}<h3>
+		архив {{ month|date:"F Y"|ru_months }}
+		{% ifequal type 'news' %} <a href="/pressroom/news">все материалы</a>{% endifequal %}
+	</h3>{% endif %}
+	
+	<ul class="articles">
+		{% if object_list %}
+			{% include 'pentackle/_articles.html' %}
+		{% else %}
+
+			{% if date_list %}
+				<h3>Нет материалов за указанную дату</h3>
+			{% else %}
+				<h3 style="color: red">По вашем запросу материалов нет</h3>
+			{% endif %}
+
+		{% endif %}
+
+		{% if page_obj.has_other_pages %}
+			<li class="pages">{% pages paginator page_obj request.path %}</li>
+		{% endif %}
+	</ul>
+{% endblock %}

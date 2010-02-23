@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+{% load dates %}
+
+{% block left_navigation %}{% categories_tree %}{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="{{ media_url }}/js/lib/jqModal.js"></script>
+	<script type="text/javascript" src="{{ media_url }}/js/lib/date-format.js"></script>
+	<script type="text/javascript" src="{{ media_url }}/js/comments.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function () {
+			$('div a.group').fancybox({
+				'enableEscapeButton': true,
+				'hideOnContentClick': false,
+			});
+			
+			{% comment %}
+			$('.tpl-full-archive').jqm();
+			Comments.bindTo($('#comment-form'), $('.tpl-comments ul'), '{% now "Y-m-d H:i:s" %}');
+			{% endcomment %}
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	<a href="javascript:history.go(-1)">назад</a>
+	
+	<div class="article">
+		{% include 'pentackle/_article.html' %}
+	</div>
+	
+	{% if object.tags.all %}
+		{% with "article" as type %}
+			{% with object.tags.all as tags %}
+				{% include 'tags/_tags.html' %}
+			{% endwith %}
+		{% endwith %}
+	{% endif %}
+	
+	{% comment %}
+	{% with object.id as entry_id %}{% with "article" as entry_type %}
+		{% with object.comments.all as comments %}
+			{% include 'common/_comments.html' %}
+		{% endwith %}
+	{% endwith %}{% endwith %}
+	{% endcomment %}
+{% endblock %}
