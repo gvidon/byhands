@@ -129,13 +129,13 @@
 
 			<div id="footer">
 				<ul id="footer_links">
-					<li class="xl"><a href="javascript://">Как заказать</a>
-					<li class="s"><a href="javascript://">Индивидуальный заказ</a>
-					<li class="l"><a href="javascript://">Доставка</a>
-					<li class="m"><a href="javascript://">Оплата</a>
-					<li class="s"><a href="javascript://">Сотрудничество</a>
-					<li class="xl"><a href="javascript://">Правила</a>
-					<li class="xxl"><a href="javascript://">Контакты</a>
+					<li class="xl"><a href="{% url how-to-order %}">Как заказать</a>
+					<li class="s"><a href="{% url individual-order %}">Индивидуальный заказ</a>
+					<li class="l"><a href="{% url shipping %}">Доставка</a>
+					<li class="m"><a href="{% url payment %}">Оплата</a>
+					<li class="s"><a href="{% url partner %}">Сотрудничество</a>
+					<li class="xl"><a href="{% url rules %}">Правила</a>
+					<li class="xxl"><a href="{% url contacts %}">Контакты</a>
 				</ul>
 			</div>
 		</div>

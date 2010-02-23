@@ -35,15 +35,9 @@
 	<div style="clear: both;"></div>
 	
 	<div id="i{{ product.id }}" class="product_desc">
-		<div class="gallery">
-			<div id="main_photo"><a href="{{ product.photos.all.0.photo.url }}" class="group" rel="group">
-				<img src="{{ product.thumb_url }}" />
-			</a></div>
-			
-			<div class="thumbs">{% for photo in product.photos.all %}{% if not forloop.first %}
-				<div><a class="group" href="{{ photo.photo.url }}"><img src="{{ photo.photo.url }}_thumb" /></a></div>
-			{% endif %}{% endfor %}</div>
-		</div>
+		{% if product.photos.all %}{% with product as object %}
+			{% include '_gallery.html' %}
+		{% endwith %}{% endif %}
 		
 		<div class="desc">
 			<a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" class="title">

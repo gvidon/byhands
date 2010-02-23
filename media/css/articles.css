@@ -4,9 +4,23 @@
 ul.articles li { margin-top: 24px; }
 	ul.articles li h3 a { font-weight: normal; font-size: 1.1em; }
 	ul.articles li p { margin-top: 7px; }
+	
+	ul.articles li .thumb {
+		float: left;
+		padding: 1px; margin-right: 15px;
+		border: 1px solid #d4ccc4;
+		
+		text-align: center;
+		display: table-cell;
+		vertical-align: center;
+	}
+	
+		ul.articles li .thumb img { width: 100px; }
 
 /* ARTICLE DETAIL */
-div.article { margin-top: 27px; }
+div.article { margin-top: 17px; }
+	div.article p { margin-top: 20px; }
+	div.article .gallery { margin-top: 20px; margin-right: 20px; }
 
 /* TAGS BLOCK */
 div.tags { margin-top: 20px;}
