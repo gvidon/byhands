@@ -41,14 +41,16 @@
 		<input  id="full-date" name="birthdate" type="hidden" />
 		
 		<h2>Изменение учетной записи пользователя</h2>
-		{% if form.is_valid %}
-			<h2 style="margin: 20px; color: #7b1748;">
-				Мы <strong>сохранили</strong> все, что вы указали о себе
-			</h2>
-		{% endif %}
 		
-		<p><span class="required">*</span> - обязательно заполнить</p>
-		<br/><br/>
+		<p><span class="required">* - обязательно заполнить</span></p>
+		<br/>
+		
+		{% if form.is_valid %}
+			<h3 class="message">
+				Мы сохранили все, что вы указали о себе
+			</h3>
+		{% endif %}
+		<br/>
 		
 		<div {% if form.errors.username %}class="erroneus"{% endif %}>
 			<label for="username"><span class="required">*</span>Ваше имя на сайте</label>
