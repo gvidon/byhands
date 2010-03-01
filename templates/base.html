@@ -49,7 +49,7 @@
 		<div id="main" align="center">
 			<div id="head">
 				
-				<div id="logo"><a href="javascript://"><img src="{{ media_url }}/images/logo_1.png" title="ByHands.ru" /></a></div>
+				<div id="logo"><a href="http://byhands.ru"><img src="{{ media_url }}/images/logo_1.png" title="ByHands.ru" /></a></div>
 				
 				<div id="auth">
 					{% if request.user.is_authenticated %}
@@ -73,7 +73,7 @@
 						<li><a href="/shop/" class="{% ifequal request.path "/shop/" %}active{% endifequal %}"" title="Магазин">магазин</a></li>
 						<li><a href="/authors/" title="Авторы">авторы</a></li>
 						<li><a href="{% url blogposts slug='lessons' %}" title="Уроки">уроки</a></li>
-						<li><a href="{% url blogposts slug='articles' %}" title="Статьи">статьи</a></li>
+						<li><a href="{% url blogposts slug='blog' %}" title="Блог"> блог</a></li>
 					</ul>
 				</div>
 				
@@ -86,11 +86,8 @@
 					
 					{% block cart-info %}<div id="cart">
 						{% if cart.price %}
-						<span>{{ cart.price }} р.</span>
-							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_with_price.gif" title="Корзина" style="margin-right: -95px;" /></a>
-							
-							
-							
+							<span>{{ cart.price }} р.</span>
+							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_with_price.gif" title="Корзина" style="margin-right: -95px;" /></a>	
 						{% else %}
 							<span>&nbsp;</span>
 							<a href="{% url candy-cart %}"><img src="{{ media_url }}/images/cart_empty.gif" title="Корзина" style="margin-right: 50px;"/></a>
@@ -110,7 +107,7 @@
 
 					<div id="personal_order">
 						<img src="{{ media_url }}/images/personal_order.gif" style="float:left;"/>
-						<a href="javascript://">персональный<br/>заказ</a>
+						<a href="{% url individual-order %}">персональный<br/>заказ</a>
 					</div>
 	
 				</div>
@@ -130,14 +127,16 @@
 			<div id="footer">
 				<ul id="footer_links">
 					<li class="xl"><a href="{% url how-to-order %}">Как заказать</a>
-					<li class="s"><a href="{% url individual-order %}">Индивидуальный заказ</a>
-					<li class="l"><a href="{% url shipping %}">Доставка</a>
-					<li class="m"><a href="{% url payment %}">Оплата</a>
-					<li class="s"><a href="{% url partner %}">Сотрудничество</a>
-					<li class="xl"><a href="{% url rules %}">Правила</a>
+					<!--<li class="s"><a href="{% url individual-order %}">Индивидуальный заказ</a>-->
+					<li class="s"><a href="{% url shipping %}">Доставка</a>
+					<!--<li class="m"><a href="{% url payment %}">Оплата</a>-->
+					<li class="l"><a href="{% url partner %}">Сотрудничество</a>
+					<!--<li class="xl"><a href="{% url rules %}">Правила</a>-->
 					<li class="xxl"><a href="{% url contacts %}">Контакты</a>
 				</ul>
 			</div>
+			
 		</div>
+		
 	</body>
 </html>

@@ -5,17 +5,17 @@
 <div id="order-form" >
 	<form action="" method="post">
 		
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
-			<label for="name"><span class="required">*</span> Вас зовут:</label>
+		<div {% if form.errors.name %}class="erroneus"{% endif %}>
+			<label for="name"><span class="required">*</span> Вас зовут:</label><br/>
 			<!--<input type="text" name="name" value="" /><br/>
 			<label for="name"><span class="required">*</span>На чье имя доставляем?</label>-->
 			{{ form.name }}
 			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
 		</div>
 		
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %} >
 			<!--<label for="email"><span class="required">*</span>E-mail</label>-->
-			<label for="email"><span class="required">*</span> E-mail:</label>
+			<label for="email"><span class="required">*</span> E-mail:</label><br/>
 			{{ form.email }}
 			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
 			
@@ -25,23 +25,23 @@
 			</span>{% endif %}
 		</div>
 
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
-			<label for="index"><span class="required">*</span> Индекс:</label>
-			<input type="text" name="index" value="" style="width: 60px;"/>
+		<div {% if form.errors.name %}class="erroneus"{% endif %}>
+			<label for="index"><span class="required">*</span> Индекс:</label><br/>
+			<input type="text" name="index" value="" style="width: 70px;"/>
 			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
 		</div>
 
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin: 0;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %}">
 			
-			<label for="city"><span class="required">*</span> Город:</label>
+			<label for="city"><span class="required">*</span> Город:</label><br/>
 			{{ form.city }}
 			
 			<br/><span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 			
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style=" margin-top: 0px;">
-			<label for="address"><span class="required">*</span> Адрес:</label>
+		<div {% if form.errors.name %}class="erroneus"{% endif %}>
+			<label for="address"><span class="required">*</span> Адрес:</label><br/>
 			{{ form.address }}
 			
 			{% if form.errors.address %}
@@ -50,9 +50,9 @@
 		</div>
 	
 	
-		<div {% if form.errors.name %}class="erroneus"{% endif %} style="margin-top: 5px;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<!--<label for="phone"><span class="required">*</span>Контактный телефон</label>-->
-			<label for="pone"><span class="required">*</span> Номер телефона:<br/><span class="comment">(только цифры)</span> </label>
+			<label for="pone"><span class="required">*</span> Номер телефона: <span class="comment"> только цифры</span></label><br/>
 			{{ form.phone }}
 			
 			{% if form.errors.phone %}
@@ -60,9 +60,9 @@
 			{% endif %}
 		</div>
 		
-		<div id="buttons">
+		<div id="buttons" style="padding-left: 20px;">
 			<span class="button">
-				<input type="submit" type="submit" value="Подтверждаю заказ" style="width: 154px;"/>
+				<input type="submit" type="submit" value="Подтверждаю заказ" style="width: 162px;"/>
 			</span>
 		</div>
 		

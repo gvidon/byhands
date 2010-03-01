@@ -13,7 +13,7 @@ html, body {
 
 body {	background: transparent url(../images/yellow_head.gif)  repeat-x; }
 
-p { line-height: 20px; margin-top: 10px; }
+p { line-height: 20px; margin-top: 15px; }
 
 div#main { 	width: 100%; }
 
@@ -30,7 +30,15 @@ h2 {
 	color: /*#9c480a*/#378c8b;
 	font-family: Times New Roman;
 	line-height: 15px; 
-	padding: 0;	margin: 0 0 40px 0;
+	padding: 0;	margin: 0 0 30px 0;
+}
+
+h3 { font-size: 18px; 
+	font-weight: normal;
+	color: /*#9c480a*/#378c8b;
+	font-family: Times New Roman;
+	line-height: 15px; 
+	padding: 0;	margin-top: 30px;
 }
 
 h3.message { font-size: 18px;
@@ -188,7 +196,7 @@ ul.pager li a:hover, ul.pager li.active { background: #f7ba45; color: #ffffff; p
 /* -------------
  --- footer --- */
 
-div#footer { width: 1050px;	padding: 100px 0 0 0; margin: 0; }
+div#footer { width: 1050px;	margin: 200px 100px 0 0 !important; padding: 10px; }
 
 div#footer ul { width: 500px;} 
 

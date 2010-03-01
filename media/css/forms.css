@@ -1,28 +1,33 @@
 /*---- required field -----*/
 span.required { color: #fc5013;}
 
-span.error { padding: 0 0 5px 150px; color:#fc5013; display: block;}
+span.error { padding: 0 0 5px 0; color:#fc5013; display: block;}
 
 input, textarea, select {
 	border: 1px solid #e7990e;
 	color: #3e3838;
 	background-color: #ffffff;
 	font-family: Verdana, Arial;
-	padding: 2px; margin: 5px 0 0 0;
+	padding: 2px 4px 2px 4px; margin: 5px 0 5px 0;
 }
 
-label { float: left; text-align: right;  margin: 0 10px 0 0; padding: 5px 0 0 0;}
+label { 
+		text-align: right;
+		margin: 0 10px 0 0; padding: 18px 0 0 0;
+		font-size: 10pt;
+		font-weight: bold;
+}
 
 textarea { padding: 5px; font-size: 12px;}
 
 input, select {
-	font-size: 0.9em;
-	height: 20px;
+	font-size: 11pt;
+	height: 25px;
 }
 
 
 .boxy-content input[type="button"], .boxy-content input[type="submit"] {
-	 width: 60px; background-color: #f4eec0;
+	 width: 70px; background-color: #f4eec0;
 }
 
 .boxy-content .question p a { font-size: 14pt; }
@@ -47,6 +52,7 @@ span.button input {
 	height: 36px;
     padding: 0 2px 5px 9px; margin: 0;
     border: 0;
+    font-size: 11pt;
 }
 
 #search_form input { width: 120px; }
@@ -54,20 +60,21 @@ span.button input {
 
 .action-note { font-size: 1.4em; margin-top: 20px; }
 
-#order-form, #profile { width: 460px; }
-#order-form label, #profile label { width: 140px; }
-#order-form input, #profile input { width: 300px;  }
+#order-form div, #profile div { margin-bottom: 15px; }
+#order-form, #profile { width: 420px; }
+#order-form label, #profile label { width: 400px; }
+#order-form input, #profile input { width: 400px;  }
 
 
 
 .comment { font-size: 7pt; line-height: 7pt; }
 
-#order-form div {width: 500px;} 
+#order-form div, #profile div {width: 400px;} 
 
 
 
 
 /* ФОРМА ПРОФАЙЛА */
-#profile { width: 460px; }
+#profile { width: 400px; }
 
 

@@ -20,7 +20,7 @@ div#top_nav ul li {
 	style: none;
 	display: inline;
 	
-	margin: 0; padding: 0 0 0 7px;
+	margin: 0; padding: 0 0 0 13px;
 }
 
 div#top_nav ul li a {
@@ -70,12 +70,12 @@ ul#section_nav li {
 	display: inline;
 	margin: 0 0 0 5px;
 	pading: 0;
-	
-	color: #ec8711;
 	font-size: 12px;
 }
 
-ul#section_nav li a { color: #ec8711; }
+ul#section_nav li a { color: #ec8711; font-size: 11pt; color: #ec8711;}
+
+ul#section_nav li a img { vertical-align: middle; margin-bottom :8px; }
 
 
 

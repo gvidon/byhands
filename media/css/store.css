@@ -16,6 +16,8 @@ div#main_photo {
 	vertical-align: middle;
 }
 
+div#main_photo img { vertical-align:middle; }
+
 .desc { width: 600px; float: right; padding-left: 5px;}
 
 .thumbs { width: 150px; margin-top: 10px;}
@@ -45,7 +47,7 @@ div.product_list { width: 790px; float: left; padding: 0 0 0 0; margin: 0;}
 
 div.product_list div.product_desc { width: 390px; float: left; }
 
-div.product_desc div.photo {
+div.product_desc div.photo{
 	width: 152px; height: 152px;
 	padding: 1px; margin: 0;
 	border: 1px solid #d4ccc4;
@@ -53,6 +55,8 @@ div.product_desc div.photo {
 	display: table-cell;
 	vertical-align:middle;
 }
+
+div.product_desc div.photo img{ vertical-align:middle; }
 
 div.product_list div.product_desc div.desc { width: 210px;  padding-left: 5px;}
 
