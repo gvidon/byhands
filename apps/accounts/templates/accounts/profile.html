@@ -36,11 +36,11 @@
 {% endblock %}
 
 {% block content %}
+	<h2>Изменение учетной записи пользователя</h2>
+	
 	<form id="profile" enctype="multipart/form-data" method="post" action="">
 		{{ form.id }}
 		<input  id="full-date" name="birthdate" type="hidden" />
-		
-		<h2>Изменение учетной записи пользователя</h2>
 		
 		<p><span class="required">* - обязательно заполнить</span></p>
 		<br/>
@@ -53,25 +53,25 @@
 		<br/>
 		
 		<div {% if form.errors.username %}class="erroneus"{% endif %}>
-			<label for="username"><span class="required">*</span>Ваше имя на сайте</label>
+			<label for="username"><span class="required">*</span>Ваше имя на сайте</label><br/>
 			{{ form.username }}
 			<span class="error">{{ form.errors.username.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 		<div {% if form.errors.email %}class="erroneus"{% endif %}>
-			<label for="email"><span class="required">*</span>Ваш e-mail</label>
+			<label for="email"><span class="required">*</span>Ваш e-mail</label><br/>
 			{{ form.email }}
 			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 		<div class="name-inputset">
-			<label for="name">Ваше имя</label>
+			<label for="name">Ваше имя</label><br/>
 			
 			<div {% if form.errors.first_name %}class="erroneus"{% endif %}>
 				{{ form.first_name }}
 			</div>
 			
-					<label for="last_name">Ваша фамилия</label>
+			<label for="last_name">Ваша фамилия</label><br/>
 			<div {% if form.errors.last_name %}class="erroneus"{% endif %} style="float: none">
 
 				{{ form.last_name }}
@@ -112,19 +112,19 @@
 		</div>-->
 		
 		<div class="icq {% if form.errors.icq %}erroneus{% endif %}">
-			<label for="icq">Ваш ICQ</label>
+			<label for="icq">Ваш ICQ</label><br/>
 			{{ form.icq }}
 			<span class="error">{{ form.errors.icq.as_text|safe|cut:"*" }}</span>
 		</div>
 		
-		<div class="phone {% if form.errors.phone %}erroneus{% endif %}">
-			<label for="phone">Номер телефона</label>
+		<div class="phone {% if form.errors.phone %}erroneus{% endif %}" style="">
+			<label for="phone">Номер телефона</label><br/>
 			{{ form.phone }}
 			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
 		</div>
 		
 		<div id="buttons">
-				<span class="button" style="position: relative; left: 0;">
+				<span class="button">
 					<input type="submit" type="submit" value="Сохранить" style="width: 100px;"/>
 				</span>
 		</div>

@@ -1,4 +1,4 @@
-.comment { font-size: 0.7em; color: #c4c3bc; }
+.comment { font-size: 0.8em; color: #cccccc; margin-top: 7px; }
 
 /* ARICLES LIST */
 ul.articles li { margin-top: 24px; }
@@ -15,7 +15,7 @@ ul.articles li { margin-top: 24px; }
 		vertical-align: center;
 	}
 	
-		ul.articles li .thumb img { width: 100px; }
+		ul.articles li .thumb img { width: 100px; vertical-align: middle; }
 
 /* ARTICLE DETAIL */
 div.article { margin-top: 17px; }

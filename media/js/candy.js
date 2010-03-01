@@ -72,8 +72,8 @@ Candy = {
 					cartPreview.parent().fadeOut('fast', function() {
 						// заменить серенькую корзину на цветную
 						cartPreview.siblings('a').children('img').attr('src',
-							cartPreview.siblings('a').children('img').attr('src').replace('_empty', '')
-						);
+							cartPreview.siblings('a').children('img').attr('src').replace('_empty', '_with_price')
+						).css('margin-right', '-95px');
 						
 						cartPreview.html(responseText);
 						cartPreview.parent().fadeIn('slow');

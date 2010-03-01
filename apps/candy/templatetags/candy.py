@@ -47,6 +47,9 @@ def categories_tree(current=None):
 #ПУТЬ ИЗ КОРНЯ КАТЕГОРИЙ К ТЕКУЩЕЙ
 @register.inclusion_tag('candy/_category-parents.html')
 def category_parents(current):
+	
+	media_url = settings.MEDIA_URL
+	
 	try:
 		parents = [current]
 		

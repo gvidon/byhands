@@ -14,8 +14,8 @@
 			</a>
 		</div>
 		
-		<div class="photo"><a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}">
-			<img src="{{ product.thumb_url }}" title="{{ product.title }}" />
+		<div class="photo"><a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" >
+			<img src="{{ product.thumb_url }}" title="{{ product.title }}"/>
 		</a></div>
 	</div>
 {% endfor %}
