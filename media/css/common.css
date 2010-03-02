@@ -196,7 +196,7 @@ ul.pager li a:hover, ul.pager li.active { background: #f7ba45; color: #ffffff; p
 /* -------------
  --- footer --- */
 
-div#footer { width: 1050px;	margin: 200px 100px 0 0 !important; padding: 10px; }
+div#footer { width: 1050px;	margin: 100px 100px 0 0 !important; padding: 10px; }
 
 div#footer ul { width: 500px;} 
 

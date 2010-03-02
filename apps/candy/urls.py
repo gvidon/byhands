@@ -8,7 +8,7 @@ from views                            import *
 
 urlpatterns = patterns('',
 	# главная - топовые товары и лист категорий
-	url(r'^$'                                                          , featured   , name='candy'),
+	url(r'^/?$'                                                        , featured   , name='candy'),
 	
 	# просмотр и управление корзиной
 	url(r'^cart/?$'                                                    , cart       , name='candy-cart'),

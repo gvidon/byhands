@@ -15,9 +15,9 @@ urlpatterns = patterns('',
 	
 	url(r'^(?P<type>(articles|products)?)/by\-tag/(?P<tag>[\w\-_\!\s]+)', search, name='by-tag'),
 	
+	url(r'^'       , include('staticpages.urls')),
 	url(r'^'       , include('accounts.urls')),
 	url(r'^'       , include('pentackle.urls')),
-	url(r'^'       , include('staticpages.urls')),
 )
 
 urlpatterns += patterns('',
