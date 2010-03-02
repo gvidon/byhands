@@ -13,6 +13,6 @@
 			{% if article.author %}, {{ article.author }} {% endif %}
 		</div>
 		
-		<p>{{ article.summary|safe }} <a href="/blog/article/{{ article.slug }}">Читать далее&#8594;</a></p>
+		<p>{{ article.summary|safe }} <a href="{% url article slug=article.slug %}">Читать далее&#8594;</a></p>
 	</li>
 {% endfor %}

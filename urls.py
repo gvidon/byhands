@@ -8,18 +8,18 @@ from tags.views                import search
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	url('^admin/?(.*)', admin.site.root),
+)
+
+urlpatterns += patterns('',
 	url(r'^/?$'    , form, name='contactus'),
 	
 	url(r'^search/', include('search.urls')),
-	url(r'^shop/'  , include('candy.urls')),
-	
-	url(r'^(?P<type>(articles|products)?)/by\-tag/(?P<tag>[\w\-_\!\s]+)', search, name='by-tag'),
+	url(r'^shop'   , include('candy.urls')),
 	
 	url(r'^'       , include('staticpages.urls')),
 	url(r'^'       , include('accounts.urls')),
 	url(r'^'       , include('pentackle.urls')),
-)
-
-urlpatterns += patterns('',
-	url('^admin/(.*)', admin.site.root),
+	
+	url(r'^(?P<type>(articles|products)?)/by\-tag/(?P<tag>[\w\-_\!\s]+)', search, name='by-tag'),
 )

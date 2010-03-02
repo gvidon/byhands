@@ -18,7 +18,7 @@
 	<p>Вы оформили заказ (#{{ order.id }})
 	на общую сумму <strong>{{ order.sum }} р.</strong> Теперь необходимо 
 	определить условия оплаты и получения заказа. Мы свяжемся с вами по телефону
-	<strong>+7 {{ order.phone }}</strong> или по email <strong>{{ order.email }}</strong></p>
+	<strong>{{ order.phone }}</strong> или по email <strong>{{ order.email }}</strong></p>
 	
 	{% if not request.is_authenticated %}<p>
 		Чтобы отслеживать состояние вашего заказа активируйте вашу учетную запись на

@@ -34,8 +34,8 @@ def register_inactive(username, email, first_name='', last_name='', surname=None
 	)
 	
 	# send HTML email to newly registered user
-	#user.get_profile().send_email('Активация учетной записи на byhands.ru',
-	#	render_to_string('mail/register.html', { 'code': md5hash.hexdigest() }).encode('utf8')
-	#)
+	user.get_profile().send_email('Активация учетной записи на byhands.ru',
+		render_to_string('mail/register.html', { 'code': md5hash.hexdigest() }).encode('utf8')
+	)
 	
 	return user

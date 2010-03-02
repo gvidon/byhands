@@ -21,7 +21,7 @@ def assert_length(value, length):
 #ADDITIONAL USER ATTRIBUTES AND FLAGS
 class ProfileForm(forms.Form):
 
-	id         = forms.IntegerField(required=False, widget=forms.HiddenInput())
+	id = forms.IntegerField(required=False, widget=forms.HiddenInput())
 
 	username   = forms.CharField(min_length=2, max_length=64, error_messages={
 		'required'  : MESSAGES['required'],

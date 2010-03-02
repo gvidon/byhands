@@ -9,4 +9,5 @@ urlpatterns = patterns('django.views.generic.simple',
 	url(r'^partner/?$'         , 'direct_to_template', {'template': 'staticpages/partner.html'}   , name='partner'),
 	url(r'^rules/?$'           , 'direct_to_template', {'template': 'staticpages/rules.html'}     , name='rules'),
 	url(r'^contacts/?$'        , 'direct_to_template', {'template': 'staticpages/contacts.html'}  , name='contacts'),
+	url(r'^authors/?$'         , 'direct_to_template', {'template': 'staticpages/authors.html'}   , name='authors'),
 )

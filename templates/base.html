@@ -71,9 +71,9 @@
 				<div id="top_nav">
 					<ul>
 						<li><a href="/shop/" class="{% ifequal request.path "/shop/" %}active{% endifequal %}"" title="Магазин">магазин</a></li>
-						<li><a href="/authors/" title="Авторы">авторы</a></li>
-						<li><a href="{% url blogposts slug='lessons' %}" title="Уроки">уроки</a></li>
-						<li><a href="{% url blogposts slug='blog' %}" title="Блог"> блог</a></li>
+						<li><a href="{% url authors %}" title="Авторы">авторы</a></li>
+						<li><a href="{% url blogposts slug="lessons" %}" title="Уроки">уроки</a></li>
+						<li><a href="{% url blogposts slug="blog" %}" title="Блог"> блог</a></li>
 					</ul>
 				</div>
 				

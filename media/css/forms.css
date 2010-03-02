@@ -27,7 +27,7 @@ input, select {
 
 
 .boxy-content input[type="button"], .boxy-content input[type="submit"] {
-	 width: 70px; background-color: #f4eec0;
+	 width: 75px; background-color: #f4eec0;
 }
 
 .boxy-content .question p a { font-size: 14pt; }

@@ -15,7 +15,7 @@
 			
 			<div {% if error %}class="erroneus"{% endif %} style="width: 505px; margin-top: 30px;">
 				<label for="email" style="margin-top: 3px;">Ваш <strong>e-mail</strong>:</label>
-				<input id="email" name="email" type="text" value="{{ request.POST.email }}" style="width: 250px; margin: 2px;" />
+				<input id="email" name="email" type="text" value="{{ request.POST.email }}" style="width: 240px; margin: 2px;" />
 				<span class="button"><input type="submit" value="Восстановить" /></span><br/>
 				<span class="error">{{ error }}</span>
 			</div>
