@@ -63,7 +63,7 @@ span.button input {
 #order-form div, #profile div { margin-bottom: 15px; }
 #order-form, #profile { width: 420px; }
 #order-form label, #profile label { width: 400px; }
-#order-form input, #profile input { width: 400px;  }
+#order-form input, #profile input[type="text"], #profile textarea { width: 400px;  }
 
 
 

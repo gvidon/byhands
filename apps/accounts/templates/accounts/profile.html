@@ -78,7 +78,7 @@
 			</div>
 		</div>
 		
-		<!--<div class="date-inputset" {% if form.errors.birthdate %}class="erroneus"{% endif %}>
+		{% comment %}<div class="date-inputset" {% if form.errors.birthdate %}class="erroneus"{% endif %}>
 			<label for="birthdate">Дата вашего рождения</label>
 			
 			<div {% if form.errors.birthdate %}class="erroneus"{% endif %}>
@@ -109,7 +109,7 @@
 				<input id="birthyear" type="text" name="year" maxlength="4" />
 				<span class="comment">год, например 1985</span>
 			</div>
-		</div>-->
+		</div>{% endcomment %}
 		
 		<div class="icq {% if form.errors.icq %}erroneus{% endif %}">
 			<label for="icq">Ваш ICQ</label><br/>
