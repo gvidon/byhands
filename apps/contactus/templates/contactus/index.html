@@ -1,140 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% extends 'base.html' %}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>ByHands: скоро открытие</title>
-		
-		<style type="text/css">
-			body {
-				font: normal .775em/1.42em Tahoma, Verdana, sans-serif; color: gray;
-				margin-left: 25%;
-			}
-			
-			h1 { font: normal 2em Tahoma, Verdana, sans-serif; color: #377f9d }
-			
-			p {
-				font: normal 1.12em Tahoma, Verdana, sans-serif; color: gray;
-				line-height: 22px;
-			}
-			
-			.error { color: #7d2d2d; }
-			
-			#intro {
-				width: 540px;
-			}
-			
-			form {
-				margin-top: 40px;
-			}
-			
-			form div.error {
-				padding-bottom: 0px;
-				margin-left: 20px; margin-bottom: 20px;
-				font-size: 1.1em;
-			}
-				
-			form div { padding-bottom: 40px; }
-				
-				form div label {
-					color: #3a5ea0;
-					display: block;
-					font: normal 1.2em Tahoma, Verdana, sans-serif;
-				}
-				
-				form div input {
-					width: 440px;
-					height: 25px;
-					color: #47472A;
-					display: block;
-					padding: 0px 2px;
-					border: solid #1d5a16 1px;
-					background-color: #ecffec;
-					font-size: 20px;
-				}
-				
-				form div textarea {
-					width: 440px;
-					height: 100px;
-					display: block;
-					border: solid #1d5a16 1px;
-					background-color: #ecffec;
-				}
-				
-				form div .error {
-					font-size: 0.9em;
-				}
-				
-				form .erroneus input, form .erroneus textarea {
-					border: solid red 2px;
-					background-color: #ffbaba;
-				}
-		</style>
-	</head>
+{% load pages %}
+{% load candy %}
+
+{% block left_navigation %}{% categories_tree '' %}{% endblock %}
+
+{% block content %}
+	<h2>Сотрудничество</h2>
 	
-	<body>
-		<div id="intro">
-			<img src="http://media.itodo.ru/images/byhands/logo.jpg" />
-			
-			<p>ByHands.ru - это электронный хэндмэйд-магазин. Если вы что-то делаете своими руками
-			и хотите продать это - мы готовы к сотрудничеству с вами.</p>
-			
-			<p>Мы выбираем лучшие работы лучших хэндмейдеров для того, чтобы выставить их
-			в нашем магазине.</p>
-			
-			<p><strong>Заполните эту форму</strong>, чтобы мы знали, что Вы умеете и как Вас найти.
-			Или присылайте информацию о себе в свободной форме на
-			<a href="mailto:info.byhands@gmail.com">info.byhands@gmail.com</a>.</p>
+	<h3>Ваши работы на ByHands.ru</h3>
+	
+	<p>В каталоге ByHands.ru выкладываются работы мастеров, занимающихся самыми разными
+	видами творчества, проживающие в разных городах.</p>
+	
+	<p>Если вы хотите присоединиться к нашей творческой компании, просто заполните форму,
+	которая находится немного ниже, чтобы мы узнали о вас и о том, чем вы занимаетесь,
+	или присылайте информацию о себе в свободной форме на <a href="info@byhands.ru">info@byhands.ru</a>.</p>
+
+	<p>Мы хотим заранее предупредить, что перед тем как попасть в каталог, фотографии работ
+	обрабатываются и модерируются ( исключительно по субъективному мнению администратора сайта).
+	Это делается для того, чтобы каталог "не засорялся" "ненужными" и некачественными фотографиями.
+	Надеемся, что вы отнесетесь к этому с пониманием и без обид.</p>
+	
+	<h3>Авторство.</h3>
+	
+	<p>Для каждой работы в каталоге ( при желании ) указывается автор. Список всех авторов есть
+	в соответвующем разделе сайта.</p>
+	
+	<h3>Хотите поделиться своими знаниями и умениями?</h3>
+	
+	<p>Помимо того, что вы можете выставить свои работы в каталоге, вы можете подготовить
+	материал для раздела "Уроки". Это может быть описание процесса создания какой-нибудь
+	интересной вещи, фото- или видеоматериал.</p>
+	
+	<h3>Анкета нового автора.</h3>
+	
+	<form id="profile" action="#form" method="post" style="margin-top: 20px;">
+		<div {% if form.errors.name %}class="erroneus"{% endif %}>
+			<a name="form" style="color: black;"><label for="name">Ваше имя</label></a>
+			{{ form.name }}
+			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
 		</div>
 		
-		<form action="#form" method="post">			
-			<div {% if form.errors.name %}class="erroneus"{% endif %}>
-				<a name="form"><label for="name">Ваше имя</label></a>
-				{{ form.name }}
-				<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			<div {% if form.errors.city %}class="erroneus"{% endif %}>
-				<label for="city">Город, в котором вы живете</label>
-				{{ form.city }}
-				<span class="error">{{ form.errors.city.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			{% for error in form.non_field_errors %}
-				<div class="error">{{ error|safe }}</div>
-			{% endfor %}
-			
-			<div {% if form.errors.icq %}class="erroneus"{% endif %}>
-				<label for="icq">ICQ</label>
-				{{ form.icq }}
-				<span class="error">{{ form.errors.icq.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			<div {% if form.errors.email %}class="erroneus"{% endif %}>
-				<label for="email">Ваш email</label>
-				{{ form.email }}
-				<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			<div {% if form.errors.phone %}class="erroneus"{% endif %}>
-				<label for="phone">Можно еще телефон оставить</label>
-				{{ form.phone }}
-				<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			<div {% if form.errors.craft %}class="erroneus"{% endif %}>
-				<label for="craft">Коротко о том, что вы можете</label>
-				{{ form.craft }}
-				<span class="error">{{ form.errors.craft.as_text|safe|cut:"*" }}</span>
-			</div>
-			
-			<div>
-				<label for="is_customable">А на заказ что-то сможете?</label>
-				{{ form.is_customable }}
-			</div>
-			
-			<input type="submit" value="Отправить" />
-		</form>
-	</body>
-</html>
+		<div {% if form.errors.city %}class="erroneus"{% endif %}>
+			<label for="city">Город, в котором вы живете</label>
+			{{ form.city }}
+			<span class="error">{{ form.errors.city.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		{% for error in form.non_field_errors %}
+			<span class="error">{{ error|safe }}</span>
+		{% endfor %}
+		
+		<div {% if form.errors.icq %}class="erroneus"{% endif %}>
+			<label for="icq">ICQ</label>
+			{{ form.icq }}
+			<span class="error">{{ form.errors.icq.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div {% if form.errors.email %}class="erroneus"{% endif %}>
+			<label for="email">Ваш email</label>
+			{{ form.email }}
+			<span class="error">{{ form.errors.email.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div {% if form.errors.phone %}class="erroneus"{% endif %}>
+			<label for="phone">Можно еще телефон оставить</label>
+			{{ form.phone }}
+			<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div {% if form.errors.craft %}class="erroneus"{% endif %}>
+			<label for="craft">Коротко о том, что вы можете</label>
+			{{ form.craft }}
+			<span class="error">{{ form.errors.craft.as_text|safe|cut:"*" }}</span>
+		</div>
+		
+		<div>
+			<label for="is_customable">А на заказ что-то сможете?</label>
+			{{ form.is_customable }}
+		</div>
+		
+		<div id="buttons">
+				<span class="button">
+					<input type="submit" type="submit" value="Отправить" />
+				</span>
+		</div>
+	</form>
+{% endblock %}
