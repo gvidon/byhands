@@ -22,9 +22,8 @@
 {% block left_navigation %}{% categories_tree category %}{% endblock %}
 
 {% block content %}
-	{% if object_list %}
 		<ul id="section_nav">{% category_parents category %}</ul>
-		
+	{% if object_list %}
 		<div style="clear: both;"></div>
 		
 		<div class="product_list">{% with object_list as products %}
@@ -35,6 +34,6 @@
 			<div class="pages">{% pages paginator page_obj request.path %}</div>
 		{% endif %}
 	{% else %}
-		<h2 style="margin-top: 10%">К сожалению категория пока пуста</h2>
+		<h3 class="empty">Категория пока пуста</h2>
 	{% endif %}
 {% endblock %}

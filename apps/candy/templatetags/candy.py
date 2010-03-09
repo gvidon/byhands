@@ -24,14 +24,14 @@ def categories_tree(current=None):
 	
 	# рендерит дерево
 	def render(tree, current, sub=False):
-		return '<ul class="%s">%s</ul>'%(sub and 'left_submenu', ('').join(['<li>%s</li>'%(
+		return '<ul class="%s">%s</ul>'%(sub and 'left_submenu' or '', ('').join(['<li>%s</li>'%(
 			isinstance(category, list) and render(category, current, True)
 				or '<a href="%s" class="%s">%s</a>'%(
 					reverse('candy-category', args=[category.path()]),
 					category == current and 'active' or '',
 					category.title
 				)
-		) for category in tree]))
+		) for category in tree if category]))
 	
 	try:
 		parents = [current]

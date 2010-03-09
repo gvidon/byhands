@@ -47,6 +47,13 @@ h3.message { font-size: 18px;
 			padding: 10px 15px 10px 15px;
 }
 
+h3.empty {	font-size: 18px;
+			font-weight: normal;
+			font-family: Verdana;
+			color: #f9b7aa;
+			margin-left: 5px;
+}
+
 a { font-size: 12px; color: #327fc0; }
 
 a:hover, a.active { text-decoration: none; }
@@ -167,8 +174,9 @@ div#personal_order img {float: left; margin-right: 10px;}
 div#central_part {
 	width: 790px;
 	float: left;
-	padding: 20px 50px 0 0; margin-left: 35px;
+	padding: 20px 50px 0 0; margin: 0 0 0 35px;
 	text-align: left;
+	vertical-align: top;
 }
 
 
