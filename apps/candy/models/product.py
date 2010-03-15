@@ -18,6 +18,8 @@ class Product(models.Model):
 	
 	size        = models.CharField(u'Размеры', help_text='в произвольной форме', max_length=64, blank=True, null=True)
 	madeof      = models.CharField(u'Материал', max_length=64, blank=True, null=True)
+	
+	owner_price = models.FloatField(u'Цена автора', blank=True, null=True)
 	price       = models.FloatField(u'Цена')
 	
 	#ССЫЛКА НА ТУМБ
