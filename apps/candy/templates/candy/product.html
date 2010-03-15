@@ -3,6 +3,8 @@
 {% load dates %}
 {% load candy %}
 
+{% block title %}ByHands.ru {{ product.title }}{% endblock %}
+
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.fancybox.js"></script>
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.boxy.js"></script>
@@ -46,6 +48,11 @@
 			
 			{% if product.madeof %}<strong>Материал:</strong> {{ product.madeof }}<br/><br/>{% endif %}
 			{% if product.size %}<strong>Размер:</strong> {{ product.size }}<br/><br/>{% endif %}
+			
+			{% if product.author.first_name or product.author.last_name %}
+				<strong>Автор:</strong> {{ product.author.first_name }} {{ product.author.last_name }}<br/><br/>
+			{% endif %}
+			
 			{{ product.description|safe }}<br/><br/>
 			<strong>Цена:</strong> {{ product.price }} p.<br/><br/>
 			

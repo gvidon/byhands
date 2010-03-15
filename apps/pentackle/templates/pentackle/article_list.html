@@ -4,6 +4,8 @@
 {% load pages %}
 {% load dates %}
 
+{% block title %}ByHands.ru {% firstof section.title tag %}{% endblock %}
+
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 
 {% block content %}
