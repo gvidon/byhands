@@ -53,16 +53,16 @@
 				
 				<div id="auth">
 					{% if request.user.is_authenticated %}
-						<p>Здравствуйте, <strong>{{ request.user.username }}</strong>!</p>
+						<span>Здравствуйте, <strong>{{ request.user.username }}</strong> !</span>
 						
 						<ul style="margin-top: 4px;">
-							<li class="first"><a href="{% url profile %}">Профиль</a></li>
-							<li><a href="{% url candy-orders %}"><strong>Заказы</strong></a></li>
-							<li><a href="{% url logout %}">Выйти</a></li>
+							<li class="first"><a href="{% url profile %}">профиль</a></li>
+							<li><a href="{% url candy-orders %}" style="font-size: 1.2em;">заказы</a></li>
+							<li><a href="{% url logout %}">выйти</a></li>
 						</ul>
 					{% else %}
 						<ul>
-							<li class="first"><a id="login" href="#" style="font-size: 1.4em;">войти</a></li>
+							<li class="first"><a id="login" href="#" style="font-size: 1.2em;">войти</a></li>
 							<li><a href="{% url recover %}">вспомнить пароль</a></li>
 						</ul>
 					{% endif %}
