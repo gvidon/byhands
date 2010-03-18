@@ -1,0 +1,20 @@
+div.authors_list { width: 790px; float: left; padding: 0 0 0 0; margin: 0;}
+
+div.authors_list div.author_desc { width: 390px; float: left; margin-bottom: 50px; }
+
+div.author_desc div.photo{
+	width: 82px; height: 82px;
+	padding: 1px; margin: 0;
+	border: 1px solid #d4ccc4;
+	text-align: center;
+	display: table-cell;
+	vertical-align:middle;
+}
+
+div.author_desc div.photo img{ vertical-align: middle; }
+
+div.authors_list div.author_desc div.desc { width: 280px;  padding-left: 5px;}
+
+div.authors_list p {  width: 240px; line-height: 16px; margin: 0 0 10px 0; font-size: 8pt; }
+
+div.authors_list h3 { margin: 0 0 10px 0; }
