@@ -1,7 +1,7 @@
 .comment { font-size: 0.8em; color: #cccccc; margin-top: 7px; }
 
 /* ARICLES LIST */
-ul.articles li { margin-top: 24px; }
+ul.articles li { margin-bottom: 48px;  }
 	ul.articles li h3 a { font-weight: normal; font-size: 1.1em; }
 	ul.articles li p { margin-top: 7px; }
 	

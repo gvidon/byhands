@@ -29,7 +29,18 @@
 {% endblock %}
 
 {% block content %}
-	<a href="javascript:history.go(-1)">назад</a>
+
+	<ul id="section_nav">
+		<li>
+			<a href="http://byhands.ru"><img src="{{ media_url }}/images/home.gif" height="23"/></a>
+		</li>
+		<li>
+			<img src="{{ media_url }}/images/arrow.gif" />
+		</li>
+		<li>
+			<a href="javascript:history.go(-1)">назад</a>
+		</li>
+	</ul>
 	
 	<div class="article">
 		{% include 'pentackle/_article.html' %}

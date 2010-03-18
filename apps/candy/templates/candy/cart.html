@@ -49,7 +49,7 @@
 						<td width="30%" class="title">
 							{{ forloop.counter }}.&nbsp;
 							<a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}" class="title">
-								"{{ item.title|capfirst }}"
+								{{ item.title|capfirst }}
 							</a>
 						</td>
 						
