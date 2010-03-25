@@ -9,7 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
 	pass
 	
 class OrderAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('id', 'created_at', 'is_paid', 'is_delivered', 'sum')
 	
 class OrderItemAdmin(admin.ModelAdmin):
 	pass

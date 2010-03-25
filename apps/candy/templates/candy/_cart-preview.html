@@ -4,7 +4,7 @@
 		{% ifnotequal item.quantity 1 %}<strong>{{ item.quantity }}</strong>{% endifnotequal %}<br/>
 		
 		<a href="{% url candy-remove-item id=item.id %}" class="comment remove-from-cart">удалить</a>
-		<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+		<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
 	</li>
 	
 	{% if forloop.last %}
@@ -13,7 +13,7 @@
 			{% ifnotequal forloop.counter 1  %}
 				<a class="clear-cart" href="{% url candy-clear-cart %}">очистить</a>
 			{% endifnotequal %}
-			<img class="ajax-loader" src="{{ media_url }}/images/ajax-loader.gif" />
+			<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
 		</li>
 	{% endif %}
 {% endfor %}{% else %}<li>Корзина пуста</li>{% endif %}

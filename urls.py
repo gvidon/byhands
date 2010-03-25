@@ -12,11 +12,10 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-	url(r'^/?$'    , form, name='contactus'),
-	
+	url(r'^contactus/?$', form, name='contactus'),	
 	url(r'^search/', include('search.urls')),
-	url(r'^shop'   , include('candy.urls')),
 	
+	url(r'^'       , include('candy.urls')),
 	url(r'^'       , include('staticpages.urls')),
 	url(r'^'       , include('accounts.urls')),
 	url(r'^'       , include('pentackle.urls')),

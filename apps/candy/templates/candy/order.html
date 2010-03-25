@@ -6,11 +6,11 @@
 {% block title %}ByHands.ru Просмотр заказа{% endblock %}
 
 {% block css %}
-		<link rel="stylesheet" type="text/css" href="{{ media_url }}/css/pages/profile.css" />
+		<link rel="stylesheet" type="text/css" href="{{ media_url }}css/pages/profile.css" />
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
+	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.keyfilter.min.js"></script>
 	
 	<script type="text/javascript">	
 		$(document).ready(function () { $('#phone').keyfilter(/[\d]/); });
@@ -39,8 +39,4 @@
 		{% if order.is_paid %}оплачен{% endif %}
 		{% if order.is_delivered %}доставлен{% endif %}
 	</div>
-	
-	{% if order.is_confirmed and not order.is_paid and not order.is_delivered %}
-		<h2 style="margin-top: 40px;"><a href="">отменить заказ</a></h2>
-	{% endif %}
 {% endblock %}
