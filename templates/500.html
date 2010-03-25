@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+
+{% block title %}ByHands.ru Страница не найдена{% endblock %}
+{% block left_navigation %}{% categories_tree '' %}{% endblock %}
+
+{% block content %}
+	<h2>Все поломалось!</h2>
+	
+	<p style="width: 70%;">В работе нашего сайта произошла ошибка при обработке
+	вашего запроса. Пожалуйста, повторите запрос чуть позже.</p>
+	
+	<p style="width: 70%;">Если ошибка повторяется, пожалуйста свяжитесь с нами
+	по email <a href="mailto:info@byhands.ru?subject=critical-bug">info@byhands.ru</a>.</p>
+{% endblock %}

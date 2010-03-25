@@ -65,7 +65,7 @@ Candy = {
 			
 			Boxy.ask(
 				'<p><strong>'+$.trim($('#'+itemId+' .desc .title').html())+'</strong> добавлен в\
-				корзину. Теперь можно <a href="/shop/cart">оформить заказ</a>.</p>',
+				корзину. Теперь можно <a href="/cart">оформить заказ</a>.</p>',
 				['закрыть'],
 				
 				function() {

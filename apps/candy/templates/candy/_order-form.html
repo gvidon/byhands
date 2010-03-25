@@ -24,12 +24,14 @@
 				воспользоваться этим email.
 			</span>{% endif %}
 		</div>
-
+		
+		{% comment %}
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<label for="index"><span class="required">*</span> Индекс:</label><br/>
 			<input type="text" name="index" value="" style="width: 70px;"/>
 			<span class="error">{{ form.errors.zip.as_text|safe|cut:"*" }}</span>
 		</div>
+		{% endcomment %}
 
 		<div {% if form.errors.name %}class="erroneus"{% endif %}">
 			

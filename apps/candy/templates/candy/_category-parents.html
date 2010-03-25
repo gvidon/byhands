@@ -1,7 +1,7 @@
-<li><a href="http://byhands.ru"><img src="{{ media_url }}/images/home.gif" height="23"/></a></li>
-<li><img src="{{ media_url }}/images/arrow.gif" /></li>
+<li><a href="http://byhands.ru"><img src="{{ media_url }}images/home.gif" height="23"/></a></li>
+<li><img src="{{ media_url }}images/arrow.gif" /></li>
 
 {% for category in parents %}{% if category %}
 	<li><a href="{% url candy-category slug=category.path %}">{{ category.title }}</a></li>
-	{% if not forloop.last %}<li><img src="{{ media_url }}/images/arrow.gif" /></li>{% endif %}
+	{% if not forloop.last %}<li><img src="{{ media_url }}images/arrow.gif" /></li>{% endif %}
 {% endif %}{% endfor %}
