@@ -34,12 +34,24 @@
 		<li>
 			<a href="http://byhands.ru"><img src="{{ media_url }}/images/home.gif" height="23"/></a>
 		</li>
+		
 		<li>
 			<img src="{{ media_url }}/images/arrow.gif" />
 		</li>
+		
 		<li>
-			<a href="javascript:history.go(-1)">назад</a>
+			{% ifequal object.sections.all.0.slug 'blog' %}
+				<a href="{% url blogposts slug="blog" %}">Блог</a>
+			{% else %}
+				<a href="{% url blogposts slug="lessons" %}">Уроки</a>
+			{% endifequal %}
 		</li>
+		
+		<li>
+			<img src="{{ media_url }}/images/arrow.gif" />
+		</li>
+		
+		<li>{{ object.title|capfirst }}</li>
 	</ul>
 	
 	<div class="article">
