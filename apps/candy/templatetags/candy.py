@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.conf              import settings
 from django                   import template
 
-from apps.candy.models        import Category, Order
+from apps.candy.models        import Category, Order, Product
 
 register = template.Library()
 
@@ -46,7 +46,7 @@ def categories_tree(current=None):
 
 #ПУТЬ ИЗ КОРНЯ КАТЕГОРИЙ К ТЕКУЩЕЙ
 @register.inclusion_tag('candy/_category-parents.html')
-def category_parents(current):
+def category_parents(current, product=None):
 	
 	media_url = settings.MEDIA_URL
 	
