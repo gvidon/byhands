@@ -32,7 +32,7 @@ class OrderForm(forms.Form):
 	})
 	
 	phone = forms.IntegerField(widget=forms.TextInput(attrs={
-		'maxlength': 10
+		'maxlength': 12
 	}), error_messages={
 		'invalid'  : u'Тут могут быть только 10 цифр (например 9181234567) без пробелов и без "-".',
 		'required' : u'А где же телефон?',

@@ -10,23 +10,23 @@ from django.db                  import models
 
 #ADDITIONAL USER ATTRIBUTES AND FLAGS
 class Profile(models.Model):
-	user       = models.ForeignKey(User)
-	avatar     = models.ImageField(upload_to='upload/avatars', blank=True, null=True)
+	user      = models.ForeignKey(User)
+	avatar    = models.ImageField(upload_to='upload/avatars', blank=True, null=True)
 	
-	auth_type  = models.CharField(max_length=6, choices=(
+	auth_type = models.CharField(max_length=6, choices=(
 		('Local' , 'local'),
 		('OpenId', 'openid'),
 	), blank=True, default='local')
 	
-	sur_name   = models.CharField(max_length=64, blank=True, null=True)
+	sur_name  = models.CharField(max_length=64, blank=True, null=True)
 	
-	gender     = models.CharField(max_length=6, choices=[
+	gender    = models.CharField(max_length=6, choices=[
 		('male', u'Мужской'), ('female', u'Женский')
 	], blank=True, null=True)
 	
-	birthdate  = models.DateTimeField(blank=True, null=True)
-	phone      = models.CharField(max_length=10, blank=True, null=True)
-	icq        = models.CharField(max_length=12, blank=True, null=True)
+	birthdate = models.DateTimeField(blank=True, null=True)
+	phone     = models.CharField(max_length=16, blank=True, null=True)
+	icq       = models.CharField(max_length=16, blank=True, null=True)
 	
 	#SEND CUSTOM EMAIL FROM SYSTEM TO USER
 	def send_email(self, subject, message):

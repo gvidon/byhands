@@ -70,7 +70,7 @@ class ProfileForm(forms.Form):
 	}, min_length=4, max_length=6)
 	
 	phone      = forms.IntegerField(required=False, widget=forms.TextInput(attrs={
-		'maxlength': 10
+		'maxlength': 12
 	}), error_messages={
 		'invalid'  : u'Тут могут быть только цифры без пробелов и без "-".',
 	})
@@ -117,4 +117,4 @@ class ProfileForm(forms.Form):
 	#VALIDATE PHONE LENGTH
 	def clean_phone(self):
 		if self.cleaned_data.get('phone'):
-			return assert_length(self.cleaned_data.get('phone'), 10)
+			return assert_length(self.cleaned_data.get('phone'), 11)

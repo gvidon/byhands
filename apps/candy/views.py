@@ -122,10 +122,7 @@ def order(request, id=None):
 			form = OrderForm(auto_id='%s', initial={
 				'name'   : request.user.first_name+' '+request.user.last_name,
 				'email'  : request.user.email,
-				
-				#'phone'  : request.user.get_profile() and request.user.get_profile().phone or None,
-				'phone'  : None,
-			
+				'phone'  : request.user.get_profile() and request.user.get_profile().phone or None,
 				'city'   : last_order and last_order.city,
 				'address': last_order and last_order.address,
 				'phone'  : last_order and last_order.phone
@@ -151,6 +148,10 @@ def order(request, id=None):
 						form.cleaned_data['email'][0:form.cleaned_data['email'].index('@')],
 						form.cleaned_data['email']
 					)
+			
+			# такое может быть с пользователя, с пустым email
+			except User.MultipleObjectsReturned:
+				pass
 			
 			# сохранение заказа
 			if form.is_valid() and not locals().get('auth_error'):
