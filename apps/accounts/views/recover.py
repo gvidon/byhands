@@ -46,7 +46,7 @@ def confirm(request, code):
 def form(request):
 	if request.POST:
 		try:
-			user = User.objects.get(email=request.POST['email'])
+			user = User.objects.get(email=request.POST['email'] or request.POST['raise-keyerror'])
 			code = hashlib.md5(str(random.random())).hexdigest()
 			
 			Activation.objects.create(user=user, type='password', code=code)
