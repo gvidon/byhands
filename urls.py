@@ -6,6 +6,7 @@ from contactus.views           import form
 from tags.views                import search
 
 admin.autodiscover()
+handler500 = 'staticpages.views.error_handler'
 
 urlpatterns = patterns('',
 	url('^admin/?(.*)', admin.site.root),
