@@ -23,8 +23,10 @@ Candy = {
 				cartPreview,
 			
 				function() { new Boxy(
-					'<p style="width: 300px; font-size: 0.91em;">Вы уже совершали у нас заказы? Введите email и\
-					пароль, который мы вам отправляли. Если нет - просто <a href="'+orderURL+'">продолжите</a></p>\
+					'<p style="width: 300px; font-size: 0.91em;">Если это Ваш <strong>первый заказ</strong>, то  для перехода на следующий шаг&nbsp;\
+					 <a style="font-size: 22px;" href="'+orderURL+'">нажмите сюда</a></p>\
+					<p>Если Вы <strong>уже делали заказы</strong> и активировали <br/>свою учетную запись,\
+					 введите email и пароль.\
 					\
 					<form action="'+authURL+'?next='+orderURL+'" method="post" style="width: 220px; margin-left: 35px; margin-bottom: 40px;">\
 						<div>\

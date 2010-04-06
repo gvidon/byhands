@@ -7,16 +7,25 @@
 .gallery { width: 154px; float: left; }
 
 div#main_photo { 
-	width: 152px; height: 152px;
+	/*width: 152px; height: 152px;
 	padding: 1px; margin: 0;
 	border: 1px solid #d4ccc4;
 
 	text-align: center;
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: middle;*/
+	position: relative;
+	width: 152px; height: 152px;
 }
 
-div#main_photo img { vertical-align:middle; }
+div#main_photo img {  border: 1px solid #d4ccc4; padding: 1px;  }
+
+div.gallery span.new { 
+	position: absolute;
+	top: -20px; left: -20px;
+	background: transparent url(../images/new.png)  repeat-x;
+	width: 57px; height: 57px;
+}
 
 .desc { width: 600px; float: right; padding-left: 5px;}
 
@@ -48,15 +57,29 @@ div.product_list { width: 790px; float: left; padding: 0 0 0 0; margin: 0;}
 div.product_list div.product_desc { width: 390px; float: left; }
 
 div.product_desc div.photo{
-	width: 152px; height: 152px;
+	/*width: 152px; height: 152px;
+	position: relative;
+	top: 0px; left: 0px;
 	padding: 1px; margin: 0;
 	border: 1px solid #d4ccc4;
 	text-align: center;
 	display: table-cell;
-	vertical-align:middle;
+	vertical-align:middle;*/
+	position: relative;
+	width: 152px; height: 152px;
+
+	
+	
 }
 
-div.product_desc div.photo img{ vertical-align:middle; }
+div.product_desc div.photo img { border: 1px solid #d4ccc4; padding: 1px; }
+
+div.product_desc div.photo span.new { 
+	position: absolute;
+	top: -20px; left: -20px;
+	background: transparent url(../images/new.png)  repeat-x;
+	width: 57px; height: 57px;
+}
 
 div.product_list div.product_desc div.desc { width: 210px;  padding-left: 5px;}
 
