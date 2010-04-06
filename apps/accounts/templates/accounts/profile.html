@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="{{ media_url }}/js/lib/jquery.keyfilter.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#phone').keyfilter(/[\d]/);
+			$('#phone, #icq').keyfilter(/[\d]/);
 			
 			{% if request.POST %}
 				$('#birthday').val('{{ request.POST.day }}');
@@ -43,9 +43,6 @@
 	<form id="profile" enctype="multipart/form-data" method="post" action="">
 		{{ form.id }}
 		<input  id="full-date" name="birthdate" type="hidden" />
-		
-		<p><span class="required">* - обязательно заполнить</span></p>
-		<br/>
 		
 		{% if form.is_valid %}
 			<h3 class="message">

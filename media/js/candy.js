@@ -63,24 +63,32 @@ Candy = {
 				
 			itemId = addButton.attr('id').replace(/^b/i, 'i');
 			
-			Boxy.ask(
-				'<p><strong>'+$.trim($('#'+itemId+' .desc .title').html())+'</strong> добавлен в\
-				корзину. Теперь можно <a href="/cart">оформить заказ</a>.</p>',
-				['закрыть'],
+			// показывать окно с "оформить заказ" отлько в первый раз
+			if(cartPreview.siblings('a').children('img').attr('src').match(/_empty/))
+				Boxy.ask(
+					'<p><strong>'+$.trim($('#'+itemId+' .desc .title').html())+'</strong> добавлен в\
+					корзину. Теперь можно <a href="/cart">оформить заказ</a>.</p>',
+					['закрыть'],
 				
-				function() {
-					cartPreview.parent().fadeOut('fast', function() {
-						// заменить серенькую корзину на цветную
-						cartPreview.siblings('a').children('img').attr('src',
-							cartPreview.siblings('a').children('img').attr('src').replace('_empty', '_with_price')
-						).css('margin-right', '-95px');
+					function() {
+						cartPreview.parent().fadeOut('fast', function() {
+							// заменить серенькую корзину на цветную
+							cartPreview.siblings('a').children('img').attr('src',
+								cartPreview.siblings('a').children('img').attr('src').replace('_empty', '_with_price')
+							).css('margin-right', '-95px');
 						
-						cartPreview.html(responseText);
-						cartPreview.parent().fadeIn('slow');
-					});
+							cartPreview.html(responseText);
+							cartPreview.parent().fadeIn('slow');
+						});
 					
-				}, {modal: true}
-			);
+					}, {modal: true}
+				);
+			else {
+				cartPreview.parent().fadeOut('fast', function() {
+					cartPreview.html(responseText);
+					cartPreview.parent().fadeIn('slow');
+				});
+			}
 		});
 		
 		return true;

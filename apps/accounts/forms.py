@@ -78,7 +78,7 @@ class ProfileForm(forms.Form):
 	icq        = forms.IntegerField(required=False, widget=forms.TextInput(attrs={
 		'maxlength': 12
 	}), error_messages={
-		'invalid'  : u'Тут могут быть только цифры без пробелов и без "-".',
+		'invalid': u'Тут могут быть только цифры без пробелов и без "-".',
 	})
 	
 	#CHECK USERNAME FOR UNIQUENESS
@@ -108,11 +108,6 @@ class ProfileForm(forms.Form):
 			
 		except User.DoesNotExist:
 			return self.cleaned_data['email']
-	
-	#VALIDATE ICQ NUM LENGTH
-	def clean_icq(self):
-		if self.cleaned_data.get('icq'):
-			return assert_length(self.cleaned_data.get('icq'), 12)
 	
 	#VALIDATE PHONE LENGTH
 	def clean_phone(self):
