@@ -46,14 +46,14 @@ ul#left_nav { margin: 0; padding: 0;}
 ul#left_nav li { padding: 0; margin: 15px 0 0 0; }
 ul#left_nav li.first { margin-top: 0; padding: 0; }
 ul#left_nav li a { font-size: 18px;}
-/*ul#left_nav li a:hover, ul#left_nav li a.active { color: #f68409; }*/
+ul#left_nav li a.active { color: #4fb547; }
 
 
 
 ul#left_nav ul.left_submenu { margin: 0; padding: 0; }
 ul#left_nav ul.left_submenu li{ padding: 0 0 0 20px; margin: 15px 0 0 0; height: 12px;}
 ul#left_nav ul.left_submenu li a { font-size: 14px; /*color: #f5a917;*/ }
-ul#left_nav ul.left_submenu li a:hover, ul#left_nav ul.left_submenu li a.active { }
+ul#left_nav ul.left_submenu li a.active { color: #4fb547; }
 
 
 
