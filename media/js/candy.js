@@ -23,12 +23,19 @@ Candy = {
 				cartPreview,
 			
 				function() { new Boxy(
-					'<p style="width: 300px; font-size: 0.91em;">Если это Ваш <strong>первый заказ</strong>, то  для перехода на следующий шаг&nbsp;\
-					 <a style="font-size: 22px;" href="'+orderURL+'">нажмите сюда</a></p>\
-					<p>Если Вы <strong>уже делали заказы</strong> и активировали <br/>свою учетную запись,\
-					 введите email и пароль.\
+					'<div id="continue-box"><h2>Это ваш первый заказ?</h2>\
+					<p> Просто нажмите кнопку "Дальше" , чтобы перейти на следующий шаг.\
+					 \
+						<div id="buttons">\
+							<span class="button">\
+								<input type="button" value="Дальше">\
+							</span>\
+						</div>\
+					</div>\
+					<div id="auth-box"><h2>Уже что-то заказывали?</h2>\
+					 <p>Мы присылали вам письмо с паролем и просьбой активировать аккаунт.\
 					\
-					<form action="'+authURL+'?next='+orderURL+'" method="post" style="width: 220px; margin-left: 35px; margin-bottom: 40px;">\
+					<p><form action="'+authURL+'?next='+orderURL+'" method="post">\
 						<div>\
 							<label for="username"><strong>Email</strong></label><br/>\
 							<input id="name" name="username" type="text" style="width: 220px;" />\
@@ -39,12 +46,12 @@ Candy = {
 							<input id="password" name="password" type="password" style="width: 220px;" />\
 						</div>\
 						\
-						<div align="right" style="margin: 15px -15px 20px 0;">\
+						<div>\
 							<span class="button">\
 								<input type="submit" value="Войти">\
 							</span>\
 						</div>\
-					</form>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
+					</form></div>', {'modal': true, 'title': '&nbsp;', 'closeText': 'закрыть'}); }
 			);
 		
 			return false;

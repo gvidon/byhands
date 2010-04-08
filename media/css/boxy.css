@@ -47,3 +47,24 @@
 
     .boxy-wrapper .question { width: 350px; min-height: 80px; }
     .boxy-wrapper .answers { text-align: right; }
+    
+    
+    
+   	/* Continue order or authenticate */
+   	
+   	div#continue-box, div#auth-box { width: 300px; font-size: 0.91em;}
+   		div#continue-box h2, div#auth-box h2 { margin-bottom: 20px; }
+   		
+   		div#continue-box p, div#auth-box p { text-align: justify; }
+   	   		
+   	div#continue-box { float: left; }
+   		div#continue-box .button { margin-right: 120px; }
+   		   	
+   	div#auth-box { float: right; margin-bottom: 15px; border-left: 1px solid #f5a71e; }
+   		div#auth-box .button { margin: 20px 60px 0 0; }
+   		
+   		div#auth-box form { width: 220px; margin-left: 23px; margin-bottom: 40px; }
+   	
+   	
+   	
+   	

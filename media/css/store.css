@@ -23,8 +23,17 @@ div#main_photo img {  border: 1px solid #d4ccc4; padding: 1px;  }
 div.gallery span.new { 
 	position: absolute;
 	top: -20px; left: -20px;
-	background: transparent url(../images/new.png)  repeat-x;
+	background: transparent url(../images/new.png)  no-repeat;
 	width: 57px; height: 57px;
+}
+
+div.gallery span.increase { 
+	position: absolute;
+	bottom: -25px; left: 30px;
+	background: transparent url(../images/increase.png)  no-repeat;
+	width: 20px; height: 20px;
+	padding: 2px 0 0 20px;
+	font-size: 11px;
 }
 
 .desc { width: 600px; float: right; padding-left: 5px;}
@@ -77,7 +86,7 @@ div.product_desc div.photo img { border: 1px solid #d4ccc4; padding: 1px; }
 div.product_desc div.photo span.new { 
 	position: absolute;
 	top: -20px; left: -20px;
-	background: transparent url(../images/new.png)  repeat-x;
+	background: transparent url(../images/new.png)  no-repeat;
 	width: 57px; height: 57px;
 }
 
