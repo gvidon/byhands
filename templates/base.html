@@ -1,10 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<title>{% block title %}ByHands.ru Вещи для хорошего настроения{% endblock %}</title>
+		<title>{% block title %}ByHands.ru - онлайн-магазин ручной работы. Оригинальные подарки. Вещи для хорошего настроения.{% endblock %}</title>
 		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		
+		<meta name="Description" content="Подарки ручной работы, вещи для хорошего настроения. Онлайн магазин. Индивидуальный заказ. Доставка во все города.">
+
+		<meta name="Keywords" content="Оригинальные подарки, уникальные вещи ручной работы, хэндмэйд, handmade, бижутерия, мягкие игрушки, валяные игрушки, вязанные игрушки, куклы,
+ украшения из пластики, украшения из войлока, серьги, кольца, подвески, кулоны, бусы, браслеты, аксессуары, сумки, клатчи, одежда, шарфы, предметы интерьера,
+  уроки рукоделия, индивидуальный заказ.">
+ 
 		<link rel="stylesheet" href="{{ media_url }}css/store.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}css/common.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="{{ media_url }}css/navigation.css" type="text/css" media="screen" title="no title" charset="utf-8" />
@@ -109,7 +115,7 @@
 
 					<div id="personal_order">
 						<img src="{{ media_url }}images/personal_order.gif" style="float:left;"/>
-						<a href="{% url individual-order %}">персональный<br/>заказ</a>
+						<a href="{% url individual-order %}">индивидуальный<br/>заказ</a>
 					</div>
 	
 				</div>
@@ -118,8 +124,10 @@
 				<!-- central part -->
 				<div id="central_part">
 					{% block content %}{% endblock %}
+					
 				</div>
 				<!-- end of central part -->
+				
 				
 			</div>
 			<!-- end of main content -->			
