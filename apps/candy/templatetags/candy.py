@@ -15,7 +15,9 @@ def categories_tree(current=None):
 	def tree(categories, parents):
 		for category in categories:
 			if category in parents:
-				categories.insert(categories.index(category) + 1, list(Category.objects.filter(parent=category)))
+				categories.insert(categories.index(category) + 1, list(
+					Category.objects.filter(parent=category).order_by('priority')
+				))
 				
 			elif isinstance(category, list):
 				categories[categories.index(category)] = tree(category, parents)

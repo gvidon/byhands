@@ -4,6 +4,7 @@ from django.db import models
 #ВЛОЖЕННЫЕ КАТГЕОРИИ
 class Category(models.Model):
 	parent      = models.ForeignKey('self', verbose_name=u'Родительская категория', blank=True, null=True, related_name='children')
+	priority    = models.IntegerField(u'Приоритет', help_text='целое число', blank=True, null=True)
 	
 	slug        = models.CharField(u'Имя ссылки', help_text='латиница, цифры и "-"', max_length=64)
 	title       = models.CharField(u'Название', max_length=64)

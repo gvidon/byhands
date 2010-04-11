@@ -9,8 +9,9 @@ class Product(models.Model):
 	
 	created_at  = models.DateTimeField(auto_now_add=True)
 	
-	is_active   = models.BooleanField(u'Показывать в магазине', default=True)
 	is_featured = models.BooleanField(u'Рекомендуемый товар', default=False)
+	is_active   = models.BooleanField(u'Показывать в магазине', default=True)
+	is_new      = models.BooleanField(u'Новинка', default=False)
 	
 	slug        = models.CharField(u'Имя ссылки для продукта', help_text='латиница, цифры и "-"', max_length=64)
 	title       = models.CharField(u'Название', max_length=64)

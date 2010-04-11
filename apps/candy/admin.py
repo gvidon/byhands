@@ -6,7 +6,7 @@ class PhotoInline(admin.TabularInline):
 	fk_name = 'product'
 
 class CategoryAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('title', 'slug', 'priority')
 	
 class OrderAdmin(admin.ModelAdmin):
 	list_display = ('id', 'created_at', 'is_paid', 'is_delivered', 'sum')

@@ -74,7 +74,7 @@ def category(request, slug, page=None):
 		category = Category.objects.filter(parent=category)[0]
 	
 	return list_detail.object_list(request,
-		queryset      = category.products.all(),
+		queryset      = category.products.order_by('-created_at').all(),
 		paginate_by   = settings.ITEMS_PER_PAGE,
 		page          = page,
 		allow_empty   = True,

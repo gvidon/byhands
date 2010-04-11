@@ -1,6 +1,6 @@
 <div class="gallery">
 	<div id="main_photo"><a href="{{ object.photos.all.0.photo.url }}" class="group" rel="group">
-		{% comment %}<span class="new"></span>{% endcomment %}
+		{% if object.is_new %}<span class="new"></span>{% endif %}
 		<img src="{{ object.thumb_url }}" />
 		{% ifequal object.photos.all.count 1 %}<span class="increase">увеличить</span>{% endifequal %}
 	</a></div>

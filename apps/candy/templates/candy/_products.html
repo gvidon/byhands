@@ -9,17 +9,15 @@
 			
 			<img src="{{ media_url }}images/ajax-loader.gif" class="ajax-loader" title="ajax loader" />
 			
-
-			
 			<a id="b{{ product.id }}" class="add-to-cart" href="{% url candy-add-item id=product.id %}">
 				<img src="{{ media_url }}images/to_cart.gif" title="Купить {{ product.title }}" width="28" height="28" />
 			</a><br/><br/>
-
+			
 			<a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}">подробнее</a>
-						
 		</div>
 		
 		<div class="photo"><a href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" >
+			{% if product.is_new %}<span class="new"></span>{% endif %}
 			<img src="{{ product.thumb_url }}" title="{{ product.title }}"/>
 		</a></div>
 	</div>
