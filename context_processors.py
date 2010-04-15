@@ -50,3 +50,14 @@ def cart(request):
 def media_url(request):
 	return { 'media_url': settings.MEDIA_URL }
 
+#МЕТА ДАННЫЕ ДЛЯ URL-А
+def meta(request):
+	from seo.models import Meta
+	
+	try:
+		meta = Meta.objects.get(url=request.META['PATH_INFO'])
+		return { 'META_KEYWORDS': meta.keywords, 'META_DESCRIPTION': meta.description }
+	
+	except Meta.DoesNotExist:
+		return {}
+
