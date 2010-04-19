@@ -24,6 +24,15 @@ ul { list-style-type: none; padding: 0; margin: 0; }
 
 img { border: 0; }
 
+h1 { 
+	font-size: 26px; 
+	font-weight: normal;
+	color: /*#9c480a*/#378c8b;
+	font-family: Times New Roman;
+	line-height: 15px; 
+	padding: 0;	margin-bottom: 50px;
+}
+
 h2 { 
 	font-size: 26px; 
 	font-weight: normal;
