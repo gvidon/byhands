@@ -71,7 +71,7 @@ def category(request, slug, page=None):
 	
 	# если категория пуста и есть дочерние - взять первую дочернюю
 	if not category.products.all() and Category.objects.filter(parent=category).count():
-		category = Category.objects.filter(parent=category)[0]
+		category = Category.objects.filter(parent=category).order_by('priority')[0]
 	
 	return list_detail.object_list(request,
 		queryset      = category.products.order_by('-created_at').all(),

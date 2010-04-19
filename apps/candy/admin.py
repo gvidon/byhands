@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.conf    import settings
 from models         import *
 
 class PhotoInline(admin.TabularInline):
@@ -17,6 +18,26 @@ class OrderItemAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'price', 'is_active', 'is_featured')
 	inlines = [ PhotoInline, ]
+	
+	class Media:
+		js = (
+			settings.MEDIA_URL+'js/lib/jquery.min.js',
+			
+			'/tinymce/tiny_mce.js',
+			settings.MEDIA_URL+'filebrowser/js/TinyMCEAdmin.js',
+			
+			settings.MEDIA_URL+'js/jqModal.js',
+			settings.MEDIA_URL+'js/jquery.timers.js',
+		)
+		
+		css = {'all': (
+			settings.MEDIA_URL+'css/jqModal.css',
+			settings.MEDIA_URL+'css/crossposting.css',
+			
+			settings.MEDIA_URL+'js/tinymce/themes/simple/skins/default/ui.css',
+			settings.MEDIA_URL+'js/tinymce/themes/advanced/skins/default/ui.css',
+			settings.MEDIA_URL+'js/tinymce/themes/advanced/skins/o2k7/ui.css',
+		)}
 
 admin.site.register(Category , CategoryAdmin)
 admin.site.register(Order    , OrderAdmin)
