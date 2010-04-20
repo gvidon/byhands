@@ -27,9 +27,9 @@ Candy = {
 					<p> Просто нажмите кнопку "Дальше" , чтобы перейти на следующий шаг.\
 					 \
 						<div id="buttons">\
-							<span class="button">\
-								<input type="button" value="Дальше">\
-							</span>\
+							<form action="/order" method="get"><span class="button">\
+								<input type="submit" value="Дальше">\
+							</span></form>\
 						</div>\
 					</div>\
 					<div id="auth-box"><h2>Уже что-то заказывали?</h2>\
