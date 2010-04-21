@@ -3,7 +3,7 @@
 {% for category in parents %}{% if category %}
 	<li><img src="{{ media_url }}images/arrow.gif" /></li>
 	<li>{% if forloop.last and not product %}
-		{{ category.title|capfirst }}
+		<h1>{{ category.title|capfirst }}</h1>
 	{% else %}
 		<a href="{% url candy-category slug=category.path %}">{{ category.title }}</a>
 	{% endif %}</li>
