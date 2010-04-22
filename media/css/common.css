@@ -89,6 +89,7 @@ div#logo {
 div#logo img {
 	border: 0; margin-top: 0; padding:0;
 	width: 461px; height: 117px;
+	border: 1px solid red;
 }
 
 div#auth{
