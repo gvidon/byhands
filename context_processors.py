@@ -51,7 +51,7 @@ def media_url(request):
 	return { 'media_url': settings.MEDIA_URL }
 
 #МЕТА ДАННЫЕ ДЛЯ URL-А
-def meta(request):
+def SEO(request):
 	import re
 	from seo.models import Meta
 	
@@ -59,7 +59,11 @@ def meta(request):
 		path = re.sub(r'/$', '', request.META['PATH_INFO'])
 		meta = Meta.objects.get(url__in=(path, path+'/'))
 		
-		return { 'META_KEYWORDS': meta.keywords, 'META_DESCRIPTION': meta.description }
+		return {
+			'META_DESCRIPTION': meta.description,
+			'META_KEYWORDS'   : meta.keywords,
+			'TITLE'           : meta.title,
+		}
 	
 	except Meta.DoesNotExist:
 		return {}

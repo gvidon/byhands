@@ -3,7 +3,7 @@
 {% load dates %}
 {% load candy %}
 
-{% block title %}ByHands.ru {{ product.title }}{% endblock %}
+{% block title %}{{ category }} - {{ product.title }}{% endblock %}
 
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.fancybox.js"></script>
