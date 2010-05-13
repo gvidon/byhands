@@ -2,7 +2,11 @@
 
 {% load candy %}
 
-{% block title %}ByHands.ru Заказ подтвержден!{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	Заказ подтвержден!
+{% endif %}{% endblock %}
 
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.keyfilter.min.js"></script>

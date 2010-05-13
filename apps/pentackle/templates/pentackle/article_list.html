@@ -4,15 +4,19 @@
 {% load pages %}
 {% load dates %}
 
-{% block title %}ByHands.ru {% firstof section.title tag %}{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	Авторские материалы - {% firstof section.title tag %}
+{% endif %}{% endblock %}
 
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 
 {% block content %}
 	{% if tag %}
-		<h2 style="margin-bottom: 20px;">Уроки и статьи по тэгу <strong>{{ tag }}</strong></h2>
+		<h1 style="margin-bottom: 20px;">Уроки и статьи по тэгу <strong>{{ tag }}</strong></h1>
 	{% else %}
-		<h2 style="margin-bottom: 20px;">{{ section.title }}</h2>
+		<h1 style="margin-bottom: 20px;">{{ section.title }}</h1>
 	{% endif %}
 	
 	{% if month %}<h3>

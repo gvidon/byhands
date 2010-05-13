@@ -54,7 +54,11 @@
 	
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<!--<label for="phone"><span class="required">*</span>Контактный телефон</label>-->
-			<label for="pone"><span class="required">*</span> Номер телефона: <span class="comment"> только цифры</span></label><br/>
+			<label for="pone">
+				<span class="required">*</span> Номер телефона:
+				<span class="comment">например 89011234567</span>
+			</label><br/>
+			
 			{{ form.phone }}
 			
 			{% if form.errors.phone %}

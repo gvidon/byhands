@@ -3,7 +3,11 @@
 {% load dates %}
 {% load candy %}
 
-{% block title %}{{ category }} - {{ product.title }}{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	{{ category }} - {{ product.title }}
+{% endif %}{% endblock %}
 
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.fancybox.js"></script>

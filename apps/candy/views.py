@@ -182,12 +182,57 @@ def order(request, id=None):
 						sum          = item.price * float(item.quantity)
 					)
 				
+				print u'''
+					u'Вы совершили заказ на сумму %(sum).2f рублей. Контактные данные: %(name)s,
+					email %(email)s, телефон %(phone)s. Доставка по адресу %(city)s, %(address)s.
+					
+					Содержимое заказа: %(items)s.
+					
+					Спасибо, мы свяжемся с вами в ближайшее время!
+				''' % {
+					'address': order.address,
+					'phone'  : order.phone,
+					'email'  : order.email,
+					'city'   : order.city,
+					'name'   : order.name,
+					'sum'    : order.sum,
+					
+					'items'  : (', ').join([u'"%s" x %s (%.2f р. всего)' % (
+						item.title,
+						item.quantity,
+						float(item.quantity) * item.price
+					) for id, item in request.session['cart'].iteritems()])
+				}
+				
+				items_str = (', ').join([u'"%s" x %s (%.2f р. всего)' % (
+					item.title,
+					item.quantity,
+					float(item.quantity) * item.price
+				) for id, item in request.session['cart'].iteritems()])
+				
+				user.get_profile().send_email(u'Заказ номер %i принят к обработке' % order.id, u'''
+					u'Вы совершили заказ на сумму %(sum).2f рублей. Контактные данные: %(name)s,
+					email %(email)s, телефон %(phone)s. Доставка по адресу %(city)s, %(address)s.
+					
+					Содержимое заказа: %(items)s.
+					
+					Спасибо, мы свяжемся с вами в ближайшее время!
+				''' % {
+					'address': order.address,
+					'phone'  : order.phone,
+					'email'  : order.email,
+					'city'   : order.city,
+					'name'   : order.name,
+					'sum'    : order.sum,
+					'items'  : items_str,
+				})
+				
 				del(request.session['cart'])
 				
 				mail_managers(u'Новый заказ номер '+str(order.id),
 					u'Поступил новый заказ на сумму '+str(order.sum)+u' руб. Контактные данные: '+
 					order.name+' ('+str(order.phone)+', '+order.email+u'). Доставка по адрессу '+order.city+', '+
-					order.address
+					order.address + u' Содержимое заказа: ' + items_str
 				)
 				
 				return render_to_response('candy/order-confirmed.html', {'order': order}, context_instance=RequestContext(request))

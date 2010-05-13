@@ -3,7 +3,15 @@
 {% load candy %}
 {% load dates %}
 
-{% block title %}ByHands.ru {{ object.title }}{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	{% ifequal object.sections.all.0.slug 'blog' %}
+		Блог
+	{% else %}
+		Уроки
+	{% endifequal %} - {{ object.title }}
+{% endif %}{% endblock %}
 
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 

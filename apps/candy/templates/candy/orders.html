@@ -3,7 +3,11 @@
 {% load candy %}
 {% load dates %}
 
-{% block title %}ByHands.ru Ваши заказы{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	Ваши заказы
+{% endif %}{% endblock %}
 
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 

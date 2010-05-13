@@ -3,7 +3,11 @@
 {% load pages %}
 {% load candy %}
 
-{% block title %}Магазин изделий ручной работы - {{ category.title }}{% endblock %}
+{% block title %}{% if TITLE %}
+	{{ TITLE }}
+{% else %}
+	Магазин изделий ручной работы - {{ category.title }}
+{% endif %}{% endblock %}
 
 {% block js %}
 	<script type="text/javascript" src="{{ media_url }}js/candy.js"></script>

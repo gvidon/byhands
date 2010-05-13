@@ -2,7 +2,7 @@
 
 {% load candy %}
 
-{% block title %}ByHands.ru Доставка{% endblock %}
+{% block title %}{% firstof TITLE "Гарантия" %}{% endblock %}
 
 {% block left_navigation %}{% categories_tree %}{% endblock %}
 

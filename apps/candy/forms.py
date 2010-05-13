@@ -18,11 +18,7 @@ class OrderForm(forms.Form):
 		'min_length': MESSAGES['min_length'](2),
 	})
 	
-	city = forms.CharField(required=True, widget=forms.Select(choices=[
-			(u'Ростов-на-Дону', u'Ростов-на-Дону'),
-			(u'Краснодар'     , u'Краснодар'),
-			(u'Москва'        , u'Москва'),
-	], attrs={'class': 'special'}), error_messages={'required': MESSAGES['required']}, max_length=16)
+	city = forms.CharField(required=True, error_messages={'required': MESSAGES['required']}, max_length=32)
 
 	email = forms.EmailField(widget=forms.TextInput(attrs={
 		'maxlength': 128
