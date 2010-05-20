@@ -6,13 +6,16 @@
 	<form action="" method="post">
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
-			<label for="name"><span class="required">*</span> Вас зовут:</label><br/>
+			<label for="name">
+			<span class="required">*</span> Вас зовут:
+			<span class="comment">(Имя и Фамилия)</span>
+			</label><br/>
 			<!--<input type="text" name="name" value="" /><br/>
 			<label for="name"><span class="required">*</span>На чье имя доставляем?</label>-->
 			{{ form.name }}
 			<span class="error">{{ form.errors.name.as_text|safe|cut:"*" }}</span>
 		</div>
-		
+
 		<div {% if form.errors.name %}class="erroneus"{% endif %} >
 			<!--<label for="email"><span class="required">*</span>E-mail</label>-->
 			<label for="email"><span class="required">*</span> E-mail:</label><br/>
@@ -65,6 +68,8 @@
 				<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
 			{% endif %}
 		</div>
+		
+			
 		
 		<div id="buttons" style="padding-left: 20px;">
 			<span class="button">

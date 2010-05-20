@@ -52,9 +52,12 @@
 
 	<body>
 		<div id="main" align="center">
+		
 			<div id="head">
 				
-				<div id="logo"><a href="http://byhands.ru"><img src="{{ media_url }}images/logo_1.png" title="ByHands.ru" /></a></div>
+				<div id="logo"><a href="http://byhands.ru"><img src="{{ media_url }}images/logo_1.png" title="ByHands.ru" /></a>
+				
+				</div>
 				
 				<div id="auth">
 					{% if request.user.is_authenticated %}
@@ -74,6 +77,7 @@
 				</div>
 
 				<div id="top_nav">
+				
 					<ul>
 						<li><a href="{% url candy %}" class="{{ active_section.shop }}" title="Магазин">магазин</a></li>
 						<li><a href="{% url authors %}" class="{{ active_section.authors }}" title="Авторы">авторы</a></li>
@@ -82,6 +86,7 @@
 					</ul>
 				</div>
 				
+							
 				<div style="width: 1150px; float: right;">
 					<div id="find" style="background: none;">
 						<!--<form id="search_form">
@@ -113,6 +118,11 @@
 					<div id="personal_order">
 						<img src="{{ media_url }}images/personal_order.gif" style="float:left;"/>
 						<a href="{% url individual-order %}">индивидуальный<br/>заказ</a>
+					</div>
+					
+					<div id="new-post">
+						<img src="{{ media_url }}images/new-post.png" style="float:left;"/>
+						<a href="{% url individual-order %}">подписаться<br/>на обновления</a>
 					</div>
 	
 				</div>
