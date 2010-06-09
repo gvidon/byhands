@@ -19,6 +19,9 @@ class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'price', 'is_active', 'is_featured')
 	inlines = [ PhotoInline, ]
 	
+	def queryset(self, request):
+		return Product.mixed.all()
+		
 	class Media:
 		js = (
 			settings.MEDIA_URL+'js/lib/jquery.min.js',

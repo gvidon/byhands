@@ -2,7 +2,17 @@
 from django.contrib.auth.models   import User
 from django.db                    import models
 
-#ПРОДУКТ С ЦЕНОЙ ОПИСАНИЕМ И ГАБАРИТАМИ
+# Manager АКТИВНЫХ продуктов, которые можно показывать
+class ActiveManager(models.Manager):
+	def get_query_set(self):
+		return super(ActiveManager, self).get_query_set().filter(is_active=True)
+
+# Manager ВСЕХ продуктов, которые можно показывать
+class MixedManager(models.Manager):
+	def get_query_set(self):
+		return super(MixedManager, self).get_query_set()
+
+# Продукт с ценой, описанием и габаритами
 class Product(models.Model):
 	author      = models.ForeignKey(User, verbose_name=u'Автор изделия', blank=True, null=True)
 	category    = models.ManyToManyField('Category', verbose_name=u'Категория', db_table='category_product_ref', related_name='products')
@@ -22,6 +32,9 @@ class Product(models.Model):
 	
 	owner_price = models.FloatField(u'Цена автора', blank=True, null=True)
 	price       = models.FloatField(u'Цена')
+	
+	objects     = ActiveManager()
+	mixed       = MixedManager()
 	
 	#ССЫЛКА НА ТУМБ
 	def thumb_url(self):

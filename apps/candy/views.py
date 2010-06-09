@@ -21,6 +21,10 @@ from apps.accounts.utils            import register_inactive
 
 #ДОБАВЛЕНИЕ АЙТЕМА В КОРЗИНУ ПО ИДУ ПРОДУКТА
 def add_item(request, id):
+
+	if request.META.get('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest':
+		return render_to_response('manual-order.html', context_instance=RequestContext(request))
+	
 	cart = request.session.get('cart', {})
 	
 	try:
@@ -182,36 +186,14 @@ def order(request, id=None):
 						sum          = item.price * float(item.quantity)
 					)
 				
-				print u'''
-					u'Вы совершили заказ на сумму %(sum).2f рублей. Контактные данные: %(name)s,
-					email %(email)s, телефон %(phone)s. Доставка по адресу %(city)s, %(address)s.
-					
-					Содержимое заказа: %(items)s.
-					
-					Спасибо, мы свяжемся с вами в ближайшее время!
-				''' % {
-					'address': order.address,
-					'phone'  : order.phone,
-					'email'  : order.email,
-					'city'   : order.city,
-					'name'   : order.name,
-					'sum'    : order.sum,
-					
-					'items'  : (', ').join([u'"%s" x %s (%.2f р. всего)' % (
-						item.title,
-						item.quantity,
-						float(item.quantity) * item.price
-					) for id, item in request.session['cart'].iteritems()])
-				}
-				
 				items_str = (', ').join([u'"%s" x %s (%.2f р. всего)' % (
 					item.title,
 					item.quantity,
 					float(item.quantity) * item.price
 				) for id, item in request.session['cart'].iteritems()])
 				
-				user.get_profile().send_email(u'Заказ номер %i принят к обработке' % order.id, u'''
-					u'Вы совершили заказ на сумму %(sum).2f рублей. Контактные данные: %(name)s,
+				user.get_profile().send_email(u'Заказ номер %i принят к обработке' % order.id, (u'''
+					Вы совершили заказ на сумму %(sum).2f рублей. Контактные данные: %(name)s,
 					email %(email)s, телефон %(phone)s. Доставка по адресу %(city)s, %(address)s.
 					
 					Содержимое заказа: %(items)s.
@@ -225,7 +207,7 @@ def order(request, id=None):
 					'name'   : order.name,
 					'sum'    : order.sum,
 					'items'  : items_str,
-				})
+				}).encode('utf8'))
 				
 				del(request.session['cart'])
 				

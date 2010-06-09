@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+
+{% block title %}ByHands.ru Страница не найдена{% endblock %}
+{% block left_navigation %}{% categories_tree '' %}{% endblock %}
+
+{% block content %}
+	<h2>Зазкажите по телефону или email</h2>
+	
+	<p>В вашем браузере произошла ошибка. Но вы по-прежнему можете заказать понравившуюся вам вещь.</p>
+	
+	<p style="width: 70%;">Пожалуйста свяжитесь с нами по телефону <strong>8 908 506 37 76</strong> или по
+	email <a href="mailto:info@byhands.ru">info@byhands.ru</a>.</p>
+	
+	<p><strong>Мы ждем вашего звонка!</strong></p>
+{% endblock %}

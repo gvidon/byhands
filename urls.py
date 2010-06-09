@@ -17,6 +17,7 @@ urlpatterns += patterns('',
 	url(r'^contactus/?$', form, name='contactus'),	
 	url(r'^search/', include('search.urls')),
 	
+	url(r'^', include('postman.urls')),
 	url(r'^', include('candy.urls')),
 	url(r'^', include('staticpages.urls')),
 	url(r'^', include('accounts.urls')),

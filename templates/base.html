@@ -37,6 +37,7 @@
 		<script type="text/javascript" src="{{ media_url }}js/lib/livequery.js"></script>
 		<script type="text/javascript" src="{{ media_url }}js/lib/jquery.boxy.js"></script>
 		<script type="text/javascript" src="{{ media_url }}js/account.js"></script>
+		<script type="text/javascript" src="{{ media_url }}js/updates.js"></script>
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -44,6 +45,9 @@
 					Account.loginForm('{% url login %}?next='+window.location.pathname, '{% url recover %}');
 					return false;
 				});
+				
+				$('#email-updates').click(Updates.emailForm);
+				$('#subscribe').click(Updates.subscribe);
 			});
 		</script>
 		
@@ -122,7 +126,7 @@
 					
 					<div id="new-post">
 						<img src="{{ media_url }}images/new-post.png" style="float:left;"/>
-						<a href="{% url individual-order %}">подписаться<br/>на обновления</a>
+						<a id="email-updates" href="#">подписаться<br/>на обновления</a>
 					</div>
 	
 				</div>
@@ -154,10 +158,13 @@
 			
 		</div>
 		
+		<div id="subscribe-form" style="display: none">{% include "_subscribe.html" %}</div>
+		
 		<script type="text/javascript">
 			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 		</script>
+		
 		<script type="text/javascript">
 			try {
 				var pageTracker = _gat._getTracker("UA-15060694-1");
