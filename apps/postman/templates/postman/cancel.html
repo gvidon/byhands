@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load candy %}
+
+{% block title %}Рассылка ByHands.ru{% endblock %}
+{% block left_navigation %}{% categories_tree '' %}{% endblock %}
+
+{% block content %}
+	<h2>Отказаться от рассылки</h2>
+	
+	<div style="width: 85%;">
+		<p>Рассылка ByHands.ru это новости о последних обновлениях в нашем магазине, интересные статьи о
+		хэндмэйде, а также уникальные уроки рукоделия.</p>
+		
+		{% if not confirmed %}
+			<p style="font-size: 1.2em; margin-top: 20px;">Вы уверены, что хотиете отказаться от рассылки?</p><br/><br/>
+			
+			<a style="font-size: 1.4em; margin: 100px;" href="{% url unsubscribe-confirm code=code %}">
+				Да, отказаться от рассылки
+			</a>
+			
+			<a style="font-size: 1.4em;" href="http://byhands.ru/">Нет</a>
+		{% else %}
+			<p>Вы отказались от email-расслки Byhands.ru</p><br/>
+			
+			<a href="http://byhands.ru">Вернуться в магазин</a>
+		{% endif %}
+	</div>
+{% endblock %}

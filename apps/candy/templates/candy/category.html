@@ -32,6 +32,12 @@
 	{% if object_list %}
 		<div style="clear: both;"></div>
 		
+		{% ifnotequal object_list.count 1 %}
+			{% ifnotequal object_list.count 2 %}{% if page_obj.has_other_pages %}
+				<div class="pages">{% pages paginator page_obj request.path %}</div>
+			{% endif %}{% endifnotequal %}
+		{% endifnotequal %}
+		
 		<div class="product_list">{% with object_list as products %}
 			{% include 'candy/_products.html' %}
 		{% endwith %}</div>

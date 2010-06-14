@@ -1,0 +1,19 @@
+<form action="" method="post">
+	<p>Подпишитесь на email-расссылку обновлений нашего магазина.
+	Вы <strong>всегда</strong> сможете отписаться.</p>
+	
+	<div style="float: left; margin-top: 20px;">
+		<label for="email"><strong>Email</strong></label><br/>
+		<input id="email" name="email" type="text" style="width: 310px;" />
+		<span class="error">&nbsp;</span>
+	</div>
+	
+	<div align="right" style="margin: 39px -10px 20px 10px;">
+		<span class="button"><input id="subscribe" type="submit" value="Готово"></span>
+	</div>
+	
+	<img class="ajax-loader" src="{{ media_url }}images/ajax-loader-big.gif" />
+	
+	<p style="display: none; margin-top: 50px;">Вы подписались на рассылку с обновлениями нашего
+	магазина. Спасибо!</p>
+</form>
