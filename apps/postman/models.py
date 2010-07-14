@@ -10,13 +10,22 @@ class Subscriber(models.Model):
 	canceled_at = models.DateTimeField(blank=True, null=True)
 	created_at  = models.DateTimeField(auto_now_add=True)
 	
-	cancel_code = models.CharField(max_length=64)
+	cancel_code = models.CharField(max_length=64, blank=True, null=True)
 	
 	class Meta:
 		db_table = 'subscriber'
 	
 	def __unicode__(self):
-		return self.email
+		return self.email or self.user.email
+	
+	def save(self, *args, **kwargs):
+		import hashlib
+		
+		self.cancel_code = self.cancel_code or hashlib.md5(
+			str(Subscriber.objects.all().count()) + self.email or self.user.email
+		).hexdigest()
+		
+		return super(Subscriber, self).save(*args, **kwargs)
 
 # СООБЩЕНИЯ списка рассылки
 class Mail(models.Model):

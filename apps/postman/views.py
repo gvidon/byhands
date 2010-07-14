@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import hashlib
 from MySQLdb import IntegrityError
 
 from django.contrib.auth.models  import User
@@ -45,9 +44,8 @@ def subscribe(request):
 	try:
 		msg = EmailMessage(u'Рассылка ByHands.ru', render_to_string('mail/subscribe-success.html', {
 			'subscriber': Subscriber.objects.create(
-				cancel_code = hashlib.md5(str(Subscriber.objects.all().count()) + email).hexdigest(),
-				email       = user and None or email,
-				user        = user
+				email = user and None or email,
+				user  = user
 			)
 		}), 'do-not-reply@byhands.ru', [email,])
 		
@@ -55,6 +53,17 @@ def subscribe(request):
 		msg.send()
 	
 	except IntegrityError:
-		return HttpResponse(u'{"success": 0, "error": "Этот email уже получает нашу рассылку"}')
-	
+		# Если эта подписка ранее анулирована - активировать снова
+		try:
+			subscriber = Subscriber.objects.filter(
+				email = user and None or email,
+				user  = user
+			).exclude(canceled_at=None)[0]
+			
+			subscriber.canceled_at = None
+			subscriber.save()
+			
+		except IndexError:
+			return HttpResponse(u'{"success": 0, "error": "Этот email уже получает нашу рассылку"}')
+			
 	return HttpResponse('{"success": 1}')
