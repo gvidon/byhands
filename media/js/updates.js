@@ -15,7 +15,9 @@ Updates = {
 				return true;
 			}
 			
-			$('div, div span, img', $('#subscribe-form')).toggle();
+			$('div, img', $('#subscribe-form')).toggle();
+			$('div span').show();
+			
 			$('#subscribe-form .error').show().html(data.error);
 		}, 'json');
 		

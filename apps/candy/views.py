@@ -262,7 +262,7 @@ def remove_item(request, id):
 		del(cart[id])
 		request.session['cart'] = cart
 		
-		return HttpResponse('{ success: 1, price: "%.2f" }'%cart_total(cart))
+		return HttpResponse('{ "success": 1, "price": "%.2f" }'%cart_total(cart))
 		
 	except KeyError:
 		raise Http404
@@ -291,4 +291,4 @@ def update_cart(request):
 	except ValueError:
 		raise Http404
 	
-	return HttpResponse('{success: 1, price: '+str(cart_total(request.session['cart']))+'}')
+	return HttpResponse('{"success": 1, "price": '+str(cart_total(request.session['cart']))+'}')

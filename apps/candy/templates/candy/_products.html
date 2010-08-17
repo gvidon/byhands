@@ -3,7 +3,11 @@
 		<div class="desc">
 			<a class="title" href="{% url candy-product category=product.category.all.0.slug, product=product.slug %}" class="title">
 				{{ product.title|truncatewords:7|capfirst }}
-			</a><br/><br/>
+			</a><br/>
+			
+			{% ifequal request.path "/" %}
+				<span class="property category">{{ product.root_category.title }}</span><br/>
+			{% endifequal %}<br/>
 			
 			&nbsp;<strong>Цена:</strong> {{ product.price }} p.<br/><br/>
 			

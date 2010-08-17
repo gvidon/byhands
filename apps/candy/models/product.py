@@ -36,15 +36,24 @@ class Product(models.Model):
 	objects     = ActiveManager()
 	mixed       = MixedManager()
 	
-	#ССЫЛКА НА ТУМБ
+	# Ссылка на ТУМБ
 	def thumb_url(self):
 		try:
 			return self.photos.all()[0].thumb_url()
 		
 		except IndexError:
 			return None
+	
+	# КОРНЕВАЯ катгеория продукта
+	def root_category(self):
+		C = self.category.all()[0]
 		
-	#СТРОКОВОЕ ПРЕДСТАВЛЕНИЕ
+		while C.parent:
+			C = C.parent
+		
+		return C
+	
+	# СРОКОВОЕ представление
 	def __unicode__(self):
 		return self.title
 	

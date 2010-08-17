@@ -81,6 +81,8 @@ div.product_desc div.photo{
 	
 }
 
+.property.category { font-size: 0.7em; color: green; }
+
 div.product_desc div.photo img { border: 1px solid #d4ccc4; padding: 1px; }
 
 div.product_desc div.photo span.new { 
