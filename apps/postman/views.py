@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from MySQLdb import IntegrityError
+from MySQLdb                    import IntegrityError
 
-from django.contrib.auth.models  import User
-from postman.models              import Subscriber
+from django.contrib.auth.models import User
+from postman.models             import Subscriber
 
 # ОТКАЗ от рассылки
 def cancel(request, code, confirmed=False):
@@ -24,7 +24,7 @@ def cancel(request, code, confirmed=False):
 # ПОДПИСАТЬ указанный email на рассылку апдейтов
 def subscribe(request):
 	from django.template.loader import render_to_string
-	from django.forms.fields    import email_re
+	from django.core.validators import email_re
 	from django.core.mail       import EmailMessage
 	from django.http            import HttpResponse, Http404
 	
