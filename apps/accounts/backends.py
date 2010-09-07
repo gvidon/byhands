@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.forms.fields        import email_re
+from django.core.validators     import email_re
 
 class EmailBackend(object):
 	def authenticate(self, username=None, password=None):
