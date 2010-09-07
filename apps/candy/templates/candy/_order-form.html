@@ -4,6 +4,7 @@
 
 <div id="order-form" >
 	<form action="" method="post">
+		{% csrf_token %}
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<label for="name">
