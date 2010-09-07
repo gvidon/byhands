@@ -6,7 +6,8 @@
 
 {% block content %}
 	<form action="" style="width: 280px; margin-left: 20%;" method="post">
-		 
+		{% csrf_token %}
+		
 		<div>
 			<label for="username" style="">E-mail или логин</label>
 			<input id="name" name="username" type="text" style="width: 270px;" /><br/>

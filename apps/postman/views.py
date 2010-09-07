@@ -52,7 +52,7 @@ def subscribe(request):
 		msg.content_subtype = "html"
 		msg.send()
 	
-	except IntegrityError:
+	except:
 		# Если эта подписка ранее анулирована - активировать снова
 		try:
 			subscriber = Subscriber.objects.filter(

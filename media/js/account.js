@@ -1,9 +1,10 @@
 Account = {
 	//LOGIN FORM
-	'loginForm': function(loginURL, recoverURL) {
+	'loginForm': function(loginURL, recoverURL, csrfToken) {
 		new Boxy(
-			'<form action="'+loginURL+'" method="post" style="width: 270px; margin-bottom: 20px;">\
-				<div>\
+			'<form action="'+loginURL+'" method="post" style="width: 270px; margin-bottom: 20px;">'+
+				csrfToken +
+				'<div>\
 					<label for="username"><strong>Email или логин</strong></label><br/>\
 					<input id="name" name="username" type="text" style="width: 270px;" />\
 				</div>\

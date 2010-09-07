@@ -42,7 +42,12 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#login').click(function() {
-					Account.loginForm('{% url login %}?next='+window.location.pathname, '{% url recover %}');
+					Account.loginForm(
+						'{% url login %}?next='+window.location.pathname,
+						'{% url recover %}',
+						"{% csrf_token %}"
+					);
+					
 					return false;
 				});
 				

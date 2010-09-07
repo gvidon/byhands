@@ -10,6 +10,7 @@
 	
 	{% if not request.POST or error %}
 		<form action="" method="post">
+			{% csrf_token %}
 			<p">Сообщите e-mail, под которым вы регистрировались
 			и мы восстановим ваш пароль.</p>
 			
