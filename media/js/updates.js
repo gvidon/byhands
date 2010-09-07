@@ -8,7 +8,7 @@ Updates = {
 		$('#subscribe-form .error').html('&nbsp;');
 		$('div, div span, img', $('#subscribe-form')).toggle();
 		
-		$.post('/subscribe', { 'email': $('#email').val() }, function(data) {
+		$.post('/subscribe', { 'email': $('#subscribe-email').val() }, function(data) {
 			if(data.success) {
 				$('img, p', $('#subscribe-form')).toggle();
 				$('#email-updates').parent().fadeOut('slow');
