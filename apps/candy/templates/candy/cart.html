@@ -34,7 +34,12 @@
 				{ }
 			);
 			
-			Candy.bindOrderEvents($('#make-order'), $('#cart tbody'), {% if request.user.is_authenticated %}true{% else %}false{% endif %});
+			Candy.bindOrderEvents(
+				$('#make-order'),
+				$('#cart tbody'),
+				{% if request.user.is_authenticated %}true{% else %}false{% endif %},
+				"{% csrf_token %}"
+			);
 		});
 	</script>
 {% endblock %}

@@ -11,7 +11,7 @@ Candy = {
 	},
 	
 	//EVENTS SPECIFIC TO ORDER MANAGEMENT
-	'bindOrderEvents': function(confirmButton, cartPreview, isAuthorised) {
+	'bindOrderEvents': function(confirmButton, cartPreview, isAuthorised, csrfToken) {
 		confirmButton.click(function() {
 			if(isAuthorised)
 				window.location=orderURL;
@@ -35,8 +35,9 @@ Candy = {
 					<div id="auth-box"><h2>Уже что-то заказывали?</h2>\
 					 <p>Мы присылали вам письмо с паролем и просьбой активировать аккаунт.\
 					\
-					<p><form action="'+authURL+'?next='+orderURL+'" method="post">\
-						<div>\
+					<p><form action="'+authURL+'?next='+orderURL+'" method="post">' +
+						csrfToken +
+						'<div>\
 							<label for="username"><strong>Email</strong></label><br/>\
 							<input id="name" name="username" type="text" style="width: 220px;" />\
 						</div>\
