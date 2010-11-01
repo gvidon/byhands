@@ -38,6 +38,7 @@
 	<h3>Анкета нового автора.</h3>
 	
 	<form id="profile" action="#form" method="post" style="margin-top: 20px;">
+		{% csrf_token %}
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<a name="form" style="color: black;"><label for="name">Ваше имя</label></a>
 			{{ form.name }}
