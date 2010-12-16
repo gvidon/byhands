@@ -98,7 +98,7 @@ def clear_cart(request):
 #СТРАНИЦА ТОПОВЫХ ТОВАРОВ
 def featured(request):
 	return render_to_response('candy/featured.html', {
-		'featured_items': Product.objects.filter(is_featured=True).order_by('?')[:6]
+		'featured_items': Product.objects.filter(is_featured=True).order_by('?')[:8]
 	}, context_instance=RequestContext(request))
 
 #ОБЗОР УСЛОВИЙ ЗАКАЗА И СОХРАНЕНИЕ
