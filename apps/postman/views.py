@@ -13,8 +13,9 @@ def cancel(request, code, confirmed=False):
 	
 	subscriber = get_object_or_404(Subscriber, cancel_code=code)
 	
-	subscriber.canceled_at = datetime.today()
-	subscriber.save()
+	if confirmed:	
+		subscriber.canceled_at = datetime.today()
+		subscriber.save()
 	
 	return render_to_response('postman/cancel.html', {
 		'confirmed': confirmed,
