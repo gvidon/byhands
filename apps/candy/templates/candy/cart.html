@@ -31,14 +31,14 @@
 				$('.add-to-cart'),
 				$('.remove-from-cart'),
 				$('.clear-cart'),
-				{ }
+				{ 'csrfmiddlewaretoken': $('#csrf-token-wrapper div input').val() }
 			);
 			
 			Candy.bindOrderEvents(
 				$('#make-order'),
 				$('#cart tbody'),
 				{% if request.user.is_authenticated %}true{% else %}false{% endif %},
-				"{% csrf_token %}"
+				$('#csrf-token-wrapper').html()
 			);
 		});
 	</script>
@@ -52,8 +52,6 @@
 		<h2>В вашей корзине сейчас:</h2>
 		
 		<form action="{% url candy-update-cart %}" method="post">
-			{% csrf_token %}
-			
 			<table id="cart" class="order_list" cellspacing="0">
 				<tbody>
 					{% for id, item in request.session.cart.iteritems %}<tr id="i{{ id }}" {% cycle 'class="odd"' '' %}>

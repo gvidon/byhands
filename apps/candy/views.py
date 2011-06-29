@@ -273,7 +273,7 @@ def update_cart(request):
 	
 	# в POST хэш с ключами вида q34, c78 и т.д.
 	try:
-		for id, value in request.POST.iteritems():
+		for id, value in filter(lambda P: P[0] != 'csrfmiddlewaretoken', request.POST.iteritems()):
 			
 			# если устанвливает значение количества, то привести к целому
 			cart[id[1:]].__setattr__({

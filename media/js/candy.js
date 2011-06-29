@@ -21,6 +21,7 @@ Candy = {
 				$(this).siblings('.ajax-loader'),
 				cartPreview.parent().parent(),
 				cartPreview,
+				$('input', csrfToken).val(),
 			
 				function() { new Boxy(
 					'<div id="continue-box"><h2>Это ваш первый заказ?</h2>\
@@ -160,9 +161,9 @@ Candy = {
 	},
 	
 	//UPDATE CART WITH NEW ITEMS QUANTITY AND COMMENTS
-	'updateCart': function(ajaxLoader, form, cart, callback) {
+	'updateCart': function(ajaxLoader, form, cart, csrfToken, callback) {
 		
-		var postData = {};
+		var postData = { 'csrfmiddlewaretoken': csrfToken };
 		
 		ajaxLoader.show();
 		

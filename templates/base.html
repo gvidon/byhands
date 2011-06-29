@@ -42,12 +42,13 @@
 		<script type="text/javascript" src="{{ media_url }}js/updates.js"></script>
 		
 		<script type="text/javascript">
+			
 			$(document).ready(function() {
 				$('#login').click(function() {
 					Account.loginForm(
 						'{% url login %}?next='+window.location.pathname,
 						'{% url recover %}',
-						"{% csrf_token %}"
+						$('#csrf-token-wrapper').html()
 					);
 					
 					return false;
@@ -62,6 +63,7 @@
 	</head>
 
 	<body>
+		<div id="csrf-token-wrapper">{% csrf_token %}</div>
 		<div id="main" align="center">
 		
 			<div id="head">

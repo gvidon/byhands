@@ -23,7 +23,7 @@
 				$('.add-to-cart'),
 				$('.remove-from-cart'),
 				$('.clear-cart'),
-				{ 'simple': 1 }
+				{ 'simple': 1, 'csrfmiddlewaretoken': $('#csrf-token-wrapper div input').val() }
 			);
 			
 			$('a.group').fancybox({
