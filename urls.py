@@ -9,9 +9,11 @@ from tags.views                import search
 admin.autodiscover()
 handler500 = 'staticpages.views.error_handler'
 
-urlpatterns = patterns('',
-	url('^admin/?(.*)', admin.site.root),
-)
+try:
+	urlpatterns = patterns('', url('^admin/?(.*)', admin.site.root))
+except AttributeError:
+	urlpatterns = patterns('', url('^admin/?(.*)', admin.site.urls))
+
 
 urlpatterns += patterns('',
 	url(r'^contactus/?$', form, name='contactus'),	

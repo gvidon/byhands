@@ -14,8 +14,9 @@
 	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.boxy.js"></script>
 	
 	<script type="text/javascript" src="{{ media_url }}js/candy.js"></script>
+	<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>
 	
-	<script type="text/javascript">	
+	<script type="text/javascript">
 		$(document).ready(function () {
 			Candy.bindCartEvents(
 				$('#cart span'),
@@ -58,6 +59,12 @@
 			{% if product.size %}<span style="font-size: 12px; font-weight: bold;">Размер:</span> {{ product.size }}<br/><br/>{% endif %}
 			
 			{{ product.description|safe }}<br/><br/>
+			
+			<script type="text/javascript"><!--
+				document.write(VK.Share.button(false,{type: "button", text: "Рассказать друзьям"}));
+			--></script>
+			
+			<br/><br/>
 			<span style="font-size: 12px; font-weight: bold;">Цена:</span> {{ product.price }} p.<br/><br/>
 			
 			<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
