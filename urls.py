@@ -10,9 +10,9 @@ admin.autodiscover()
 handler500 = 'staticpages.views.error_handler'
 
 try:
-	urlpatterns = patterns('', url('^admin/?(.*)', admin.site.root))
+	urlpatterns = patterns('', url('^admin(.*)', admin.site.root))
 except AttributeError:
-	urlpatterns = patterns('', url('^admin/?(.*)', admin.site.urls))
+	urlpatterns = patterns('', url('^admin/', admin.site.urls))
 
 
 urlpatterns += patterns('',
