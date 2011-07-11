@@ -55,6 +55,12 @@
 				 <span style="font-size: 12px; font-weight: bold;">Автор</span>: {{ product.author.first_name }} {{ product.author.last_name }}<br/><br/>
 			{% endif %}
 			
+			{% if product.is_instore %}
+				<span style="font-size: 12px; font-weight: bold;">Есть в наличии!</span><br/><br/>
+			{% else %}
+				{% if product.ready_in %}<span style="font-size: 12px; font-weight: bold;">Дней на изготовление</span>: {{ product.ready_in }}<br/><br/>{% endif %}
+			{% endif %}
+			
 			{% if product.madeof %}<span style="font-size: 12px; font-weight: bold;">Материал:</span> {{ product.madeof }}<br/><br/>{% endif %}
 			{% if product.size %}<span style="font-size: 12px; font-weight: bold;">Размер:</span> {{ product.size }}<br/><br/>{% endif %}
 			
@@ -64,7 +70,8 @@
 				document.write(VK.Share.button(false,{type: "button", text: "Рассказать друзьям"}));
 			--></script>
 			
-			<br/><br/>
+			<br/>
+			
 			<span style="font-size: 12px; font-weight: bold;">Цена:</span> {{ product.price }} p.<br/><br/>
 			
 			<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />

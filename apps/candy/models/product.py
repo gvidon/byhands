@@ -22,6 +22,9 @@ class Product(models.Model):
 	is_featured = models.BooleanField(u'Рекомендуемый товар', default=False)
 	is_active   = models.BooleanField(u'Показывать в магазине', default=True)
 	is_new      = models.BooleanField(u'Новинка', default=False)
+	is_instore  = models.BooleanField(u'Есть в наличии', default=False)
+	
+	ready_in    = models.IntegerField(u'Дней на изготовление', blank=True, null=True)
 	
 	slug        = models.CharField(u'Имя ссылки для продукта', help_text='латиница, цифры и "-"', max_length=64)
 	title       = models.CharField(u'Название', max_length=64)
