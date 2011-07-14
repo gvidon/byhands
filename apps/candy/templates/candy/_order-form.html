@@ -8,13 +8,19 @@
 			<label><span class="required">*</span> Способ доставки</label><br/>
 			
 			<input type="radio" id="delivery_by_0" value="post" name="delivery_by" {% if delivery == deliveries.post %}checked{% endif %}>
-			<label for="delivery_by_0">Почта России - <strong>{{ deliveries.post }} руб</strong> (1-2 недели)</label><br/>
+			<label for="delivery_by_0">Почта России - <strong>{{ deliveries.post }} руб</strong></label>
+			<p>Отправка наложенным платежом. Срок доставки 1-2 недели, самовывоз с почтового
+			отделения. Оплата заказа при получении посылки.</p><br/>
 			
 			<input type="radio" id="delivery_by_1" value="ems" name="delivery_by" {% if delivery == deliveries.ems %}checked{% endif %}>
-			<label for="delivery_by_1">EMS - <strong>{{ deliveries.ems }} руб</strong> (3-5 дней)</label><br/>
+			<label for="delivery_by_1">EMS - <strong>{{ deliveries.ems }} руб</strong></label>
+			<p>Срок прибытия заказа 3-5 дней, доставка на дом. Оплатить заказ необходимо
+			полностью до его отправки.</p><br/>
 			
 			<input type="radio" id="delivery_by_2" value="pek" name="delivery_by" {% if delivery == deliveries.pek %}checked{% endif %}>
-			<label for="delivery_by_2">Первая Экспедиционная Компания - <strong>{{ deliveries.pek }} руб</strong> (3-5 дней)</label>
+			<label for="delivery_by_2">Первая Экспедиционная Компания - <strong>{{ deliveries.pek }} руб</strong></label>
+			<p>Срок доставки 3-5 дней. Самовывоз из офиса ПЭК в вашем городе. Оплатить
+			заказ необходимо полностью до его отправки.</p>
 		</div>
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>

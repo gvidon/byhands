@@ -103,6 +103,9 @@ def featured(request):
 
 #ОБЗОР УСЛОВИЙ ЗАКАЗА И СОХРАНЕНИЕ
 def order(request, id=None):
+	
+	DELIVERIES = { 'post': 230, 'ems': 460, 'pek': 350 }
+	
 	try:
 		# просмотр ранее завершенного заказа
 		order = Order.objects.get(pk=id, user=request.user.is_authenticated() and request.user or None)
@@ -170,8 +173,9 @@ def order(request, id=None):
 						
 						email        = values['email'],
 						phone        = values['phone'],
-					
-						sum          = cart_total(request.session['cart']),
+						
+						delivery_by  = values['delivery_by'],
+						sum          = cart_total(request.session['cart']) + DELIVERIES[values['delivery_by']],
 						is_confirmed = 1,
 					)
 				
@@ -214,20 +218,18 @@ def order(request, id=None):
 				mail_managers(u'Новый заказ номер '+str(order.id),
 					u'Поступил новый заказ на сумму '+str(order.sum)+u' руб. Контактные данные: '+
 					order.name+' ('+str(order.phone)+', '+order.email+u'). Доставка по адрессу '+order.city+', '+
-					order.address + u' Содержимое заказа: ' + items_str
+					order.address + u'. Способ доставки '+order.delivery_by+u'. Содержимое заказа: ' + items_str
 				)
 				
 				return render_to_response('candy/order-confirmed.html', {'order': order}, context_instance=RequestContext(request))
-	
-	deliveries = { 'post': 230, 'ems': 460, 'pek': 350 }
 	
 	return render_to_response('candy/order.html', {
 		'order'     : locals().get('order'),
 		'form'      : locals().get('form'),
 		'auth_error': locals().get('auth_error'),
 		'total'     : cart_total(request.session.get('cart') or {}),
-		'delivery'  : deliveries[locals().get('order') and order.delivery_by or request.POST.get('delivery_by', 'post')],
-		'deliveries': deliveries,
+		'delivery'  : DELIVERIES[locals().get('order') and order.delivery_by or request.POST.get('delivery_by', 'post')],
+		'deliveries': DELIVERIES,
 		
 		'items': locals().has_key('order') and order.items.all() or [
 			item for id, item in request.session['cart'].iteritems()

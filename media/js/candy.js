@@ -6,7 +6,12 @@ Candy = {
 		clearButton.livequery('click', function() { Candy.clearCart($(this), cartPreview); return false; });
 		
 		$('.quantity input, .comments textarea').change(function() { Candy.updateCart(
-			$(this).siblings('.ajax-loader'), cartPreview.parent().parent(), cartPreview
+		
+			$(this).siblings('.ajax-loader'),
+			cartPreview.parent().parent(),
+			cartPreview,
+			params['csrfmiddlewaretoken']
+			
 		); return false; });
 	},
 	

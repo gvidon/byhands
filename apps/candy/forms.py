@@ -15,7 +15,8 @@ class OrderForm(forms.Form):
 	
 	delivery_by = forms.ChoiceField(choices=(
 		('post', u'Почта России'),
-		('ems' , u'EMS')
+		('ems' , u'EMS'),
+		('pek' , u'ПЭК'),
 	), error_messages={
 		'required'  : MESSAGES['required'],
 		'min_length': MESSAGES['min_length'](2),

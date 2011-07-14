@@ -69,8 +69,9 @@ span.button input {
 
 #order-form input[type="radio"] { width: auto; margin-top: 15px; }
 
-#order-form div.radio-wrapper { padding-bottom: 15px; }
+#order-form div.radio-wrapper { padding-bottom: 15px; background-color: #E8E8E8; padding: 10px; margin-bottom: 25px; }
 	#order-form div.radio-wrapper input + label { font-weight: normal; }
+	#order-form div.radio-wrapper p { font-weight: normal; font-size: .8em; line-height: 15px; margin-top: 5px; }
 
 
 
