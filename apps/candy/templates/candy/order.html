@@ -17,7 +17,17 @@
 	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.keyfilter.min.js"></script>
 	
 	<script type="text/javascript">	
-		$(document).ready(function () { $('#phone').keyfilter(/[\d]/); });
+		$(document).ready(function () {
+			$('#phone').keyfilter(/[\d]/);
+			
+			$('[name="delivery_by"]').change(function() {
+				$('#order-sum strong').html(
+					parseInt($(this).next().children('strong').html().replace('руб', '')) +
+					parseInt($('#items-sum strong').html().replace('руб')) +
+					' руб'
+				);
+			});
+		});
 	</script>
 {% endblock %}
 
@@ -30,8 +40,12 @@
 		<li><a href="{% url candy-product category=item.category.all.0.slug, product=item.slug %}">
 		"{{ item.title|capfirst }}"</a> - <strong>{{ item.quantity }} шт.</strong></li>
 	{% endfor %}</ul>
-		
-	<p>Общая стоимость заказа - <strong>{% firstof order.sum total %} руб</strong></p>
+	
+	<p id="items-sum">Стоимость заказа - <strong>{% firstof order.sum total %} руб</strong></p>
+	
+	{% if total %}
+		<p id="order-sum">Цена с доставкой - <strong>{{ total|add:delivery }} руб</strong></p>
+	{% endif %}
 	
 	{% if form %}
 		{% include 'candy/_order-form.html' %}
@@ -41,6 +55,6 @@
 	
 	<div style="margin-top: 20px;">
 		{% if order.is_paid %}оплачен{% endif %}
-		{% if order.is_delivered %}доставлен{% endif %}
+		{% if order.is_delivered %}доставлен ({{ order.delivery_by }}){% endif %}
 	</div>
 {% endblock %}

@@ -1,10 +1,21 @@
-<h2 style="margin-top: 40px;">Осталось внимательно заполнить форму:</h2>
-<!--<p>Определите параметры доставки продукта. После подтверждения заказа с вами
-свяжутся по предложенному контактному телефону.</p>-->
+<h2 style="margin: 40px 0 30px 0;">Информация о доставке:</h2>
 
 <div id="order-form" >
 	<form action="" method="post">
 		{% csrf_token %}
+		
+		<div class="radio-wrapper">
+			<label><span class="required">*</span> Способ доставки</label><br/>
+			
+			<input type="radio" id="delivery_by_0" value="post" name="delivery_by" {% if delivery == deliveries.post %}checked{% endif %}>
+			<label for="delivery_by_0">Почта России - <strong>{{ deliveries.post }} руб</strong> (1-2 недели)</label><br/>
+			
+			<input type="radio" id="delivery_by_1" value="ems" name="delivery_by" {% if delivery == deliveries.ems %}checked{% endif %}>
+			<label for="delivery_by_1">EMS - <strong>{{ deliveries.ems }} руб</strong> (3-5 дней)</label><br/>
+			
+			<input type="radio" id="delivery_by_2" value="pek" name="delivery_by" {% if delivery == deliveries.pek %}checked{% endif %}>
+			<label for="delivery_by_2">Первая Экспедиционная Компания - <strong>{{ deliveries.pek }} руб</strong> (3-5 дней)</label>
+		</div>
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
 			<label for="name">

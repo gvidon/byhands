@@ -218,13 +218,20 @@ def order(request, id=None):
 				)
 				
 				return render_to_response('candy/order-confirmed.html', {'order': order}, context_instance=RequestContext(request))
-				
+	
+	deliveries = { 'post': 230, 'ems': 460, 'pek': 350 }
+	
 	return render_to_response('candy/order.html', {
 		'order'     : locals().get('order'),
 		'form'      : locals().get('form'),
 		'auth_error': locals().get('auth_error'),
-		'items'     : locals().has_key('order') and order.items.all() or [item for id, item in request.session['cart'].iteritems()],
 		'total'     : cart_total(request.session.get('cart') or {}),
+		'delivery'  : deliveries[locals().get('order') and order.delivery_by or request.POST.get('delivery_by', 'post')],
+		'deliveries': deliveries,
+		
+		'items': locals().has_key('order') and order.items.all() or [
+			item for id, item in request.session['cart'].iteritems()
+		],
 	}, context_instance=RequestContext(request))
 
 #СПИСОК УЖЕ СОВЕРШЕННЫХ ЗАКАЗОВ

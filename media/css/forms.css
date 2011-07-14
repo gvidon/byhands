@@ -25,6 +25,8 @@ input, select {
 	height: 25px;
 }
 
+input[type="radio"] { height: auto; }
+
 
 .boxy-content input[type="button"], .boxy-content input[type="submit"] {
 	 width: 75px; background-color: #f4eec0;
@@ -64,6 +66,11 @@ span.button input {
 #order-form, #profile { width: 420px; }
 #order-form label, #profile label { width: 400px; }
 #order-form input, #profile input[type="text"], #profile textarea { width: 400px;  }
+
+#order-form input[type="radio"] { width: auto; margin-top: 15px; }
+
+#order-form div.radio-wrapper { padding-bottom: 15px; }
+	#order-form div.radio-wrapper input + label { font-weight: normal; }
 
 
 

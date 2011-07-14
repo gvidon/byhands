@@ -13,6 +13,14 @@ class OrderForm(forms.Form):
 		'min_length': MESSAGES['min_length'](2),
 	})
 	
+	delivery_by = forms.ChoiceField(choices=(
+		('post', u'Почта России'),
+		('ems' , u'EMS')
+	), error_messages={
+		'required'  : MESSAGES['required'],
+		'min_length': MESSAGES['min_length'](2),
+	}, widget=forms.RadioSelect)
+	
 	address = forms.CharField(min_length=2, max_length=255, error_messages={
 		'required'  : MESSAGES['required'],
 		'min_length': MESSAGES['min_length'](2),

@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from django.db                  import models
 
-#ОПИСАНИЕ ЗАКАЗА
+# Описание ЗАКАЗА
 class Order(models.Model):
 	user         = models.ForeignKey(User, verbose_name=u'Аккаунт пользователя')
 	created_at   = models.DateTimeField(auto_now_add=True)
@@ -20,17 +20,23 @@ class Order(models.Model):
 	
 	sum          = models.FloatField(u'Общая сумма заказа')
 	
+	delivery_by = models.CharField(u'Способ доставки', choices=(
+		('post', u'Почта России'),
+		('ems' , u'EMS'),
+		('pek' , u'ПЭК'),
+	), max_length=4)
+	
 	payment_type = models.CharField(u'Способ оплаты', max_length=32, choices=(
 		(u'Наличные'     , 'cash'),
 		(u'WebMoney'     , 'webmoney'),
 		(u'Яндекс.деньги', 'yandex'),
 	))
 	
-	#СТРОКОВОЕ ПРЕДСТАВЛЕНИЕ
+	# СТРОКОВОЕ представление
 	def __unicode__(self):
 		return str(self.id)
 	
-	#META
+	# META
 	class Meta:
 		app_label           = 'candy'
 		db_table            = 'order'
