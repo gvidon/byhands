@@ -43,7 +43,7 @@
 	
 	<p id="items-sum">Стоимость заказа - <strong>{% firstof order.sum total %} руб</strong></p>
 	
-	{% if total %}
+	{% if not order.sum %}
 		<p id="order-sum">Цена с доставкой - <strong>{{ total|add:delivery }} руб</strong></p>
 	{% endif %}
 	
