@@ -27,7 +27,7 @@
 				<price>{{ item.price }}</price>
 				<currencyId>RUR</currencyId>
 				<categoryId>{{ item.category.all.0.id }}</categoryId>
-				<picture>{{ item.photos.all.0.photo.url }}</picture>
+				<picture>http://byhands.ru{{ item.photos.all.0.photo.url }}</picture>
 				<pickup>true</pickup>
 				<delivery>true</delivery>
 			</offer>			
