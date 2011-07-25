@@ -95,6 +95,23 @@ def clear_cart(request):
 	
 	return HttpResponse('{ success: 1 }')
 
+# ЕКСПОРТ данных в формате YML http://help.yandex.ru/partnermarket/?id=1111425
+def export_yandex(request):
+	from datetime               import datetime
+	from django.template.loader import render_to_string
+	from models                 import Category
+	
+	return HttpResponse(render_to_string('candy/export-yandex.xml', {
+		'categories': Category.objects.only('id', 'parent', 'title').select_related('parent__id', 'parent__title'),
+		'now'       : datetime.now().strftime('%Y-%m-%d %H:%M'),
+		
+		'items': Product.objects.only(
+			'id', 'title', 'description', 'price', 'slug'
+		).select_related(
+			'category', 'photos'
+		),
+	}), mimetype='text/xml')
+
 #СТРАНИЦА ТОПОВЫХ ТОВАРОВ
 def featured(request):
 	return render_to_response('candy/featured.html', {

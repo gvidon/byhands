@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+
+<yml_catalog date="{{ now }}">
+	<shop>
+		<name>Магазин ручной работы ByHands</name>
+		<company>ByHands</company>
+		<url>http://byhands.ru/</url>
+		<email>info@byhands.ru</email>
+		
+		<currencies>
+			<currency id="RUR" rate="1"/>
+		</currencies>
+		
+		<categories>{% for category in categories %}
+			<category id="{{ category.id }}" {% if category.parent_id %}parentId="{{ category.parent_id }}"{% endif %}>
+				{{ category.title }}
+			</category>
+		{% endfor %}</categories>
+		
+		<offers>{% for item in items %}
+			<offer id="{{ item.id }}" available="true">
+				<name>{{ item.title }}</name>
+				<description>{{ item.description }}</description>
+				<sales_notes>Возможны варианты доставки, подробности на странице товара.</sales_notes>
+				<url>http://byhands.ru{% url candy-product category=item.category.all.0.slug, product=item.slug %}</url>
+				<price>{{ item.price }}</price>
+				<currencyId>RUR</currencyId>
+				<categoryId>{{ item.category.all.0.id }}</categoryId>
+				<picture>{{ item.photos.all.0.photo.url }}</picture>
+				<pickup>true</pickup>
+				<delivery>true</delivery>
+			</offer>			
+		{% endfor %}</offers>
+	</shop>
+</yml_catalog>
