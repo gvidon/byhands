@@ -22,6 +22,10 @@
 			<p>Срок доставки 3-5 дней. Самовывоз из офиса ПЭК в вашем городе. Оплатить
 			заказ необходимо полностью до его отправки.
 			<a href="http://www.pecom.ru/ru/services/send/warehouses/" target="_blank">Проверить наличие офиса в своем городе.</a></p>
+			
+			<input type="radio" id="delivery_by_3" value="self" name="delivery_by" {% if delivery == deliveries.self %}checked{% endif %}>
+			<label for="delivery_by_3">Самовывоз - <strong>{{ deliveries.self }} руб</strong></label>
+			<p>Если вы находитесь в Ростове-на-Дону то получить заказ можно заехав к нам.</p>
 		</div>
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
@@ -87,8 +91,6 @@
 				<span class="error">{{ form.errors.phone.as_text|safe|cut:"*" }}</span>
 			{% endif %}
 		</div>
-		
-			
 		
 		<div id="buttons" style="padding-left: 20px;">
 			<span class="button">

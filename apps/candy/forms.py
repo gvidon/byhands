@@ -17,6 +17,7 @@ class OrderForm(forms.Form):
 		('post', u'Почта России'),
 		('ems' , u'EMS'),
 		('pek' , u'ПЭК'),
+		('self', u'Самовывоз'),
 	), error_messages={
 		'required'  : MESSAGES['required'],
 		'min_length': MESSAGES['min_length'](2),

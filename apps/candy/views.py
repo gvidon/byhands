@@ -121,7 +121,7 @@ def featured(request):
 #ОБЗОР УСЛОВИЙ ЗАКАЗА И СОХРАНЕНИЕ
 def order(request, id=None):
 	
-	DELIVERIES = { 'post': 230, 'ems': 460, 'pek': 350 }
+	DELIVERIES = { 'post': 230, 'ems': 460, 'pek': 350, 'self': 0 }
 	
 	try:
 		# просмотр ранее завершенного заказа

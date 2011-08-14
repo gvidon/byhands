@@ -24,6 +24,7 @@ class Order(models.Model):
 		('post', u'Почта России'),
 		('ems' , u'EMS'),
 		('pek' , u'ПЭК'),
+		('self', u'Самовывоз'),
 	), max_length=4)
 	
 	payment_type = models.CharField(u'Способ оплаты', max_length=32, choices=(
