@@ -7,6 +7,10 @@
 		<div class="radio-wrapper">
 			<label><span class="required">*</span> Способ доставки</label><br/>
 			
+			<input type="radio" id="delivery_by_3" value="self" name="delivery_by" {% if delivery == deliveries.self %}checked{% endif %}>
+			<label for="delivery_by_3">Самовывоз - <strong>{{ deliveries.self }} руб</strong></label>
+			<p>Мы находимся в Ростове-на-Дону, в любое время вы можете забрать свой заказ.</p>
+			
 			<input type="radio" id="delivery_by_0" value="post" name="delivery_by" {% if delivery == deliveries.post %}checked{% endif %}>
 			<label for="delivery_by_0">Почта России - <strong>{{ deliveries.post }} руб</strong></label>
 			<p>Отправка наложенным платежом. Срок доставки 1-2 недели, самовывоз с почтового
@@ -22,10 +26,6 @@
 			<p>Срок доставки 3-5 дней. Самовывоз из офиса ПЭК в вашем городе. Оплатить
 			заказ необходимо полностью до его отправки.
 			<a href="http://www.pecom.ru/ru/services/send/warehouses/" target="_blank">Проверить наличие офиса в своем городе.</a></p>
-			
-			<input type="radio" id="delivery_by_3" value="self" name="delivery_by" {% if delivery == deliveries.self %}checked{% endif %}>
-			<label for="delivery_by_3">Самовывоз - <strong>{{ deliveries.self }} руб</strong></label>
-			<p>Если вы находитесь в Ростове-на-Дону то получить заказ можно заехав к нам.</p>
 		</div>
 		
 		<div {% if form.errors.name %}class="erroneus"{% endif %}>
