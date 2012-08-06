@@ -1,0 +1,90 @@
+/*---- required field -----*/
+span.required { color: #fc5013;}
+
+span.error { padding: 0 0 5px 0; color:#fc5013; display: block;}
+
+input, textarea, select {
+	border: 1px solid #e7990e;
+	color: #3e3838;
+	background-color: #ffffff;
+	font-family: Verdana, Arial;
+	padding: 2px 4px 2px 4px; margin: 5px 0 5px 0;
+}
+
+label { 
+		text-align: right;
+		margin: 0 10px 0 0; padding: 18px 0 0 0;
+		font-size: 10pt;
+		font-weight: bold;
+}
+
+textarea { padding: 5px; font-size: 12px;}
+
+input, select {
+	font-size: 11pt;
+	height: 25px;
+}
+
+input[type="radio"] { height: auto; }
+
+
+.boxy-content input[type="button"], .boxy-content input[type="submit"] {
+	 width: 75px; background-color: #f4eec0;
+}
+
+.boxy-content .question p a { font-size: 14pt; }
+
+span.button {
+	background: transparent url('../images/bg_button_end.gif') no-repeat scroll top right;
+	display: block;
+    float: right;
+    height: 36px;
+    
+    margin-right: 9px;
+    padding-right: 9px; /* sliding doors padding */
+   
+    	font-size: 14px;
+	color: #3e3838;	
+    text-decoration: none;
+}
+
+span.button input {
+    background: transparent url('../images/bg_button.gif') no-repeat;
+    display: block;
+	height: 36px;
+    padding: 0 2px 5px 9px; margin: 0;
+    border: 0;
+    font-size: 11pt;
+}
+
+#search_form input { width: 120px; }
+#search_form input#find_button { width: 54px;  margin: 0; padding: 0; border: 0; float: right;}
+
+.action-note { font-size: 1.4em; margin-top: 20px; }
+
+#order-form div, #profile div { margin-bottom: 15px; }
+#order-form, #profile { width: 420px; }
+#order-form label, #profile label { width: 400px; }
+#order-form input, #profile input[type="text"], #profile textarea { width: 400px;  }
+
+#order-form input[type="radio"] { width: auto; margin-top: 15px; }
+
+#order-form div.radio-wrapper { padding-bottom: 15px; background-color: #E8E8E8; padding: 10px; margin-bottom: 25px; }
+	#order-form div.radio-wrapper input + label { font-weight: normal; }
+	#order-form div.radio-wrapper p { font-weight: normal; font-size: .8em; line-height: 15px; margin-top: 5px; }
+
+
+
+.comment { font-size: 7pt; line-height: 7pt; }
+
+#order-form div, #profile div {width: 400px;} 
+
+
+
+
+/* ФОРМА ПРОФАЙЛА */
+#profile { width: 400px; }
+
+#subscribe-form { width: 420px; height: 180px; }
+
+

@@ -10,10 +10,10 @@
 {% endif %}{% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.fancybox.js"></script>
-	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.boxy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/lib/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/lib/jquery.boxy.js"></script>
 	
-	<script type="text/javascript" src="{{ media_url }}js/candy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/candy.js"></script>
 	<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>
 	
 	<script type="text/javascript">
@@ -74,10 +74,10 @@
 			
 			<span style="font-size: 12px; font-weight: bold;">Цена:</span> {{ product.price }} p.<br/><br/>
 			
-			<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
+			<img class="ajax-loader" src="{{ STATIC_URL }}images/ajax-loader.gif" />
 			
 			<a id="b{{ product.id }}" href="{% url candy-add-item id=product.id %}" class="add-to-cart">
-				<img src="{{ media_url }}images/to_cart.gif" />
+				<img src="{{ STATIC_URL }}images/to_cart.gif" />
 			</a>
 		</div>
 	</div>

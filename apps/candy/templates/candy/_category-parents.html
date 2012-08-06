@@ -1,7 +1,7 @@
-<li><a href="http://byhands.ru"><img src="{{ media_url }}images/home.gif" height="23"/></a></li>
+<li><a href="http://byhands.ru"><img src="{{ STATIC_URL }}images/home.gif" height="23"/></a></li>
 
 {% for category in parents %}{% if category %}
-	<li><img src="{{ media_url }}images/arrow.gif" /></li>
+	<li><img src="{{ STATIC_URL }}images/arrow.gif" /></li>
 	<li>{% if forloop.last and not product %}
 		<h1>{{ category.title|capfirst }}</h1>
 	{% else %}

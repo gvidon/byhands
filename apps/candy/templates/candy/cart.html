@@ -10,13 +10,13 @@
 {% endif %}{% endblock %}
 
 {% block css %}
-	<link rel="stylesheet" href="{{ media_url }}css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.boxy.js"></script>
-	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.keyfilter.min.js"></script>
-	<script type="text/javascript" src="{{ media_url }}js/candy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/lib/jquery.boxy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/lib/jquery.keyfilter.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/candy.js"></script>
 	
 	<script type="text/javascript">
 		authURL  = '{% url login %}';
@@ -63,20 +63,20 @@
 						</td>
 						
 						<td class="quantity" width="17%">
-							<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
+							<img class="ajax-loader" src="{{ STATIC_URL }}images/ajax-loader.gif" />
 							<input type="text" name="quantity" value="{{ item.quantity }}" size="2"/> шт.
 						</td>
 						
 						<td width="17%">Цена: {{ item.price }} руб</td>
 						
 						<td class="comments" width="44%">
-							<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" style="float: left;" />
+							<img class="ajax-loader" src="{{ STATIC_URL }}images/ajax-loader.gif" style="float: left;" />
 							<textarea cols="30" rows="4" style="resize: none;">{{ item.comments }}</textarea>
 						</td>
 						
 						<td width="7%" class="delete">
-							<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" />
-							<a class="remove remove-from-cart" href="{% url candy-remove-item id=id %}"><img src="{{ media_url }}images/cart_delete.gif" title="Корзина" /></a>
+							<img class="ajax-loader" src="{{ STATIC_URL }}images/ajax-loader.gif" />
+							<a class="remove remove-from-cart" href="{% url candy-remove-item id=id %}"><img src="{{ STATIC_URL }}images/cart_delete.gif" title="Корзина" /></a>
 						</td>
 					</tr>{% endfor %}
 					
@@ -93,7 +93,7 @@
 					<!--<a class="button" id="make-order" href="#"><span>оформить заказ </span></a>
 					<a class="button" id="continue" href="#"><span>заказать ещё</span></a>-->
 
-					<img class="ajax-loader" src="{{ media_url }}images/ajax-loader.gif" style="padding-bottom: 14px;margin: 0px;" />
+					<img class="ajax-loader" src="{{ STATIC_URL }}images/ajax-loader.gif" style="padding-bottom: 14px;margin: 0px;" />
 				</div>
 			</div>
 		</form>

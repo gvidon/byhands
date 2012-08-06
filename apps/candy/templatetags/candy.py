@@ -50,7 +50,7 @@ def categories_tree(current=None):
 @register.inclusion_tag('candy/_category-parents.html')
 def category_parents(current, product=None):
 	
-	media_url = settings.MEDIA_URL
+	STATIC_URL = settings.STATIC_URL
 	
 	try:
 		parents = [current]

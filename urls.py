@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-from django.views.generic.simple import direct_to_template
-from django.conf.urls.defaults   import *
-from django.contrib              import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.simple     import direct_to_template
+from django.conf.urls.defaults       import *
+from django.contrib                  import admin
+from django.conf                     import settings
 
-from contactus.views           import form
-from tags.views                import search
+from contactus.views                 import form
+from tags.views                      import search
 
 admin.autodiscover()
 handler500 = 'staticpages.views.error_handler'
@@ -28,3 +30,6 @@ urlpatterns += patterns('',
 	url(r'^robots.txt$', direct_to_template, {'template': 'robots.txt'}, name='robots.txt'),
 	url(r'^(?P<type>(articles|products)?)/by\-tag/(?P<tag>[\w\-_\!\s]+)', search, name='by-tag'),
 )
+
+if settings.DEBUG:
+	urlpatterns += staticfiles_urlpatterns()

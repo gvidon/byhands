@@ -4,12 +4,12 @@
 {% load candy %}
 
 {% block css %}
-	<link rel="stylesheet" href="{{ media_url }}css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/boxy.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="{{ media_url }}js/lib/jquery.boxy.js"></script>
-	<script type="text/javascript" src="{{ media_url }}js/candy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/lib/jquery.boxy.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/candy.js"></script>
 	
 	<script type="text/javascript">	
 		$(document).ready(function () {
